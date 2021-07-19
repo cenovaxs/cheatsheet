@@ -3,7 +3,17 @@ Setting di awal:
 	git config --global user.name "Your Name" = memasukkan nama pengguna
 	git config --global user.email "yourname@somemail.eu" = memasukkan email pengguna
 	git config --list = lihat configurasi(setting) seperti melihat nama, email
+	git config --list --show-origin = liat setting dengan lokasi filenya
 	
+Setting git-VScode di awal :
+	git config --global core.editor "code--wait"
+	git config --global diff.tool "default-difftool"
+	git config --global difftool.default-diftool.cmd "code --wait --diff \$LOCAL \$REMOTE"
+
+Setting git os crossplatform di awal :
+	git config --global core.autocrlf true = windows
+	git config --global core.autocrlf input = mac/linux
+
 bantuan:
 	git help <verb> (cth git help config) atau 
 	git <verb> --help (cth git config --help)
@@ -15,7 +25,9 @@ Mulai project git:
 	    *.backup
 	    testfile.txt
 	    *.test
+		logs/dev.log
 	git status = mengecek status git apakah aman atau ada yang baru dll
+	git status -s = short yang lebih pendek 
 
 Staging
 
@@ -30,6 +42,15 @@ Buang file dari staging ke working:
 	git reset = membuang semua file dari staging ke working 
 	git reset somefile.js = buang hanya somefile.js saja dari staging ke working
 
+	atau
+
+	git restore -- staged <lokasi atau namafile> = mengubah file staged kembali ke sebelumnya
+
+Delete file dari staging:
+	git clean -fd = hapus file dengan cara kasar filenya gak bisa dikembalikan
+	git rm <file> = hapus file dan remove dari staging
+
+
 Commiting
 
     git status untuk mengecek apakah ada file yang mau di commit
@@ -37,11 +58,33 @@ Commiting
 memindahkan file dari staging ke commit:
 	git commit -m "penjelasan" = memindahkan file dari staging ke commit, -m itu berguna untuk menulis penjelasan cepat melalui terminal
 
+memindahkan file dari working langsung ke commit:
+	git commit -am "pesan" = langsung ke commit dari working tanpa staging
+
 Melihat perbedaan file:
-	git diff
+	git diff = melihat perubahan di working directory
+	git diff --staged = melihat perubahan di staged directory
+	git difftool = melihat perubahan di working directory dengan vscode
+	git difftool --staged = melihat perubahan di staged directory dengan vscode
 
 log:
 	git log = melihat yang sudah dilakukan sekaligus melihat hash commit, pembuat, tanggal
+	git log --oneline = melihat log yang pendek
+
+Melihat commit:
+	git show <hash> = melihat perubahan yang dibuat di commit <hash> bisa diganti head
+	git show <hash>~X = melihat perubahan sebanyak X dari commit yang dipilih, misalnya mau lihat perubahan 3 commit terakhir maka x=2 
+
+Melihat file hasil di commit:
+	git show <hash>~X:bin/.gitignore = melihat hasil akhir commit yang dipilih
+	
+	atau
+
+	git ls-tree <hash>~X = perlihatkan list perubahan dan type (commits, blob{file},tree{directory}, tags)
+	git show <hash> = melihat hasil akhir file yang dipilih
+
+Kembali ke commit sebelumnya:
+	git restore --source=HEAD~1 <namafile> = kembalikan ke sebelumnya
 
 Repository file (external)
 
@@ -77,8 +120,6 @@ Menggabungkan branch:
 	git branch --merged = melihat informasi branch yang sudah di merge
 	git merge <namabranch> = merge namabranch ke branch yang sedang di checkout dalam hal ini master, untuk git lokal 
 	git push origin master = merge branch ke repository
-
-
 
 membuang branch:
 	git branch -d <namabranchyangmaudibuang> = membuang branch yang ada di lokal
