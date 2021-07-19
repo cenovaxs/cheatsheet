@@ -1,65 +1,86 @@
-On initial install:
-	git --version - check versi git
-	git config --global user.name "Your Name" - memasukkan nama pengguna
-	git config --global user.email "yourname@somemail.eu" - memasukkan email pengguna
-	git config --list - lists all the git configurations
+Setting di awal:
+	git --version = check versi git
+	git config --global user.name "Your Name" = memasukkan nama pengguna
+	git config --global user.email "yourname@somemail.eu" = memasukkan email pengguna
+	git config --list = lihat configurasi(setting) seperti melihat nama, email
 	
-For help on commands:
-	git help <verb> (e.g. git help config) OR 
-	git <verb> --help 
+bantuan:
+	git help <verb> (cth git help config) atau 
+	git <verb> --help (cth git config --help)
 	
-For initializing the project:
-	git init - initializes the git repo in the current folder
-	touch .gitignore - creates a git ignore file
-	git status - check working tree - both on the git and on local 
+Mulai project git:
+	git init = membuat folder git (hidden) di project dan jangan disentuh, kalau tidak mau pakai git tinggal hapus folder git
+	touch .gitignore = buat git ignore file. git ignore membuat daftar file yang akan dihiraukan oleh git (ekslusi)
+	    contoh isi .gitignore :
+	    *.backup
+	    testfile.txt
+	    *.test
+	git status = mengecek status git apakah aman atau ada yang baru dll
 
-Add files:
-	git add -A - adds all of the files for commiting
-	remember - git status - to check the state of the repo 
-	
-Remove files: 
-	git reset - removes files to be commited 
-	git reset somefile.js - removes somefile.js from the commit preparation
-	
-Committing:
-	git commit -m "This is the commit message" - -m is used to add message
-	
-Check log:
-	git log - renders commit ids, authors, dates
-	
-Clone a remote repo:
-	git clone <url> <where to clone>
+Staging
 
-View info about the repo:
-	git remote -v - lists info about the repo
-	git branch -a - lists all of the branches
+Tambah file ke staging:
+	git add -A = tambah file ke staging
+    atau git add . untuk (linux/mac/wsl2)
+    git add namafile.typefile = untuk menambah file tertentu saja
+	
+    kemudian jangan lupa git status
+	
+Buang file dari staging ke working: 
+	git reset = membuang semua file dari staging ke working 
+	git reset somefile.js = buang hanya somefile.js saja dari staging ke working
 
-View changes:
-	git diff - shows the difference made in the files
+Commiting
+
+    git status untuk mengecek apakah ada file yang mau di commit
+
+memindahkan file dari staging ke commit:
+	git commit -m "penjelasan" = memindahkan file dari staging ke commit, -m itu berguna untuk menulis penjelasan cepat melalui terminal
+
+Melihat perbedaan file:
+	git diff
+
+log:
+	git log = melihat yang sudah dilakukan sekaligus melihat hash commit, pembuat, tanggal
+
+Repository file (external)
+
+Ambil repo dari github atau komputer lain: 
+	git clone <url> <where to clone> = contoh git clone https://github.com/cenovaxs/cheatsheet/edit/main/Git ./folderlokal
+    gak harus github.com bisa juga folder lain
+
+melihat informasi tentang repo yang diambil dari luar:
+	git remote -v = melihat nama repo dan alamat
 	
-Pull before push ALWAYS:
-	git pull origin master
+Sebelum push harus pull terlebih dulu untuk mencek file terbaru di repo:
+	git pull <namarepo> <namabranch> contoh git pull origin master
 	
-THEN PUSH:
+kemudian push:
 	git push origin master - <origin> name of remote repo <master> the branch that we push to 
-	
-First time push of the branch:
-	git push -u origin <name of the branch> - -u coordinates the two branches (local and on server)
-	
-Create a branch:
-	git branch <name of the branch>
 
-Checkout a branch:
-	git checkout <name of the branch>
+Branch
 
-Merge a branch:
+git branch -a = melihat info branch lokal dan repo
+
+Membuat branch:
+	git branch <namabranchbaru>
+
+Pindah ke branch lain:
+	git checkout <namebranchlain>
+
+Push branch baru untuk pertama kali gunakan:
+	git push -u origin <namabranchbaru> = - u bertujuan mensinkron branch yang baru dibuat dilokal ke repository
+
+Menggabungkan branch:
 	git checkout master
 	git pull origin master
-	git branch --merged - see which branches are merged 
-	git merge <name of the branch you want to merge>
-	git push origin master 
+	git branch --merged = melihat informasi branch yang sudah di merge
+	git merge <namabranch> = merge namabranch ke branch yang sedang di checkout dalam hal ini master, untuk git lokal 
+	git push origin master = merge branch ke repository
 
-Delete a branch:
-	git branch -d <name of the branch> - this deletes it locally!!!
-	git branch -a - check the repo branches 
-	git push origin --delete <name of the branch> - this deletes it from the repo!
+
+
+membuang branch:
+	git branch -d <namabranchyangmaudibuang> = membuang branch yang ada di lokal
+	git branch -a 
+	git push origin --delete <namabranchyangmaudibuang> = membuang branch yang ada di repo
