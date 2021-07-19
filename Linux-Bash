@@ -1,0 +1,268 @@
+$ sudo = menjalankan perintah sebagai root (unlimited access)
+$ init 0 = shutdown
+$ cat file = baca isi file ke dalam terminal
+$ man x = liat panduan command x yang tertulis
+$ <command> -h = $ <command> --help = lihat opsi panduan
+$ apropos "kata kunci" = cari command untuk hal yang berhubungan dengan kata kunci contoh $ apropos usb
+$ echo "tulisan" = membuat tulisan menjadi output pada terminal
+$ clear = clear screen
+$ history = lihat history terminal
+$ ls --help = lihat bantuan mirip dengan $ man ls
+$ ls = lihat isi folder
+$ l = sama dengan ls
+$ ls -a = (all) lihat termasuk hidden
+$ ls -l = (long) lihat termasuk permission, jumlah subfolder, user, group, size, tanggal, nama
+$ ls -p = urut berdasarkan filetype
+$ ls -s = (size) urut berdasarkan file size
+$ pwd = posisi sekarang
+$ cd = pindah folder
+$ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa untuk semua command
+/ = root folder kalau ada didepan, folder berikutnya kalau tidak ada didepan 
+. = current folder
+.. = folder diatas
+~ = home working directory
+!! = jalankan command sebelumnya
+> = ambil output dan overwrite jadi sebuah file
+>> = ambil output dan ditambahkan output ke dalam file
+$ mkdir <namafolder> = bikin folder
+$ rm <namafile >= delete file
+$ rm -r <namafolder> = delete folder dan seluruh isinya
+$ rm ./* = delete isi folder saja atau $ rm Documents/* = delete semua file yang ada di dalam folder Documents
+$ rm ./*.txt = delete semua yang ada .txt
+$ mv <file/folderyangmaudipindah> <foldertujuan> = ganti nama atau pindah lokasi kalau sudah ada foldernya
+$ open = buka file menggunakan default program
+$ cp <fileyangmaudicopy> namafilehasilcopy = copy
+$ cp -r <namafolder> = copy folder dan seluruh isinya\
+$ uname -a = check nama komputer
+$ whoami = check siapa saya
+$ who = check siapa lagi yang login selain saya
+$ groups = check grup apa
+$ which <command> = cari lokasi command musti pake sudo contoh $ which ls
+$ ps = info tentang bash/powershell/zsh
+$ id = info tentang user
+$ hostname = info hostname
+$ uname -a = info tentang os dan system
+$ ss = alat untuk lihat socket,session
+$ env = menjalankan program dalam lingkungan yang dimodif
+$ lsblk = list harddrive
+$ lsusb = list usb
+$ lsof = list openfile
+
+Networking
+$ ip = info dan ganti network
+$ ping 8.8.8.8 atau $ ping google.com = ping ke google
+$ ifconfig = check ip komputer
+$ tcpdump = kayak wireshark di linux
+-c $ tcpdump -c <x> = ambil sejumlah x packet jaringan pertama
+-A $ tcpdump -A = tampilkan dalam bentuk format aslinya
+$ traceroute <iptarget/url> = check route ip
+$ tcpdump -c <x> -A <wl01> = seperti sebelumnya namun fokus hanya pada interface yg dipilih dalam hal ini wifi aja
+-XX $ tcpdump -XX -i <wl01>  = tampilkan dalam bentuk hex dan asci format
+$ tcpdump -i <wl01> port <xxxx> = target ke port tertentu saja
+$ netstat = aplikasi buat liat jaringan network
+$ netstat -nr = perlihatkan berdasarkan network (arp)
+$ netstat -i = perlihatkan berdasarkan interface (wireless/lan/loop)
+$ netstat -ta = perlihatkan berdasarkan active socket
+$ netstat -tan = perlihatkan berdasarkan active socket dan tampilkan dalam ip address
+$ nmap <iptarget> = perlihatkan open port
+-v (verbose) $ nmap = (verbose = lengkap) perlihatkan juga proses pencarian open port
+, $ nmap <192.168.2.1,76,xx> = memperlihatkan beberapa device dalam satu command
+$ nmap <192.168.2.*> = memperlihatkan semua device dalam satu dhcp
+$ nmap google.com = bisa juga nmap untuk website
+-iL $ nmap -iL /dir/file.txt = bisa juga jalankan nmap dari file
+contoh format file.txt :
+google.com 
+192.168.2.1
+
+$ arp -a = check arp (ip dan mac yang terdaftar di komp)
+
+repository
+$ apt = versi lebih baru dan bagus
+$ apt-get = command untuk install tapi sudah kuno diganti dengan yang baru yaitu apt
+$ apt-get install <aplikasi> = install aplikasi
+$ apt-get remove <aplikasi> = uninstall aplikasi
+$ apt-get purge <aplikasi> = uninstall dan hapus
+$ sudo apt-get update = check update
+$ sudo apt-get upgrade = mendonload dan upgrade hasil check update
+$ sudo apt-get update && apt-get upgrade = update kemudian upgrade dalam satu line
+$ apt-cache = command buat lihat repsitory
+$ apt-cache search <x> = buat cari file sesuai kata kunci x
+$ apt-cache policy <x> = liat versi aplikasi x
+$ sudo dpkg -i lokasifile/namafile = install dpkg melalui terminal
+
+file
+$ touch file_name{1..3}.txt filename{a..d}.cpp = buat otomatis file_name1.txt, file_name2.txt, file_name3.txt, filenamea.ccp,filenameb.ccp,filenamec.ccp,filenamed.ccp
+$ nano <text.file> = buat file dengan nama text.file, isi text file bisa diisi lewat nano
+contoh $ nano ./Documents/text.txt
+
+User admin
+$ su <userlain> = ganti user
+$ su - <userlain> = dan ke home folder user tersebut
+$ sudo su = sudo root = ganti jadi root
+$ sudo visudo = buka file daftar sudo buat 
+contoh : pujas All = All (untuk jadiin root) atau pujas All = /sbin/adduser (kalau cuma mau kasih satu perintah)
+$ sudo adduser <namauserbaru> = tambah atau buat user account baru
+$ sudo adduser <namauserbaru> sudo = tambah atau buat user account baru yang bisa akses sudo
+$ sudo deluser <namauser> = menghapus user
+$ sudo passwd <namauser> = ganti password user
+$ sudo addgroup <namagrup> = buat grup baru lebih user friendly
+$ sudo groupadd <namagrup> = buat grup baru
+$ sudo groupdel <grup> = del grup
+$ sudo adduser <namauserbaru> <namagrup> = tambah user baru dan tambah ke grup
+$ sudo useradd <namauserbaru> = tambah user tapi cuma gitu aja sebaiknya gak pakai
+$ sudo useradd <namauserbaru> -m = tambah user dan buat home directory 
+$ sudo usermod <namauser> --shell /bin/bash = ganti pass ke bash
+$ sudo usermod -l <namauserbaru> <namauserlama> = ganti nama user
+$ sudo usermod -aG <namagrupyangmauditambah> <useryangmaudimasukin> = tambahin user ke grup baru
+$ sudo userdel <namauser> = hapus user tapi sebaiknya jangan dipakai
+$ sudo gpasswd -d <user> <group> = mengeluarkan user dari group
+
+permission 
+$ sudo chown <user>:<group> <file.txt> = ganti owner
+$ sudo chown -R <user>:<group> <./Dir> = -R berarti ganti beserta isi yang ada di dalam folder dir
+drwxrwxrwx = huruf 1 d kalau folder kalau file dia -, huruf 2-4 permission untuk owner, huruf 5-7 permission untuk group, huruf 8-0 permission untuk (publik) yang lain
+1234567890
+$ sudo chmod 644 <file.txt> = ganti file permission 4 read only, 6 read n write, angka pertama untuk owner, angka kedua untuk group, angka ketiga untuk publik
+
+info lanjut jumlah saja dibawah untuk mendapatkan kombinasi chmod yang diinginkan
+r (read) – 4
+w (write) – 2
+x (execute) – 1
+
+find = cari file dan folder di linux 
+ 
+$ find . = kasih lihat semua file dan folder di current directory
+$ find / = cari semua file dalam satu komputer
+$ find namadirectory/dir2/dll = kasih lihat semua file dan folder di directory yang dipilih
+contoh kombinasi $ find /etc -type f -iname "file.txt"
+$ find . -type d = kasih lihat semua folder aja
+$ find . -type f = kasih lihat semua file aja
+$ find . -type f -name "<file.typefile>" = mencari file.filetype di dalam current directory
+$ find . -type f -name "<file*>" = * berarti bisa apapun sehingga hasilnya mencari semua file yang ada kata "file" di dalam namanya
+$ find . -type f -iname "<file*>" = i berarti case insensitive berarti mau huruf besar atau kecil tetap dicari
+$ find . -type f -iname "<*.filetype>" = mencari berdasarkan tipe filenya
+$ find . -type f -iname -not "<file>" = mencari yang bukan file tersebut
+$ find . -type f -iname -mmin -x = cari file yang dimodif dalam waktu kurang dari x menit terakhir
+$ find . -type f -iname -mmin +y = cari file yang dimodif dalam waktu lebih dari y menit
+$ find . -type f -iname -mmin -x +y = cari file yang dimodif dalam waktu kurang dari x menit terakhir dan lebih dari y menit
+$ find . -type f -iname -mtime -x = cari file yang dimodif dalam waktu kurang dari x hari terakhir
+$ find . -type f -iname -ctime -x = idem tapi changed bukan modif perebedaan modif dengan change modif itu isinya, kalau change bisa jadi cuma permission tapi isinya gak berubah
+$ find . -type f -iname -atime -x = idem tapi akses (dibuka) bukan modif
+$ find . -size +xM = cari file yang besarnya lebih dari x MB 
+$ find . -size -yM = cari file yang besarnya kurang dari y MB 
+$ find . -size +xK = x kilobite
+$ find . -size +xG = x Gigabite
+$ find . -empty = cari file kosong yang gak ada isinya
+$ find . -perm xxx = cari file berdasarkan permission, xxx = nilai permission contoh 777
+$ find . -exec chown = eksekusi perintah dalam ini contohnya chown atau ganti pemilik
+$ find . -exec chown <user>:<grup> {} + = ganti user dan grup file yang dicari kemudian harus pakai placeholder untuk hasil {} dan perintah selesai dengan + atau \; 
+$ find . -type d -exec chown <775> {} + = ganti permission ke 775 (contoh) semua folder yang ditemukan
+$ find . -type f -iname "<*.filetype>" -maxdepth 1 = cari berdasarkan filetype hanya di folder ini (maxdepth 1) kalau (maxdepth 2) berarti dengan subfolder berikutnya dan seterusnya maxdepth x
+
+$ grep = cari kata dalam file
+
+$ grep "<kata yang dicari>" <namafile.filetype> = cari semua kata yang ada di dalam file
+contoh $ grep "john williams" names.txt
+-w $ grep -w "<kata yang dicari>" <namafile.filetype> = hanya ambil yang sama persis
+contoh klo ada johny sementara kata kunci yang dignakan john maka johny tidak tercari
+-i (insensitive) $ grep -wi "<kata yang dicari>" <namafile.filetype> = huruf kapital atau bukan tetap diambil
+-n (line) $ grep -win "<kata yang dicari>" <namafile.filetype> = tampilkan jumlah baris dimana angka tersebut berada
+-B $ grep -win -B x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line sebelumnya juga
+-A $ grep -win -A x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line setelahnya juga
+-C $ grep -win -C x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line sebelum dan setelahnya juga
+$ grep -win "<kata yang dicari>" ./*.txt = mencari dalam folder tertentu
+-r $ grep -winr "<kata yang dicari>" ./*.txt = mencari dalam folder dan subfoldernya
+-l $ grep -wirl "<kata yang dicari>" . = hanya tampilkan nama file dan folder yang ditemukan
+-c $ grep -wirc "<kata yang dicari>" . = tampilkan berapa kali nama tersebut berulang
+
+- exec = mengeksekusi hasil dari perintah pertama kemudian menjalan perintah kedua
+$ find . -type f -iname "*.filetype" -maxdepth x -exec rm {} + = delete semua file dari hasil pencarian
+$ find . -type f -iname "*.filetype" -exec grep -i -n "function" {} + = cari kata tertentu dari hasil file yang dicari
+
+| pipe = pipe berguna untuk mengubah hasil jadi digunakan kembali
+$ history | grep "x" | grep "y" = cari yang ada kata x dan y di dalam history
+
+tee file.txt = mengambil output dari perintah sebelumnya kemudian ditampilkan pada terminal dan di safe dalam file.txt
+-a (append) $ tee -a file.txt = menambah hasil output ke dalam file 
+
+$ find . -type f -size -10k -iname "*" -exec grep -tn "sandwich" {} + | tee f.txt
+= hasil dari find file dan grep diatas ditampilkan dalam terminal dan disimpan dalam file f.txt
+
+> arrow = hasil tidak ditampilkan di terminal melainkan di safe menjadi file.txt
+contoh $ ls > file.txt = menyimpan hasil ls ke dalam file.txt
+contoh $ find . -type f -size -10k -iname "*" -exec grep -tn "sandwich" {} + > f.txt
+= hasil dari find file dan grep diatas disimpan dalam file f.txt
+
+Regex posix grep
+. = apapun kayak bintang di terminal contoh:
+$ grep "...-...-...." text.txt = hasil yang didapat contohnya 123-456-7891
+Regex perl -P (python regex) grep
+-P $ grep -P "\d{3}-\d{3}-\d{4}" names.filetype = hasil yang didapat contohnya 123-456-7891
+untuk mengaktifkan grep -P harus grep version gnu klo blum upgrade atau download dulu, untuk mac pake $ brew install grep --with-default-names
+bisa dikombinasi dengan yang lainya contohnya $ grep -wirlP "\d{3}-\d{3}-\d{4}" names.filetype
+
+curl
+curl -i http://..... = menjalankan curl untuk melihat server
+
+SSH dan ssh dengan keygen
+$ ssh -V = check versi ssh
+kalo stuck karena pernah ssh ke komp lain: $ ssh-keygen -R 192.168.x.yyy (x.yyy ip komp target baru)
+$ ssh username@targetip = login ke pc lain menggunakan ssh
+$ scp ~/folder/file.filetype username@targetip:/foler/namafileyangdicopy.filetype = copy file dari satu komp ke komp lain menggunakan ssh
+contoh $ scp ~/.ssh/id_rsa.pub coreyms@192.168.56.100:/home/coreyms/.ssh/uploaded_key.pub
+setelah dicopy filenya, file harus append ke file baru
+$ cat ~/folder/file.filetype >> ~/foler/filebaru
+contoh $ cat ~/.ssh/uploaded_key.pub >> ~/.ssh/authorized_keys
+folder harus dalam permission 700 cara gantinya :
+$ chmod 700 folder 
+contohnya $ chmod 700 ~/.ssh/
+file harus dalam permission 600 cara gantinya :
+$ chmod 600 file 
+contohnya $ chmod 600 ~/.ssh/*
+kemudian untuk lebih aman matikan ssh dengan menggunakan password dengan cara mengedit config ssh yang ada di (linux : /etc/ssh/sshd_config) sebaiknya dicopy dulu backupnya dengan cara:
+$ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+ganti #PasswordAuthentication yes menjadi PasswordAuthentication no (jangan lupa hilangkan hastag)
+setelahnya restart $ sudo service ssh restart
+cara gampang yang otomatis
+$ ssh-copy-id <username>@<iptarget> = langsung copy otomatis ga usah pake yang diatas kemudian masukin password sekali aja untuk pertama kali kemudian otomatis
+contoh $ ssh-copy-id coreyms@192.168.58.101
+
+proses
+$ top = task manager dalam terminal realtime
+ps = process status
+$ ps aux = lihat semua process dalam terminal offline 
+-a. View processes of all users rather than just the current user.
+-u. Provide detailed information about each of the processes
+-x. Include processes that are controlled not by users but by daemons.
+$ ps aux | grep <namayangdicari> = menfilter hasil dengan hanya menampilkan namayangdicari
+$ pgrep <namaprogram> = menampilkan PID proses id program yang dicari, kalau program yang sama jalan lebih dari satu maka pid juga lebih dari satu, urutan menurut waktu jadi yang dibuka pertama akan ada diatas sementara yang terakhir akan ada dibelakang
+?$ pkill <namaprogram> = mematikan proses berdasarkan namaprogram
+$ kill <pid1> <pid2> = mematikan proses berdasarkan id bisa beberapa sekaligus
+$ kill -9 <pid> = $ kill -SIGKILL <pid> = mematikan proses meskipun unresponsive
+contoh $ kill -9 6300 = mematikan proses dengan id 6300
+$ killall <namaprogram> = mematikan semua program berdasarkan nama program
+
+service atau systemctl = menjalankan servis pilih salah satu antaranya saja tapi disarankan systemctl
+$ sudo service <namaprogram> start = menjalankan service
+$ sudo service <namaprogram> stop = menghentikan service
+$ sudo service <namaprogram> restart = merestart service
+$ sudo systemctl start <namaprogram> = menjalankan systemctl
+$ sudo systemctl stop <namaprogram> = menghentikan systemctl
+
+crontabs
+$ crontab -e = buka crontab
+format = m h dom mon dow command :
+m = menit <0-60>
+h = jam <0-24>
+dom = hari <1-31>
+mon = bulan <1-12>
+dow = hari dari minggu <0-7> 0 dan 7 = minggu
+command = perintah yang akan dijalankan saat waktu tersebut
+contoh : 
+15 14 * * * ls > /home/nick/lt/cronres.txt = command akan dijalankan setiap jam 14.15 setiap hari
+$ sudo crontab -e = buka crontab dengan root
+
+File penting dalam linux
+$ cat etc/passwd
+$ cat etc/shadow
+$ cat etc/group
