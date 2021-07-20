@@ -95,6 +95,9 @@ Ambil repo dari github atau komputer lain:
 
 melihat informasi tentang repo yang diambil dari luar:
 	git remote -v = melihat nama repo dan alamat
+
+tambah remote baru:
+	git remote add <buatnamaremotebaru> <url>
 	
 Sebelum push harus pull terlebih dulu untuk mencek file terbaru di repo:
 	git pull <namarepo> <namabranch> contoh git pull origin master
