@@ -29,7 +29,9 @@ Mulai project git:
 	git status = mengecek status git apakah aman atau ada yang baru dll
 	git status -s = short yang lebih pendek 
 
+
 Staging
+
 
 Tambah file ke staging:
 	git add -A = tambah file ke staging
@@ -54,6 +56,7 @@ Delete file dari staging:
 
 Commiting
 
+
     git status untuk mengecek apakah ada file yang mau di commit
 
 memindahkan file dari staging ke commit:
@@ -68,9 +71,11 @@ Melihat perbedaan file:
 	git difftool = melihat perubahan di working directory dengan vscode
 	git difftool --staged = melihat perubahan di staged directory dengan vscode
 
+
 log:
-	git log = melihat yang sudah dilakukan sekaligus melihat hash commit, pembuat, tanggal
-	git log --oneline = melihat log yang pendek
+	git log = melihat commit yang sudah dilakukan sekaligus melihat hash commit, pembuat, tanggal
+	git log --oneline = melihat log pendek
+
 
 Melihat commit:
 	git show <hash> = melihat perubahan yang dibuat di commit <hash> bisa diganti head
@@ -86,8 +91,26 @@ Melihat file hasil di commit:
 
 Kembali ke commit sebelumnya:
 	git restore --source=HEAD~1 <namafile> = kembalikan ke sebelumnya
+	git reset --<mode> <hash> = mode (soft,mixed,hard) soft > perubahan masih ada di staging, mixed > perubahan masih ada namun di working, hard> hapus perubahan 
+	
+Pindah ke commit lain:
+	git checkout <hash> -- <namafile>
+	kemudian untuk kembali ada 2 cara :
+
+		git restore --staged <file>
+		git restore <file>
+		atau
+		git checkout <namabranch>
+
+Membatalkan satu buah commit tertentu
+git revert <hash> = membalikkan action commit
+
+Mengedit commit tanpa membuat commit baru:
+	git commit --amend
+
 
 Repository file (external)
+
 
 Ambil repo dari github atau komputer lain: 
 	git clone <url> <where to clone> = contoh git clone https://github.com/cenovaxs/cheatsheet/edit/main/Git ./folderlokal
@@ -105,8 +128,11 @@ Sebelum push harus pull terlebih dulu untuk mencek file terbaru di repo:
 kemudian push:
 	git push origin master - <origin> name of remote repo <master> the branch that we push to 
 
+
 Branch
 
+
+git branch --show-current = melihat posisi branch
 git branch -a = melihat info branch lokal dan repo
 
 Membuat branch:
