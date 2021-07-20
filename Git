@@ -103,8 +103,9 @@ Pindah ke commit lain:
 	kemudian untuk kembali ada 2 cara :
 
 		git restore --staged <file>
+			kemudian
 		git restore <file>
-		atau
+			atau
 		git checkout <namabranch>
 
 Membatalkan satu buah commit tertentu
@@ -146,6 +147,9 @@ Membuat branch:
 Pindah ke branch lain:
 	git checkout <namebranchlain>
 
+Membuat dan pindah ke branch lain :
+	git checkout -b <namabranchbaru>
+
 Push branch baru untuk pertama kali gunakan:
 	git push -u origin <namabranchbaru> = - u bertujuan mensinkron branch yang baru dibuat dilokal ke repository
 
@@ -161,5 +165,16 @@ membuang branch:
 	git branch -a 
 	git push origin --delete <namabranchyangmaudibuang> = membuang branch yang ada di repo
 
+memindahkan base (rebase) agar satu flow aja:
+	git checkout <namabranch>
+		kemudian
+	git rebase master
+		kemudian
+	git checkout master
+		kemudian
+	git rebase <namabranch>
+		kemudian
+	git push origin master
+	
 Cari siapa yang bikin:
 	git blame <file>
