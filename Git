@@ -44,6 +44,7 @@ Buang file dari staging ke working:
 
 	atau
 
+	git restore <lokasi atau namafile> = menghapus file yang sudah disafe namun masih di working directory
 	git restore -- staged <lokasi atau namafile> = mengubah file staged kembali ke sebelumnya
 
 Delete file dari staging:
