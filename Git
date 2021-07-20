@@ -129,3 +129,5 @@ membuang branch:
 	git branch -d <namabranchyangmaudibuang> = membuang branch yang ada di lokal
 	git branch -a 
 	git push origin --delete <namabranchyangmaudibuang> = membuang branch yang ada di repo
+
+test multiple push
