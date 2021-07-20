@@ -14,6 +14,11 @@ Setting git os crossplatform di awal :
 	git config --global core.autocrlf true = windows
 	git config --global core.autocrlf input = mac/linux
 
+Mengubah nama command:
+	git config --global alias.<namacommandbaru> <namacommandlama>
+		contoh 	git config --global alias.logone "log --oneline"
+				git config --global alias.ko commit
+
 bantuan:
 	git help <verb> (cth git help config) atau 
 	git <verb> --help (cth git config --help)
@@ -155,3 +160,6 @@ membuang branch:
 	git branch -d <namabranchyangmaudibuang> = membuang branch yang ada di lokal
 	git branch -a 
 	git push origin --delete <namabranchyangmaudibuang> = membuang branch yang ada di repo
+
+Cari siapa yang bikin:
+	git blame <file>
