@@ -112,7 +112,7 @@ Membatalkan satu buah commit tertentu
 git revert <hash> = membalikkan action commit
 
 Mengedit commit tanpa membuat commit baru:
-	git commit --amend
+	git commit --amend "gantikomen" = bisa juga untuk ganti comment commit
 
 
 Repository file (external)
