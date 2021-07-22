@@ -53,9 +53,15 @@ Staging
 
 
 Tambah file ke staging:
-	git add -A = tambah file ke staging
-    atau git add . untuk (linux/mac/wsl2)
+	git add -A = tambah semua file dan folder ke staging
+		atau
+	git add --all
+	git add . = tambah semua folder dan file yang ada dialamnya ke staging	
     git add namafile.typefile = untuk menambah file tertentu saja
+	git add <dir/> = untuk menambah file yang ada di dalam folder saja
+	git add -u = hanya menambah file yang sudah pernah diedit, file yang baru (untracked) tidak dimasukkan
+		atau
+	git add --update
 	
     kemudian jangan lupa git status
 	
