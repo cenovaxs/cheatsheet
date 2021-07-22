@@ -25,15 +25,29 @@ bantuan:
 	
 Mulai project git:
 	git init = membuat folder git (hidden) di project dan jangan disentuh, kalau tidak mau pakai git tinggal hapus folder git
+		git status = mengecek status git apakah aman atau ada yang baru dll
+	git status -s = short yang lebih pendek 
+
+Ignore files
 	touch .gitignore = buat git ignore file. git ignore membuat daftar file yang akan dihiraukan oleh git (ekslusi)
 	    contoh isi .gitignore :
 	    *.backup
 	    testfile.txt
 	    *.test
 		logs/dev.log
-	git status = mengecek status git apakah aman atau ada yang baru dll
-	git status -s = short yang lebih pendek 
 
+Working
+
+	git checkout <namafile> = membatalkan safe, kemudian reload file
+	git clean -df = membuang (untracked files) file yang ada di dalam folder proyek namun belum masuk ke staging
+		keterangan 	-d = directory/folder
+					-f = file
+	git stash save "coment" = mengundo batalkan safe namun safe file di simpan di stash
+	git stash list = melihat daftar stash yang ada
+	git stash apply <namastash> = mengaplikasi perubahan yang ada dalam stash ke file
+	git stash pop = mengaplikasi perubahan yang ada dalam stash paling atas dalam stash list ke dalam file dan menghapus stash tersebut
+	git stash drop <namastash> = mendelete stash
+	git stash clear = mendelete semua stash dan perubahannya yang sudah ke save menjadi terhapus
 
 Staging
 
@@ -80,6 +94,8 @@ Melihat perbedaan file:
 log:
 	git log = melihat commit yang sudah dilakukan sekaligus melihat hash commit, pembuat, tanggal
 	git log --oneline = melihat log pendek
+	git log --stat = berdasarkan perubahan dalam file
+	git reflog = melihat log berdasarkan perubahan commit berguna untuk mencari commit yang sudah di hard reset namun masih dalam ada di garbage git (kurang lebih 30 hari)
 
 
 Melihat commit:
@@ -112,7 +128,9 @@ Membatalkan satu buah commit tertentu
 git revert <hash> = membalikkan action commit
 
 Mengedit commit tanpa membuat commit baru:
-	git commit --amend "gantikomen" = bisa juga untuk ganti comment commit
+	git commit --amend 
+		atau
+	git commit --amend -m "gantikomen" = kalau mau ganti comment commit
 
 
 Repository file (external)
@@ -164,6 +182,13 @@ membuang branch:
 	git branch -d <namabranchyangmaudibuang> = membuang branch yang ada di lokal
 	git branch -a 
 	git push origin --delete <namabranchyangmaudibuang> = membuang branch yang ada di repo
+
+salah commit ke branch lain
+	git checkout <hashbranchyangmaudicommit>
+	git cherry-pick <hashbranchyangsalahdimain> = mengcopy sebuah komit pada satu branch ke branch lain
+	git checkout <main>
+	git reset --<mode> <hashmainsebelumdicommit>
+
 
 memindahkan base (rebase) agar satu flow aja:
 	git checkout <namabranch>
