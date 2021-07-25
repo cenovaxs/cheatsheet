@@ -150,13 +150,14 @@ melihat informasi tentang repo yang diambil dari luar:
 	git remote -v = melihat nama repo dan alamat
 
 tambah remote baru:
-	git remote add <buatnamaremotebaru> <url>
+		git remote add <buatnamaremotebaru> <url>
 	
-Sebelum push harus pull terlebih dulu untuk mencek file terbaru di repo:
-	git pull <namarepo> <namabranch> contoh git pull origin master
+	Sebelum push harus pull terlebih dulu untuk mencek file terbaru di repo:
+		git pull <namarepo> <namabranch> contoh git pull origin master
 	
-kemudian push:
-	git push origin master - <origin> name of remote repo <master> the branch that we push to 
+	kemudian push (untuk pertama kali harus masukin username dan password):
+		git push origin master - <origin> name of remote repo <master> the branch that we push to 
+	
 
 
 Branch
