@@ -1,0 +1,12 @@
+recon
+
+check "major ip address" di browser untuk mengetahui ip punya siapa
+ambil ip kemudian ketik "who is <ipaddress>" di browser
+
+nslookup
+nslookup <web/iptarget> = lihat info tentang pemilik ip atau website
+
+nmap
+nmap <iptarget> = lihat port terbuka
+-v (verbose) $ nmap = (verbose = lengkap) perlihatkan juga proses pencarian open port
+-A = Check OS target

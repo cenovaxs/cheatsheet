@@ -75,7 +75,7 @@ $ nmap google.com = bisa juga nmap untuk website
 contoh format file.txt :
 google.com 
 192.168.2.1
--sP $ nmap -sP<192.168.10.1/24>
+-sP $ nmap -sP <192.168.10.1/24>
 
 $ arp -a = check arp (ip dan mac yang terdaftar di komp)
 
@@ -273,6 +273,8 @@ File penting dalam linux hacking
 $ cat etc/passwd
 $ cat etc/shadow
 $ cat etc/group
+    check type os dari etc = $ cat etc/*issue
+    check versi os dari etc = $ cat etc/*release
 
 membuat command sendiri
 buka file .bashrc di home 
@@ -280,9 +282,13 @@ buka file .bashrc di home
         > tulis "alias <namacommandbuatan>='<perintah>'"
         contohnya = "alias winhome='cd /mnt/e/pujas/programing'"
 
+Wsl2
+$ explorer.exe . = membuka linux wsl2 dengan windows explorer
+
 Program penting install debian
 
 apt install lsb_release
 apt install nmap
 apt install net-tools = ifconfig
 apt install iputils-ping = ping
+apt install dnsutils = nslookup

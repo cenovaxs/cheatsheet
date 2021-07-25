@@ -1,6 +1,12 @@
 getting started
 $ docker run -dp 80:80 docker/getting-started
 
+Menjalankan docker
+systemctl start docker
+
+Mengecek status docker
+systemclt status docker
+
 lihat info docker
 $ docker info
 
@@ -29,6 +35,9 @@ $ docker container start <namacontainer>
 menjalankan app
 $ docker start <namaapp>
 
+menghentikan app
+$ docker stop <namaapp>
+
 mengganti nama container
 $ docker rename <CONTAINERNAME> <containernewname>
 
@@ -55,7 +64,8 @@ $ docker run <aplikasi>
 /bin/bash $ $ docker run <aplikasi> /bin/bash = mensetting agar menggunakan bash sebagai default
 
 mengeksekusi container dalam docker (menjalankan os)
-docker exec -it <container name> /bin/bash
+docker exec -it <container name> /bin/bash = kalau keluar container tetap jalan
+docker attach <container name> = kalau keluar container mati
 
 ubuntu container dalam ubuntu
 $ docker run -it ubuntu bash
