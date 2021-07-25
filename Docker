@@ -63,17 +63,16 @@ $ docker run <aplikasi>
 -p $ docker run -p <portlokal>:<portdocker> <aplikasi> = set port yang digunakan container
 /bin/bash $ $ docker run <aplikasi> /bin/bash = mensetting agar menggunakan bash sebagai default
 
-mengeksekusi container dalam docker (menjalankan os)
-docker exec -it <container name> /bin/bash = kalau keluar container tetap jalan
-docker attach <container name> = kalau keluar container mati
-
-ubuntu container dalam ubuntu
+membuat ubuntu container dalam ubuntu
 $ docker run -it ubuntu bash
 
-kalilinux container dalam ubuntu
+membuat kalilinux container dalam ubuntu
 $ docker pull kalilinux/kali-linux-docker
 $ docker run -h "kali" -it kalilinux/kali-rolling /bin/bash
-$ docker exec -it <namacontainer> /bin/bash
+
+mengeksekusi atau mengedit container dalam docker (menjalankan os)
+docker exec -it <container name> /bin/bash = kalau keluar container tetap jalan
+docker attach <container name> = kalau keluar container mati
 
 Apply group sudo agar tidak perlu mengetik sudo dalam docker
 $ sudo usermod -aG docker <user> 

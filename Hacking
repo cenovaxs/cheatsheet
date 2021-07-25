@@ -9,4 +9,10 @@ nslookup <web/iptarget> = lihat info tentang pemilik ip atau website
 nmap
 nmap <iptarget> = lihat port terbuka
 -v (verbose) $ nmap = (verbose = lengkap) perlihatkan juga proses pencarian open port
+-vv (very verbose) = lebih informatif lagi daripada verbose
 -A = Check OS target
+-oG = grebable output maksudnya supaya hasilnya bisa disimpan dalam file karena rapih
+-p = hanya scan port tertentu
+
+contoh:
+$ nmap -oG - 192.168.1.0-255 -p 22 -vv > /home/cenovaxs/hasil = menscan 192.168.1.0 sampai 192.168.1.255 dengan port 22 hasil grabaple rapih kemudian disimpan di file bernama hasil
