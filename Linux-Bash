@@ -285,6 +285,11 @@ buka file .bashrc di home
 Wsl2
 $ explorer.exe . = membuka linux wsl2 dengan windows explorer
 
+Keyboard Mouse Trackpad matiin Nyalain ubuntu
+$ xinput list = lihat hardware yang mau dimatiin atau nyalain
+$ xinput set-prop 15 "Device Enabled" 0 = matiin trackpad
+$ xinput set-prop 15 "Device Enabled" 1 = nyalain trackpad
+
 Program penting install debian
 
 apt install lsb_release
