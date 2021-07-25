@@ -1,0 +1,12 @@
+WSL
+
+check versi wsl
+> wsl -l -v
+
+buat default versi wsl 2
+> wsl --set-default-version 2
+
+ganti versi wsl
+> wsl --set-version <namaOS> <Versi> 
+    contoh : 
+        > wsl --set-version Ubuntu-20.04 1

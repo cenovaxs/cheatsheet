@@ -32,7 +32,8 @@ $ rm ./*.txt = delete semua yang ada .txt
 $ mv <file/folderyangmaudipindah> <foldertujuan> = ganti nama atau pindah lokasi kalau sudah ada foldernya
 $ open = buka file menggunakan default program
 $ cp <fileyangmaudicopy> namafilehasilcopy = copy
-$ cp -r <namafolder> = copy folder dan seluruh isinya\
+$ cp -r <namafolder> = copy folder dan seluruh isinya
+$ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer
 $ whoami = check siapa saya
 $ who = check siapa lagi yang login selain saya
@@ -47,6 +48,7 @@ $ env = menjalankan program dalam lingkungan yang dimodif
 $ lsblk = list harddrive
 $ lsusb = list usb
 $ lsof = list openfile
+$ exit = keluar dari terminal
 
 Networking
 $ ip = info dan ganti network
@@ -73,11 +75,16 @@ $ nmap google.com = bisa juga nmap untuk website
 contoh format file.txt :
 google.com 
 192.168.2.1
+-sP $ nmap -sP<192.168.10.1/24>
 
 $ arp -a = check arp (ip dan mac yang terdaftar di komp)
 
 repository
-$ apt = versi lebih baru dan bagus
+$ apt = versi lebih baru dan bagus hanya untuk debian
+$ apt update kemudian $ apt install <aplikasi> = hanya mengupdate aplikasi tertentu
+$ apt upgrade
+$ apt autoremove = membuang file yang sudah tidak dipakai setelah upgrade
+$ apt full-upgrade = menjalankan apt upgrade dan apt autoremove
 $ apt-get = command untuk install tapi sudah kuno diganti dengan yang baru yaitu apt
 $ apt-get install <aplikasi> = install aplikasi
 $ apt-get remove <aplikasi> = uninstall aplikasi
@@ -262,7 +269,20 @@ contoh :
 15 14 * * * ls > /home/nick/lt/cronres.txt = command akan dijalankan setiap jam 14.15 setiap hari
 $ sudo crontab -e = buka crontab dengan root
 
-File penting dalam linux
+File penting dalam linux hacking
 $ cat etc/passwd
 $ cat etc/shadow
 $ cat etc/group
+
+membuat command sendiri
+buka file .bashrc di home 
+    > cari space kosong di setelah if not running interactively tepatnya dibawah esac dan kasih spasi
+        > tulis "alias <namacommandbuatan>='<perintah>'"
+        contohnya = "alias winhome='cd /mnt/e/pujas/programing'"
+
+Program penting install debian
+
+apt install lsb_release
+apt install nmap
+apt install net-tools = ifconfig
+apt install iputils-ping = ping

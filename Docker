@@ -1,0 +1,84 @@
+getting started
+$ docker run -dp 80:80 docker/getting-started
+
+lihat info docker
+$ docker info
+
+lihat versi docker
+$ docker version 
+
+Lihat images
+$ docker images
+
+Lihat container yang sedang jalan
+$ docker ps
+    atau
+$ docker ls = ls lebih baru
+
+lihat semua container yang ada jalan atau matikan
+$ docker ps -a
+    atau
+$ docker ls --all
+
+membuat container
+$ docker container create --name <namacontainerbaru> <image>:<tag>
+
+menjalankan container
+$ docker container start <namacontainer>
+
+menjalankan app
+$ docker start <namaapp>
+
+mengganti nama container
+$ docker rename <CONTAINERNAME> <containernewname>
+
+cari images dalam repository dockerhub
+$ docker search <katakunci>
+
+download docker images dari repository
+$ docker pull <image>:<tag>
+    contoh install kali linux $ docker pull kalilinux/kali-linux-docker:<arm64>
+
+download docker images dari github
+$ docker run --name repo alpine/git clone https://github.com/docker/getting-started.git
+
+test docker
+$ docker run hello-world
+
+menjalankan image
+$ docker run <aplikasi>
+-h $ docker run -h "<rename>" <aplikasi> = mengubah nama id menjadi yang kita mau
+-t $ docker run -t <aplikasi> = menjalankan dalam tty terminal
+-i $ docker run -i <aplikasi> = kasih lihat proggress docker dalam layar
+-d $ docker run -d <aplikasi> = daemon mode (jalan di background)
+-p $ docker run -p <portlokal>:<portdocker> <aplikasi> = set port yang digunakan container
+/bin/bash $ $ docker run <aplikasi> /bin/bash = mensetting agar menggunakan bash sebagai default
+
+mengeksekusi container dalam docker (menjalankan os)
+docker exec -it <container name> /bin/bash
+
+ubuntu container dalam ubuntu
+$ docker run -it ubuntu bash
+
+kalilinux container dalam ubuntu
+$ docker pull kalilinux/kali-linux-docker
+$ docker run -h "kali" -it kalilinux/kali-rolling /bin/bash
+$ docker exec -it <namacontainer> /bin/bash
+
+Apply group sudo agar tidak perlu mengetik sudo dalam docker
+$ sudo usermod -aG docker <user> 
+    atau
+$ sudo usermod -aG docker $USER  
+    kalau diatas gak bisa maka harus bikin docker group dulu
+        $ sudo groupadd docker
+
+Membuang container
+$ docker rm <containerid> = membuang sebuah spesifik container
+$ docker container prune = membuang semua container yang sedang nonaktif
+
+Membuang image docker
+$ docker rmi <namaimage/imageid>
+
+
+keluar dari docker ??
+$ exit
