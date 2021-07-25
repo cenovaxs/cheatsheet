@@ -176,7 +176,7 @@ Membuat dan pindah ke branch lain :
 	git checkout -b <namabranchbaru>
 
 Push branch baru untuk pertama kali gunakan:
-	git push -u origin <namabranchbaru> = - u bertujuan mensinkron branch yang baru dibuat dilokal ke repository
+	git push -u origin <namabranchbaru> = - u Upstream berarti menjadi default repo klo push
 
 Menggabungkan branch:
 	git checkout master
