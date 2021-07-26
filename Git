@@ -210,3 +210,13 @@ memindahkan base (rebase) agar satu flow aja:
 	
 Cari siapa yang bikin:
 	git blame <file>
+
+SSH connect ke repo
+	bikin ssh-keygen
+	upload isi dari ~.ssh/id_rsa.pub ke website untuk linux
+		atau
+	upload isi dari c:users/pujas/.ssh/id_rsa.pub ke website untuk windows
+	buka git di folder yang mau di push kemudian
+	$ git add remote <namarepobaru> <urlsshdariwebsite>
+	$ git pull <namarepobaru> 
+	akan muncul pernyataan apakah mau konek, ketik yes	
