@@ -24,14 +24,18 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 !! = jalankan command sebelumnya
 > = ambil output dan overwrite jadi sebuah file
 >> = ambil output dan ditambahkan output ke dalam file
+&& = kemudian jalankan perintah berikutnya
+    contoh = mkdir ./folderbaru && touch text.txt 
 $ mkdir <namafolder> = bikin folder
+    -p atau --parents = bikin sub folder kalau belum ada
+    contoh $ mkdir -p /home/pujas/belumadafolder1/belumadafolder2/file
 $ rm <namafile >= delete file
 $ rm -r <namafolder> = delete folder dan seluruh isinya
 $ rm ./* = delete isi folder saja atau $ rm Documents/* = delete semua file yang ada di dalam folder Documents
 $ rm ./*.txt = delete semua yang ada .txt
 $ mv <file/folderyangmaudipindah> <foldertujuan> = ganti nama atau pindah lokasi kalau sudah ada foldernya
-$ open = buka file menggunakan default program
-$ cp <fileyangmaudicopy> namafilehasilcopy = copy
+$ open <namafile> = buka file menggunakan default program
+$ cp <fileyangmaudicopy> <namafilehasilcopy> = copy
 $ cp -r <namafolder> = copy folder dan seluruh isinya
 $ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer
@@ -135,6 +139,16 @@ info lanjut jumlah saja dibawah untuk mendapatkan kombinasi chmod yang diinginka
 r (read) – 4
 w (write) – 2
 x (execute) – 1
+    atau
+$ sudo chmod ugoa+-rwx 
+    u = user
+    g = user lain yang ada di group
+    o = user lain yang tidak ada di group
+    a = semua user
+        kalau dikosongin maka default = a / semua user
+    + = tambah mode
+    - = kurang mode
+        contoh sudo chmod go-w = membuat user lain untuk tidak bisa mengedit
 
 find = cari file dan folder di linux 
  
@@ -214,6 +228,7 @@ curl -i http://..... = menjalankan curl untuk melihat server
 SSH dan ssh dengan keygen
 $ ssh -V = check versi ssh
 kalo stuck karena pernah ssh ke komp lain: $ ssh-keygen -R 192.168.x.yyy (x.yyy ip komp target baru)
+$ ssh-keygen = buat ssh key
 $ ssh username@targetip = login ke pc lain menggunakan ssh
 $ scp ~/folder/file.filetype username@targetip:/foler/namafileyangdicopy.filetype = copy file dari satu komp ke komp lain menggunakan ssh
 contoh $ scp ~/.ssh/id_rsa.pub coreyms@192.168.56.100:/home/coreyms/.ssh/uploaded_key.pub

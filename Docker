@@ -51,9 +51,6 @@ $ docker pull <image>:<tag>
 download docker images dari github
 $ docker run --name repo alpine/git clone https://github.com/docker/getting-started.git
 
-test docker
-$ docker run hello-world
-
 menjalankan image
 $ docker run <aplikasi>
 -h $ docker run -h "<rename>" <aplikasi> = mengubah nama id menjadi yang kita mau
@@ -73,6 +70,9 @@ $ docker run -h "kali" -it kalilinux/kali-rolling /bin/bash
 mengeksekusi atau mengedit container dalam docker (menjalankan os)
 docker exec -it <container name> /bin/bash = kalau keluar container tetap jalan
 docker attach <container name> = kalau keluar container mati
+
+mengecek ip address docker container
+$ docker inspect -f "{{ .NetworkSettings.IPAddress }}" <container_name>
 
 Apply group sudo agar tidak perlu mengetik sudo dalam docker
 $ sudo usermod -aG docker <user> 
