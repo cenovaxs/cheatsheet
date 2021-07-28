@@ -211,7 +211,7 @@ memindahkan base (rebase) agar satu flow aja:
 Cari siapa yang bikin:
 	git blame <file>
 
-SSH connect ke repo
+SSH connect ke repo online
 	bikin ssh-keygen
 	upload isi dari ~.ssh/id_rsa.pub ke website untuk linux
 		atau
@@ -220,3 +220,13 @@ SSH connect ke repo
 	$ git add remote <namarepobaru> <urlsshdariwebsite>
 	$ git pull <namarepobaru> 
 	akan muncul pernyataan apakah mau konek, ketik yes	
+
+SSH connect ke repo server lokal
+1	login ke server via ssh
+2	check server sudah terinstall git atau belum
+3	buat folder yang diinginkan dan beri nama
+4	$ git init --bare
+5	kembali ke folder komp lokal yang mau di clone filenya
+6	$ git remote add name-of-repo userna5@desination:/home/userna5/production.git
+7	kemudian di push $ git push name-of-repo master
+8	masukin ssh password atau kecuali pake key

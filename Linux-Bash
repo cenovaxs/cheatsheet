@@ -37,7 +37,7 @@ $ mv <file/folderyangmaudipindah> <foldertujuan> = ganti nama atau pindah lokasi
 $ open <namafile> = buka file menggunakan default program
 $ cp <fileyangmaudicopy> <namafilehasilcopy> = copy
 $ cp <{file1,file2}> <lokasihasilcopy> = copy beberapa file bersamaan 
-$ cp -r <namafolder> = copy folder dan seluruh isinya
+$ cp -r <namafolder> <namafolderhasilcopy> = copy folder dan seluruh isinya
 $ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer
 $ whoami = check siapa saya
@@ -226,11 +226,25 @@ bisa dikombinasi dengan yang lainya contohnya $ grep -wirlP "\d{3}-\d{3}-\d{4}" 
 curl
 curl -i http://..... = menjalankan curl untuk melihat server
 
+rsync membuat duplikate file atau folder untuk kepentingan backupnya
+$ rsync <folderyangmaudibackup/*> <backupfolder/>
+-r = $ rsync -r <folderyangmaudibackup/> <backupfolder/> = recursif copy termasuk folder yang di falamnya
+tanpa/ = $ rsync -r <folderyangmaudibackup> <backupfolder/> = tanpa / dibelakang maka bikin folder di dalam backupfolder
+-a = archive (termasuk permission dll)
+-v = verbose
+--dry-run = $ rsync -av --dry-run <folderyangmaudibackup/> <backupfolder/> = memperlihatkan file apa saja yang akan dicopy, untuk melihatnya jangan lupa -v verbose
+--delete = $ rsync -av --delete <folderyangmaudibackup/> <backupfolder/> = membuang file yang tidak ada di folder yang mau dibackup. Harus hati2 karena bisa menghapus file backup
+-z = compress file
+-p = kasih lihat progress
+
+
 SSH dan ssh dengan keygen
 
 $ ssh -V = check versi ssh
 kalo stuck karena pernah ssh ke komp lain: $ ssh-keygen -R 192.168.x.yyy (x.yyy ip komp target baru)
 $ ssh-keygen = buat ssh key
+    -t $ ssh-keygen -t rsa = type rsa
+    -b $ ssh-keygen -b 4096 = bite semakin banyak maka semakin secure 
 $ ssh-add ~/.ssh/<privatekeybaru> = tambah ssh key baru apabila ada ssh key yang lain
     kalau keluar "could not open a connection to your authentication agent
         $ eval `ssh-agent -s` = mengaktifkan ssh agent dan agent memberikan kita id
@@ -251,12 +265,17 @@ kemudian untuk lebih aman matikan ssh dengan menggunakan password dengan cara me
 $ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 ganti #PasswordAuthentication yes menjadi PasswordAuthentication no (jangan lupa hilangkan hastag)
 setelahnya restart $ sudo service ssh restart
+    atau
+    $ sudo systemctl reload sshd
 
     cara gampang yang otomatis
 
 $ ssh-copy-id <username>@<iptarget> = langsung copy otomatis ga usah pake yang diatas kemudian masukin password sekali aja untuk pertama kali kemudian otomatis
 contoh $ ssh-copy-id coreyms@192.168.58.101
 
+    ssh ke github
+pertama harus buat keygen baru dengan server yang buat bukan pc kita, kalau gak bisa maka folder ssh harus chown ke user yang buat key
+kemudian file.pub dicopy ke github dan kemudian git clone
 
 proses
 $ top = task manager dalam terminal realtime
@@ -294,11 +313,14 @@ contoh :
 $ sudo crontab -e = buka crontab dengan root
 
 File penting dalam linux hacking
-$ cat etc/passwd
-$ cat etc/shadow
-$ cat etc/group
+$ etc/passwd
+$ etc/hosts
+$ etc/shadow
+$ etc/group
+$ etc/network
     check type os dari etc = $ cat etc/*issue
     check versi os dari etc = $ cat etc/*release
+    check nama host dari etc = $ cat etc/hostname
 
 membuat command sendiri
 buka file .bashrc di home 
