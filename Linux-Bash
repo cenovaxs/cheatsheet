@@ -227,9 +227,11 @@ curl
 curl -i http://..... = menjalankan curl untuk melihat server
 
 SSH dan ssh dengan keygen
+
 $ ssh -V = check versi ssh
 kalo stuck karena pernah ssh ke komp lain: $ ssh-keygen -R 192.168.x.yyy (x.yyy ip komp target baru)
 $ ssh-keygen = buat ssh key
+$ ssh-add ~/.ssh/<privatekeybaru> = tambah ssh key baru apabila ada ssh key yang lain
 $ ssh username@targetip = login ke pc lain menggunakan ssh
 $ scp ~/folder/file.filetype username@targetip:/foler/namafileyangdicopy.filetype = copy file dari satu komp ke komp lain menggunakan ssh
 contoh $ scp ~/.ssh/id_rsa.pub coreyms@192.168.56.100:/home/coreyms/.ssh/uploaded_key.pub
@@ -246,9 +248,12 @@ kemudian untuk lebih aman matikan ssh dengan menggunakan password dengan cara me
 $ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 ganti #PasswordAuthentication yes menjadi PasswordAuthentication no (jangan lupa hilangkan hastag)
 setelahnya restart $ sudo service ssh restart
-cara gampang yang otomatis
+
+    cara gampang yang otomatis
+
 $ ssh-copy-id <username>@<iptarget> = langsung copy otomatis ga usah pake yang diatas kemudian masukin password sekali aja untuk pertama kali kemudian otomatis
 contoh $ ssh-copy-id coreyms@192.168.58.101
+
 
 proses
 $ top = task manager dalam terminal realtime
