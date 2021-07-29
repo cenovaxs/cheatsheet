@@ -67,6 +67,21 @@ membuat kalilinux container dalam ubuntu
 $ docker pull kalilinux/kali-linux-docker
 $ docker run -h "kali" -it kalilinux/kali-rolling /bin/bash
 
+membuat kalilinux untuk bisa diakses melalui ssh dari luar
+$ docker run -h "kali" -p <portlokal>:22 -it kalilinux/kali-rolling /bin/bash
+$ passwd root
+$ apt update
+$ apt full-upgrade
+$ apt install openssh-server
+$ apt install nano
+$ apt install net-tools
+$ nano /etc/ssh/sshd_config
+    masukkan "PermitRootLogin yes" dibawah #PermitRootLogin prohibit-password
+        kemudian safe changes
+$ service ssh start
+$ netstat -ant = untuk check apakah sudah berjalan
+$ ssh -p <portlokal> root@<iplokal>
+
 mengeksekusi atau mengedit container dalam docker (menjalankan os)
 docker exec -it <container name> /bin/bash = kalau keluar container tetap jalan
 docker attach <container name> = kalau keluar container mati
