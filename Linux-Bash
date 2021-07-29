@@ -343,5 +343,4 @@ apt install nmap
 apt install net-tools = ifconfig
 apt install iputils-ping = ping
 apt install dnsutils = nslookup
-
 apt install checkinstall = klo ada program yang ga bisa di install di repo
