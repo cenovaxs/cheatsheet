@@ -12,3 +12,8 @@ postgresql10        database
 keepalived          VRRP/BFD and load balancing for linux
 prometheus          monitoring system and time series database
 juju                a model driven operator lifecycle manager
+
+
+belajar 
+iptables
+telnet
