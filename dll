@@ -1,0 +1,14 @@
+check apa ini ubuntu server default install
+microk8s            lightweight kubernates
+wekan               open source kanban
+kata kontainer      lightweight VM
+Mosquitto           Eclipse Mosquitto MQTT Broker
+etcd                key-value store
+zabnzbd
+wormhole            get things from one computer to another
+sicli               python based softlayer API tools
+conjure-up          packager runtime for conjure-up spells
+postgresql10        database 
+keepalived          VRRP/BFD and load balancing for linux
+prometheus          monitoring system and time series database
+juju                a model driven operator lifecycle manager
