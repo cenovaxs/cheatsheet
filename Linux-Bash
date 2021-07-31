@@ -250,7 +250,7 @@ $ ssh-add ~/.ssh/<privatekeybaru> = tambah ssh key baru apabila ada ssh key yang
         $ eval `ssh-agent -s` = mengaktifkan ssh agent dan agent memberikan kita id
         kemudian baru ssh-add ~/.ssh<privatekeybaru> 
 $ ssh username@targetip = login ke pc lain menggunakan ssh
-$ scp ~/folder/file.filetype username@targetip:/foler/namafileyangdicopy.filetype = copy file dari satu komp ke komp lain menggunakan ssh
+$ scp ~/folder/file.filetype username@targetip:/folder/namafileyangdicopy.filetype = copy file dari satu komp ke komp lain menggunakan ssh
 contoh $ scp ~/.ssh/id_rsa.pub coreyms@192.168.56.100:/home/coreyms/.ssh/uploaded_key.pub
 setelah dicopy filenya, file harus append ke file baru
 $ cat ~/folder/file.filetype >> ~/foler/filebaru
