@@ -1,6 +1,8 @@
 $ sudo = menjalankan perintah sebagai root (unlimited access)
 $ init 0 = shutdown
-$ cat file = baca isi file ke dalam terminal
+$ cat <file> = baca isi file ke dalam terminal
+$ head <file> = baca 10 baris pertama dan masukkan ke dalam terminal
+$ tail <file> = baca 10 baris pertama dan masukkan ke dalam terminal
 $ man x = liat panduan command x yang tertulis
 $ <command> -h = $ <command> --help = lihat opsi panduan
 $ apropos "kata kunci" = cari command untuk hal yang berhubungan dengan kata kunci contoh $ apropos usb
