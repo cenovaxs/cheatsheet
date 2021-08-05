@@ -54,6 +54,7 @@ $ lsblk = list harddrive
 $ lsusb = list usb
 $ lsof = list openfile
 $ exit = keluar dari terminal
+/tmp$ xpdyinfo | grep dim = lihat dimensi layar menggunakan cli
 
 Networking
 $ ip = info dan ganti network
@@ -352,8 +353,11 @@ $ xinput set-prop 15 "Device Enabled" 1 = nyalain trackpad
 setting default application ubuntu 20
 Settings->Default Applications
 
-Ganti icon ke list dan sebaliknya format
-CTRL-1 or CTRL-2 
+nautilus (file manager)
+CTRL-1 or CTRL-2 = ganti list view dan tumbnailview
+CTRL-L = shortcut ke directory text box
+CTRL-DEL = shortcut buang file
+ALT-F2 = run command
 
 Lock screen ubuntu
 Windows-L
