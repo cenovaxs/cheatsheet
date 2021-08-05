@@ -95,6 +95,7 @@ $ apt-get = command untuk install tapi sudah kuno diganti dengan yang baru yaitu
 $ apt-get install <aplikasi> = install aplikasi
 $ apt-get remove <aplikasi> = uninstall aplikasi
 $ apt-get purge <aplikasi> = uninstall dan hapus
+$ sudo apt-get autoremove --purge <aplikasi> = membuang program seluruhnya dan membuang dependencies juga
 $ sudo apt-get update = check update
 $ sudo apt-get upgrade = mendonload dan upgrade hasil check update
 $ sudo apt-get update && apt-get upgrade = update kemudian upgrade dalam satu line
