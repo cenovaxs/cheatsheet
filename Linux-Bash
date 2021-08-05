@@ -17,12 +17,14 @@ $ ls -l = (long) lihat termasuk permission, jumlah subfolder, user, group, size,
 $ ls -p = urut berdasarkan filetype
 $ ls -s = (size) urut berdasarkan file size
 $ pwd = posisi sekarang
+$ tree = ngeliat directory semua tanpa GUI
 $ cd = pindah folder
 $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa untuk semua command
 / = root folder kalau ada didepan, folder berikutnya kalau tidak ada didepan 
 . = current folder
 .. = folder diatas
-~ = home working directory
+- = directory sebelumnya
+~ = home working directory atau cd kosong aja juga balik ke home directory
 !! = jalankan command sebelumnya
 > = ambil output dan overwrite jadi sebuah file
 >> = ambil output dan ditambahkan output ke dalam file
@@ -44,8 +46,10 @@ $ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer
 $ whoami = check siapa saya
 $ who = check siapa lagi yang login selain saya
+$ echo $HOME = check dimana home directory
 $ groups = check grup apa
 $ which <command> = cari lokasi command musti pake sudo contoh $ which ls
+$ where <command> = cari dimana lokasi command tersebut
 $ ps = info tentang bash/powershell/zsh
 $ id = info tentang user
 $ hostname = info hostname
@@ -362,9 +366,28 @@ CTRL-L = shortcut ke directory text box
 CTRL-DEL = shortcut buang file
 ALT-F2 = run command
 
-Lock screen ubuntu
+Lock screen ubuntu dan linux
 Windows-L
+CTRL-ALT F3-F6 = buka virtual terminal dari 3-6 ada 6 channel
+CTRL-ALT F1-F2 = kembali ke ubuntu
+$ systemctl start gdm = menjalankan GUI 
+    atau
+    $ telinit 5
+$ systemctl start gdm = mematikan GUI
+    atau
+    $ telinit 3
 
+        Methods of bringing down the GUI:
+            student:/tmp> sudo systemctl stop gdm
+            student:/tmp> sudo systemctl stop lightdm
+            student:/tmp> sudo telinit 3
+
+        Methods of bringing the GUI back up:
+            student:/tmp> sudo systemctl start gdm
+            student:/tmp> sudo systemctl start lightdm
+            student:/tmp> sudo telinit 5
+$ shutdown -r = restart komp
+$ shutdown -h = halt dan matikan komp
 
 Program penting install debian
 
