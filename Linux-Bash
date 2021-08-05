@@ -1,8 +1,15 @@
 $ sudo = menjalankan perintah sebagai root (unlimited access)
 $ init 0 = shutdown
 $ cat <file> = baca isi file ke dalam terminal
+$ tac <file> = baca isi file terbalik dari line akhir ke line awal 
 $ head <file> = baca 10 baris pertama dan masukkan ke dalam terminal
 $ tail <file> = baca 10 baris pertama dan masukkan ke dalam terminal
+-x $ head -x <file> = baca x baris pertama dan masukkan ke dalam terminal berlaku juga untuk tail
+$ less <file> = baca isi file yang panjang kayak nano cuma gabisa diedit
+$ touch file_name{1..3}.txt filename{a..d}.cpp = buat otomatis file_name1.txt, file_name2.txt, file_name3.txt, filenamea.ccp,filenameb.ccp,filenamec.ccp,filenamed.ccp
+$ touch -t 202112091600 = mengganti waktu modified sebuah file ke waktu yang diinginkan dengan format "YYYYMMDDhhmm"
+$ nano <text.file> = buat file dengan nama text.file, isi text file bisa diisi lewat nano
+    contoh $ nano ./Documents/text.txt
 $ man x = liat panduan command x yang tertulis
 $ <command> -h = $ <command> --help = lihat opsi panduan
 $ apropos "kata kunci" = cari command untuk hal yang berhubungan dengan kata kunci contoh $ apropos usb
@@ -11,11 +18,15 @@ $ clear = clear screen
 $ history = lihat history terminal
 $ ls --help = lihat bantuan mirip dengan $ man ls
 $ ls = lihat isi folder
+$ ls <file> = perlihatkan hanya file tersebut
 $ l = sama dengan ls
 $ ls -a = (all) lihat termasuk hidden
 $ ls -l = (long) lihat termasuk permission, jumlah subfolder, user, group, size, tanggal, nama
 $ ls -p = urut berdasarkan filetype
 $ ls -s = (size) urut berdasarkan file size
+$ ls -i = (inode) menampilkan angka id file atau folder
+$ ln <file1> <file2> = membuat link yaitu dua file dengan nama berbeda namun sebenarnya satu file
+$ ln -s <filetarget> <fileshortcut> = membuat shortcut file target
 $ pwd = posisi sekarang
 $ tree = ngeliat directory semua tanpa GUI
 $ cd = pindah folder
@@ -29,11 +40,15 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 > = ambil output dan overwrite jadi sebuah file
 >> = ambil output dan ditambahkan output ke dalam file
 && = kemudian jalankan perintah berikutnya
-    contoh = mkdir ./folderbaru && touch text.txt 
+    contoh = mkdir ./folderbaru && touch text.txt
+$ pushd <dir> = pindah ke dir namun disimpan dalam terminal supaya mudah kembali
+$ popd <dir> = pindah ke dir sebelumnya dan hapus dari terminal
+$ dirs = memperlihatkan daftar dir yang disimpan oleh pushd
 $ mkdir <namafolder> = bikin folder
     -p atau --parents = bikin sub folder kalau belum ada
     contoh $ mkdir -p /home/pujas/belumadafolder1/belumadafolder2/file
 $ rm <namafile >= delete file
+$ rm -i <namafile> = interactive mode berarti ada pertanyaan are u sure? biasanya dipakai kalau ada banyak file sekaligus
 $ rm -r <namafolder> = delete folder dan seluruh isinya
 $ rm ./* = delete isi folder saja atau $ rm Documents/* = delete semua file yang ada di dalam folder Documents
 $ rm ./*.txt = delete semua yang ada .txt
@@ -47,6 +62,7 @@ $ uname -a = check nama komputer
 $ whoami = check siapa saya
 $ who = check siapa lagi yang login selain saya
 $ echo $HOME = check dimana home directory
+$ echo $PS1 = lihat sistem penamaan prompt dalam terminal
 $ groups = check grup apa
 $ which <command> = cari lokasi command musti pake sudo contoh $ which ls
 $ where <command> = cari dimana lokasi command tersebut
@@ -118,11 +134,6 @@ $sudo apt-get -f install = menginstall aplikasi yang corrup. -f = fix
     atau
         $ apt -f install
 $dpkg --configure -a
-
-file
-$ touch file_name{1..3}.txt filename{a..d}.cpp = buat otomatis file_name1.txt, file_name2.txt, file_name3.txt, filenamea.ccp,filenameb.ccp,filenamec.ccp,filenamed.ccp
-$ nano <text.file> = buat file dengan nama text.file, isi text file bisa diisi lewat nano
-contoh $ nano ./Documents/text.txt
 
 User admin
 $ su <userlain> = ganti user
@@ -197,6 +208,7 @@ $ find . -exec chown = eksekusi perintah dalam ini contohnya chown atau ganti pe
 $ find . -exec chown <user>:<grup> {} + = ganti user dan grup file yang dicari kemudian harus pakai placeholder untuk hasil {} dan perintah selesai dengan + atau \; 
 $ find . -type d -exec chown <775> {} + = ganti permission ke 775 (contoh) semua folder yang ditemukan
 $ find . -type f -iname "<*.filetype>" -maxdepth 1 = cari berdasarkan filetype hanya di folder ini (maxdepth 1) kalau (maxdepth 2) berarti dengan subfolder berikutnya dan seterusnya maxdepth x
+$ find . -delete = menghapus semua file yang ditemukan
 
 $ grep = cari kata dalam file
 
