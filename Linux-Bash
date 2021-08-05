@@ -124,7 +124,7 @@ User admin
 $ su <userlain> = ganti user
 $ su - <userlain> = dan ke home folder user tersebut
 $ sudo su = sudo root = ganti jadi root
-$ sudo visudo = buka file daftar sudo buat 
+$ sudo visudo = buka file daftar user yang bs jadi sudo 
 contoh : pujas All = All (untuk jadiin root) atau pujas All = /sbin/adduser (kalau cuma mau kasih satu perintah)
 $ sudo adduser <namauserbaru> = tambah atau buat user account baru
 $ sudo adduser <namauserbaru> sudo = tambah atau buat user account baru yang bisa akses sudo
