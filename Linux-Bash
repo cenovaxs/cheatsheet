@@ -37,8 +37,11 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 - = directory sebelumnya
 ~ = home working directory atau cd kosong aja juga balik ke home directory
 !! = jalankan command sebelumnya
-> = ambil output dan overwrite jadi sebuah file
->> = ambil output dan ditambahkan output ke dalam file
+< $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
+> = ambil output program dan overwrite jadi sebuah file
+$ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
+$ 'program' > 'all-output-file' 2>&1
+>> = ambil output program dan ditambahkan output ke dalam file
 && = kemudian jalankan perintah berikutnya
     contoh = mkdir ./folderbaru && touch text.txt
 $ pushd <dir> = pindah ke dir namun disimpan dalam terminal supaya mudah kembali
