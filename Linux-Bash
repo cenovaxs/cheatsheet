@@ -18,7 +18,7 @@ $ clear = clear screen
 $ history = lihat history terminal
 $ ls --help = lihat bantuan mirip dengan $ man ls
 $ ls = lihat isi folder
-$ ls <file> = perlihatkan hanya file tersebut
+$ ls <file> = perlihatkan hanya yang ada nama file tersebut
 $ l = sama dengan ls
 $ ls -a = (all) lihat termasuk hidden
 $ ls -l = (long) lihat termasuk permission, jumlah subfolder, user, group, size, tanggal, nama
@@ -31,6 +31,10 @@ $ pwd = posisi sekarang
 $ tree = ngeliat directory semua tanpa GUI
 $ cd = pindah folder
 $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa untuk semua command
+? = single wildcard jadinya misalnya lupa namanya tp inget satu atau dua huruf pertama maka yang tidak diketahui bisa direplace dengan ?
+* = wildcard mirip ? tapi tidak perlu tahu jumlah huruf kalau
+[a-z] = regex untuk mencari huruf dalam file dengan alpabet 
+[!a-z] = not regex untuk mencari nama yang tidak ada dalam alphabet
 / = root folder kalau ada didepan, folder berikutnya kalau tidak ada didepan 
 . = current folder
 .. = folder diatas
@@ -40,10 +44,14 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 < $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
 > = ambil output program dan overwrite jadi sebuah file
 $ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
-$ 'program' > 'all-output-file' 2>&1
+$ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
+    atau yang lebih singkat
+        $ 'program' >& 'all-output-file'
 >> = ambil output program dan ditambahkan output ke dalam file
 && = kemudian jalankan perintah berikutnya
     contoh = mkdir ./folderbaru && touch text.txt
+| pipe = pipe berguna untuk mengubah hasil jadi input command berikutnya
+    contoh $ history | grep "x" | grep "y" = cari yang ada kata x dan y di dalam history
 $ pushd <dir> = pindah ke dir namun disimpan dalam terminal supaya mudah kembali
 $ popd <dir> = pindah ke dir sebelumnya dan hapus dari terminal
 $ dirs = memperlihatkan daftar dir yang disimpan oleh pushd
@@ -199,14 +207,16 @@ $ find . -type f -iname -mmin -x = cari file yang dimodif dalam waktu kurang dar
 $ find . -type f -iname -mmin +y = cari file yang dimodif dalam waktu lebih dari y menit
 $ find . -type f -iname -mmin -x +y = cari file yang dimodif dalam waktu kurang dari x menit terakhir dan lebih dari y menit
 $ find . -type f -iname -mtime -x = cari file yang dimodif dalam waktu kurang dari x hari terakhir
-$ find . -type f -iname -ctime -x = idem tapi changed bukan modif perebedaan modif dengan change modif itu isinya, kalau change bisa jadi cuma permission tapi isinya gak berubah
-$ find . -type f -iname -atime -x = idem tapi akses (dibuka) bukan modif
+$ find . -type f -iname -ctime -x = idem tapi waktu terakhir changed bukan modif perebedaan modif dengan change modif itu isinya, kalau change bisa jadi cuma permission tapi isinya gak berubah
+$ find . -type f -iname -atime -x = idem tapi waktu terakhir dibaca atau dibuka (last read)
 $ find . -size +xM = cari file yang besarnya lebih dari x MB 
 $ find . -size -yM = cari file yang besarnya kurang dari y MB 
 $ find . -size +xK = x kilobite
 $ find . -size +xG = x Gigabite
 $ find . -empty = cari file kosong yang gak ada isinya
 $ find . -perm xxx = cari file berdasarkan permission, xxx = nilai permission contoh 777
+    untuk find -ok ataupun exec di paling belakang harus ada placeholder {} yang berfungsi sebagai hasil untuk digunakan (mirip piping) kemudian harus ada penutup \; atau ';' atau +
+$ find . -ok <perintah> \;= seperti exec tapi dia ada pertanaan r u sure? supaya bisa cek satu persatu file
 $ find . -exec chown = eksekusi perintah dalam ini contohnya chown atau ganti pemilik
 $ find . -exec chown <user>:<grup> {} + = ganti user dan grup file yang dicari kemudian harus pakai placeholder untuk hasil {} dan perintah selesai dengan + atau \; 
 $ find . -type d -exec chown <775> {} + = ganti permission ke 775 (contoh) semua folder yang ditemukan
@@ -232,9 +242,6 @@ $ grep -win "<kata yang dicari>" ./*.txt = mencari dalam folder tertentu
 - exec = mengeksekusi hasil dari perintah pertama kemudian menjalan perintah kedua
 $ find . -type f -iname "*.filetype" -maxdepth x -exec rm {} + = delete semua file dari hasil pencarian
 $ find . -type f -iname "*.filetype" -exec grep -i -n "function" {} + = cari kata tertentu dari hasil file yang dicari
-
-| pipe = pipe berguna untuk mengubah hasil jadi digunakan kembali
-$ history | grep "x" | grep "y" = cari yang ada kata x dan y di dalam history
 
 tee file.txt = mengambil output dari perintah sebelumnya kemudian ditampilkan pada terminal dan di safe dalam file.txt
 -a (append) $ tee -a file.txt = menambah hasil output ke dalam file 
