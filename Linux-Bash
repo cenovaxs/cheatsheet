@@ -27,6 +27,8 @@ $ ls -s = (size) urut berdasarkan file size
 $ ls -i = (inode) menampilkan angka id file atau folder
 $ ln <file1> <file2> = membuat link yaitu dua file dengan nama berbeda namun sebenarnya satu file
 $ ln -s <filetarget> <fileshortcut> = membuat shortcut file target
+    kalau gak mau ganti nama bisa tapi musti beda folder
+        contoh $ ln -s ../text.txt .
 $ pwd = posisi sekarang
 $ tree = ngeliat directory semua tanpa GUI
 $ cd = pindah folder
@@ -192,7 +194,7 @@ $ sudo chmod ugoa+-rwx
 
 find = cari file dan folder di linux 
  
-$ find . = kasih lihat semua file dan folder di current directory
+$ find = kasih lihat semua file dan folder di current directory (bisa pake titik atau ngak sama aja)
 $ find / = cari semua file dalam satu komputer
 $ find namadirectory/dir2/dll = kasih lihat semua file dan folder di directory yang dipilih
 contoh kombinasi $ find /etc -type f -iname "file.txt"
@@ -207,6 +209,7 @@ $ find . -type f -iname -mmin -x = cari file yang dimodif dalam waktu kurang dar
 $ find . -type f -iname -mmin +y = cari file yang dimodif dalam waktu lebih dari y menit
 $ find . -type f -iname -mmin -x +y = cari file yang dimodif dalam waktu kurang dari x menit terakhir dan lebih dari y menit
 $ find . -type f -iname -mtime -x = cari file yang dimodif dalam waktu kurang dari x hari terakhir
+    contoh $ find . -mtime 0 = cari file yang dimodif hari ini atau kurang dari sehari
 $ find . -type f -iname -ctime -x = idem tapi waktu terakhir changed bukan modif perebedaan modif dengan change modif itu isinya, kalau change bisa jadi cuma permission tapi isinya gak berubah
 $ find . -type f -iname -atime -x = idem tapi waktu terakhir dibaca atau dibuka (last read)
 $ find . -size +xM = cari file yang besarnya lebih dari x MB 
