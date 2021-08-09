@@ -370,9 +370,11 @@ $ etc/shadow
 $ etc/group
 $ etc/network
 $ etc/netplan = didalam folder tersebut terdapat yaml file yang bisa buat ganti default gateway, dns
-    check type os dari etc = $ cat etc/*issue
-    check versi os dari etc = $ cat etc/*release
-    check nama host dari etc = $ cat etc/hostname
+    check type os dari etc = $ cat /etc/*issue
+    check versi os dari etc = $ cat /etc/*release
+    check nama host dari etc = $ cat /etc/hostname
+    check processor dari proc = $ cat /proc/cpuinfo
+    check uptime dari proc = $ cat /proc/uptime
     check dns = $ systemd-resolve --status
 
 membuat command sendiri
