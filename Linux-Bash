@@ -10,9 +10,15 @@ $ touch file_name{1..3}.txt filename{a..d}.cpp = buat otomatis file_name1.txt, f
 $ touch -t 202112091600 = mengganti waktu modified sebuah file ke waktu yang diinginkan dengan format "YYYYMMDDhhmm"
 $ nano <text.file> = buat file dengan nama text.file, isi text file bisa diisi lewat nano
     contoh $ nano ./Documents/text.txt
+$ info = lihat daftar panduan gnu alternatif man
+$ info <x> = lihat panduan command x yang tertulis
+    dalam info shortcut yang bermanfaat:
+    n = next
+    p = previous
+    u = naik satu index ke parent
 $ man <x> = liat panduan command x yang tertulis
-$ man -f <x> = whatis x = melihat info singkat ini program apa
-$ man -k <x> = apropos x = melihat info singkat program2 yang memiliki atau berhubungan dengan kata x
+$ man -f <x> = man --whatis x = whatis x = melihat info singkat ini program apa
+$ man -k <x> = man --apropos x = apropos x = melihat info singkat program2 yang memiliki atau berhubungan dengan kata x
 $ <command> -h = $ <command> --help = lihat opsi panduan
 $ apropos "kata kunci" = cari command untuk hal yang berhubungan dengan kata kunci contoh $ apropos usb
 $ echo "tulisan" = membuat tulisan menjadi output pada terminal
