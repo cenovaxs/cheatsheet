@@ -58,6 +58,8 @@ $ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam fil
     atau yang lebih singkat
         $ 'program' >& 'all-output-file'
 >> = ambil output program dan ditambahkan output ke dalam file
+& = membuat program berjalan di background
+    contoh $ updatedb &
 && = kemudian jalankan perintah berikutnya
     contoh = mkdir ./folderbaru && touch text.txt
 | pipe = pipe berguna untuk mengubah hasil jadi input command berikutnya
@@ -342,6 +344,9 @@ $ kill <pid1> <pid2> = mematikan proses berdasarkan id bisa beberapa sekaligus
 $ kill -9 <pid> = $ kill -SIGKILL <pid> = mematikan proses meskipun unresponsive
 contoh $ kill -9 6300 = mematikan proses dengan id 6300
 $ killall <namaprogram> = mematikan semua program berdasarkan nama program
+$ renice <ni> <pid> = mengubah prioritas process ni berkisar -20 sampai +19 dengan -20 paling utama dan +19 paling rendah
+$ jobs = kasih liat background process
+$ jobs -l = lebih lengkap ada pid
 
 service atau systemctl = menjalankan servis pilih salah satu antaranya saja tapi disarankan systemctl
 $ sudo service <namaprogram> start = menjalankan service
