@@ -10,7 +10,9 @@ $ touch file_name{1..3}.txt filename{a..d}.cpp = buat otomatis file_name1.txt, f
 $ touch -t 202112091600 = mengganti waktu modified sebuah file ke waktu yang diinginkan dengan format "YYYYMMDDhhmm"
 $ nano <text.file> = buat file dengan nama text.file, isi text file bisa diisi lewat nano
     contoh $ nano ./Documents/text.txt
-$ man x = liat panduan command x yang tertulis
+$ man <x> = liat panduan command x yang tertulis
+$ man -f <x> = whatis x = melihat info singkat ini program apa
+$ man -k <x> = apropos x = melihat info singkat program2 yang memiliki atau berhubungan dengan kata x
 $ <command> -h = $ <command> --help = lihat opsi panduan
 $ apropos "kata kunci" = cari command untuk hal yang berhubungan dengan kata kunci contoh $ apropos usb
 $ echo "tulisan" = membuat tulisan menjadi output pada terminal
@@ -134,9 +136,10 @@ $ sudo apt-get autoremove --purge <aplikasi> = membuang program seluruhnya dan m
 $ sudo apt-get update = check update
 $ sudo apt-get upgrade = mendonload dan upgrade hasil check update
 $ sudo apt-get update && apt-get upgrade = update kemudian upgrade dalam satu line
-$ apt-cache = command buat lihat repsitory
-$ apt-cache search <x> = buat cari file sesuai kata kunci x
+$ apt-cache search <x> = buat cari file program yang terinstall kata kunci x
+    atau bisa juga $ apt search <x> = versi yang lebih baru
 $ apt-cache policy <x> = liat versi aplikasi x
+    atau $ apt policy <x>
 $ sudo dpkg -i lokasifile/namafile = install dpkg melalui terminal
 untuk membersihkan installer yang rusak
 $sudo apt-get clean && sudo apt-get autoremove
