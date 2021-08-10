@@ -157,6 +157,9 @@ tambah remote baru:
 	
 	kemudian push (untuk pertama kali harus masukin username dan password):
 		git push origin master - <origin> name of remote repo <master> the branch that we push to 
+
+hapus remote:
+		git remote rm <namaremote>
 	
 
 
