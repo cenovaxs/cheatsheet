@@ -52,12 +52,12 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 ~ = home working directory atau cd kosong aja juga balik ke home directory
 !! = jalankan command sebelumnya
 < $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
-> = ambil output program dan overwrite jadi sebuah file
+> = ambil output program dan overwrite jadi sebuah text file
 $ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
 $ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
     atau yang lebih singkat
         $ 'program' >& 'all-output-file'
->> = ambil output program dan ditambahkan output ke dalam file
+>> = ambil output program dan ditambahkan output ke dalam text file
 & = membuat program berjalan di background
     contoh $ updatedb &
 && = kemudian jalankan perintah berikutnya
@@ -93,6 +93,7 @@ $ ps = info tentang bash/powershell/zsh
 $ id = info tentang user
 $ hostname = info hostname
 $ uname -a = info tentang os dan system
+$ date = melihat waktu
 $ ss = alat untuk lihat socket,session
 $ env = menjalankan program dalam lingkungan yang dimodif
 $ lsblk = list harddrive
@@ -332,13 +333,27 @@ kemudian file.pub dicopy ke github dan kemudian git clone
 
 proses
 $ top = task manager dalam terminal realtime
-ps = process status
-$ ps aux = lihat semua process dalam terminal offline 
+$ top | head = melihat ringkasan top hanya 10 line teratas
+    shortcut dalam top :
+        1 = memperlihatkan per thread atau per core
+        t = menyederhanakan thread atau core
+        m = menyederhanakan memory
+        A = mengatur berdasarkan penggunaan terbanyak
+        r = renice ganti prioritas
+        k = kill spesific proses
+        f = list configurasi 
+        o = interactively select new set order
+ps = process status (kayak top tapi gak live)
+$ ps aux (BSD syntax) = lihat semua process dalam terminal offline 
 -a. View processes of all users rather than just the current user.
 -u. Provide detailed information about each of the processes
 -x. Include processes that are controlled not by users but by daemons.
+$ ps -e (standart syntax) = lihat semua process
+$ ps -eLF = lihat info per thread
+$ ps axo <custom1,custom2,....> = memperlihatkan berdasarkan pilihan sendiri lihat man ps biar jelas
 $ ps aux | grep <namayangdicari> = menfilter hasil dengan hanya menampilkan namayangdicari
 $ pgrep <namaprogram> = menampilkan PID proses id program yang dicari, kalau program yang sama jalan lebih dari satu maka pid juga lebih dari satu, urutan menurut waktu jadi yang dibuka pertama akan ada diatas sementara yang terakhir akan ada dibelakang
+$ pstree = memperlihatkan proses dengan tree jadi kelihatan parent childrennya 
 ?$ pkill <namaprogram> = mematikan proses berdasarkan namaprogram
 $ kill <pid1> <pid2> = mematikan proses berdasarkan id bisa beberapa sekaligus
 $ kill -9 <pid> = $ kill -SIGKILL <pid> = mematikan proses meskipun unresponsive
@@ -347,6 +362,14 @@ $ killall <namaprogram> = mematikan semua program berdasarkan nama program
 $ renice <ni> <pid> = mengubah prioritas process ni berkisar -20 sampai +19 dengan -20 paling utama dan +19 paling rendah
 $ jobs = kasih liat background process
 $ jobs -l = lebih lengkap ada pid
+$ w = ngeliat pemakaian komp dalam beberapa menit terakhir
+    format baca : load average <1_menit_terakhir> <5menit> <15menit>
+    kalau core 1 maka 100%=1.0 kalau 4 core maka 100%= 4.0 kalau lebih dari jumlah core berarti pemakaian besar sehingga ngantri
+$ uptime = lihat komputer sudah nyala berapa lama
+CTRL-Z = menghentikan sementara program yang berjalan di terminal
+$ bg = membuat file berjalan di background (berguna apabila mau menjalankan aplikasi lain tapi sebelumnya harus CTRL-Z untuk disetop dulu)
+$ fg = membuat file berjalan di foreground (terminal terhenti)
+
 
 service atau systemctl = menjalankan servis pilih salah satu antaranya saja tapi disarankan systemctl
 $ sudo service <namaprogram> start = menjalankan service
