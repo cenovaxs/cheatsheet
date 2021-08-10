@@ -392,12 +392,13 @@ contoh :
 $ sudo crontab -e = buka crontab dengan root
 
 File penting dalam linux hacking
-$ etc/passwd
-$ etc/hosts 
-$ etc/shadow
-$ etc/group
-$ etc/network
-$ etc/netplan = didalam folder tersebut terdapat yaml file yang bisa buat ganti default gateway, dns
+$ /etc/passwd
+$ /etc/hosts 
+$ /etc/shadow
+$ /etc/group
+$ /etc/network
+$ /etc/init.d/<daemon> <option> = lokasi file menjalankan daemon (cthnya ssh) dengan option : start,stop,reload,restart,force-reload
+$ /etc/netplan = didalam folder tersebut terdapat yaml file yang bisa buat ganti default gateway, dns
     check type os dari etc = $ cat /etc/*issue
     check versi os dari etc = $ cat /etc/*release
     check nama host dari etc = $ cat /etc/hostname
