@@ -68,7 +68,7 @@ $ pushd <dir> = pindah ke dir namun disimpan dalam terminal supaya mudah kembali
 $ popd <dir> = pindah ke dir sebelumnya dan hapus dari terminal
 $ dirs = memperlihatkan daftar dir yang disimpan oleh pushd
 $ mkdir <namafolder> = bikin folder
-    -p atau --parents = bikin sub folder kalau belum ada
+    -p atau --parents = bikin parent folder kalau belum ada ini kepake klo bikin folder di dalam folder dan belum ada foldernya
     contoh $ mkdir -p /home/pujas/belumadafolder1/belumadafolder2/file
 $ rm <namafile >= delete file
 $ rm -i <namafile> = interactive mode berarti ada pertanyaan are u sure? biasanya dipakai kalau ada banyak file sekaligus
