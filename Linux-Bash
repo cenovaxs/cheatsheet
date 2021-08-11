@@ -391,7 +391,7 @@ contoh :
 15 14 * * * ls > /home/nick/lt/cronres.txt = command akan dijalankan setiap jam 14.15 setiap hari
 $ sudo crontab -e = buka crontab dengan root
 
-File penting dalam linux hacking
+File penting dalam linux
 $ /etc/passwd
 $ /etc/hosts 
 $ /etc/shadow
@@ -402,10 +402,15 @@ $ /etc/netplan = didalam folder tersebut terdapat yaml file yang bisa buat ganti
     check type os dari etc = $ cat /etc/*issue
     check versi os dari etc = $ cat /etc/*release
     check nama host dari etc = $ cat /etc/hostname
+    check nama os dan versi dari proc =$ cat /proc/version
     check processor dari proc = $ cat /proc/cpuinfo
     check uptime dari proc = $ cat /proc/uptime
+    dll /proc/interrupts
+        /proc/meminfo
+        /proc/mounts
+        /proc/partitions
     check dns = $ systemd-resolve --status
-
+        
 membuat command sendiri
 buka file .bashrc di home 
     > cari space kosong di setelah if not running interactively tepatnya dibawah esac dan kasih spasi
