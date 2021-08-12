@@ -189,6 +189,14 @@ drwxrwxrwx = huruf 1 d kalau folder kalau file dia -, huruf 2-4 permission untuk
 1234567890
 $ sudo chmod 644 <file.txt> = ganti file permission 4 read only, 6 read n write, angka pertama untuk owner, angka kedua untuk group, angka ketiga untuk publik
 
+file operation
+$ diff3 <file1> <file2> <file3> = melihat perbedaan antara file kyk git baca man
+$ diff -Nur originalfile newfile > patchfile 
+$ patch -p1 < patchfile
+    atau
+    $ patch originalfile patchfile
+$ file <dir> = menyebut fungsi sebenarnya file tersebut 
+
 info lanjut jumlah saja dibawah untuk mendapatkan kombinasi chmod yang diinginkan
 r (read) – 4
 w (write) – 2
