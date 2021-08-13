@@ -1,7 +1,8 @@
 $ sudo = menjalankan perintah sebagai root (unlimited access)
 $ init 0 = shutdown
-$ cat <file> = baca isi file ke dalam terminal
-$ tac <file> = baca isi file terbalik dari line akhir ke line awal 
+$ cat <file> <file2> = baca kedua isi file secara berurutan ke dalam terminal
+$ cat > <file> = semua yang diketik bakal dimasukkan ke dalam file sampai CTRL-D dipencet
+$ tac <file> = baca isi file terbalik dari line akhir ke line awal
 $ head <file> = baca 10 baris pertama dan masukkan ke dalam terminal
 $ tail <file> = baca 10 baris pertama dan masukkan ke dalam terminal
 -x $ head -x <file> = baca x baris pertama dan masukkan ke dalam terminal berlaku juga untuk tail
@@ -23,7 +24,10 @@ $ <command> -h = $ <command> --help = lihat opsi panduan
 $ apropos "kata kunci" = cari command untuk hal yang berhubungan dengan kata kunci contoh $ apropos usb
 $ echo "tulisan" = membuat tulisan menjadi output pada terminal
 $ clear = clear screen
-$ history = lihat history terminal
+$ history = lihat history command di terminal
+CTRL-R = cari history command di terminal
+CTRL-A = ke awal huruf pada terminal
+CTRL-E = ke akhir huruf pada terminal
 $ ls --help = lihat bantuan mirip dengan $ man ls
 $ ls = lihat isi folder
 $ ls <file> = perlihatkan hanya yang ada nama file tersebut
@@ -84,6 +88,7 @@ $ cp -r <namafolder> <namafolderhasilcopy> = copy folder dan seluruh isinya
 $ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer
 $ whoami = check current user
+$ echo $USERNAME = idem diatas
 $ who -a = check siapa lagi yang login selain saya
 $ echo $HOME = check dimana home directory
 $ echo $PS1 = lihat sistem penamaan prompt dalam terminal
@@ -188,7 +193,7 @@ $ sudo useradd <namauserbaru> = tambah user tapi cuma gitu aja sebaiknya gak pak
 $ sudo gpasswd -d <user> <group> = mengeluarkan user dari group
     atau
 $ sudo usermod -G <namauser> <namagrup> <namagrup1> = grup yang gak disebutkan berarti bakal dikeluarkan
-
+$ chgrp <grup> <file> = pindah grup <file> ke dalam <grup>
 
 permission 
 $ sudo chown <user>:<group> <file.txt> = ganti owner
@@ -196,21 +201,12 @@ $ sudo chown -R <user>:<group> <./Dir> = -R berarti ganti beserta isi yang ada d
 drwxrwxrwx = huruf 1 d kalau folder kalau file dia -, huruf 2-4 permission untuk owner, huruf 5-7 permission untuk group, huruf 8-0 permission untuk (publik) yang lain
 1234567890
 $ sudo chmod 644 <file.txt> = ganti file permission 4 read only, 6 read n write, angka pertama untuk owner, angka kedua untuk group, angka ketiga untuk publik
-
-file operation
-$ diff3 <file1> <file2> <file3> = melihat perbedaan antara file kyk git baca man
-$ diff -Nur originalfile newfile > patchfile 
-$ patch -p1 < patchfile
-    atau
-    $ patch originalfile patchfile
-$ file <dir> = menyebut fungsi sebenarnya file tersebut 
-
 info lanjut jumlah saja dibawah untuk mendapatkan kombinasi chmod yang diinginkan
 r (read) – 4
 w (write) – 2
 x (execute) – 1
     atau
-$ sudo chmod ugoa+-rwx 
+$ sudo chmod ugoa+-rwx, ugoa+-rwx, ugoa+-rwx <file>
     u = user
     g = user lain yang ada di group
     o = user lain yang tidak ada di group
@@ -533,3 +529,11 @@ kedua hal diatas menghasilkan file dengan line1 dan Line2 di dalam isinya
 
 Vim belajar:
 https://www.openvim.com/
+
+file operation
+$ diff3 <file1> <file2> <file3> = melihat perbedaan antara file kyk git baca man
+$ diff -Nur originalfile newfile > patchfile 
+$ patch -p1 < patchfile
+    atau
+    $ patch originalfile patchfile
+$ file <dir> = menyebut fungsi sebenarnya file tersebut 
