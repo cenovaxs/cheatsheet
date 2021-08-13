@@ -91,7 +91,9 @@ $ groups = check grup apa
 $ which <command> = cari lokasi command musti pake sudo contoh $ which ls
 $ where <command> = cari dimana lokasi command tersebut
 $ ps = info tentang bash/powershell/zsh
-$ id = info tentang user
+$ echo $SHELL = dimana lokasi shell
+$ id = info semua id user dan grup sebuah user 
+$ groups <user> = melihat grup yang dimiliki user
 $ hostname = info hostname
 $ uname -a = info tentang os dan system
 $ date = melihat waktu
@@ -169,6 +171,9 @@ $ sudo visudo = buka file daftar user yang bs jadi sudo
 contoh : pujas All = All (untuk jadiin root) atau pujas All = /sbin/adduser (kalau cuma mau kasih satu perintah)
 $ sudo adduser <namauserbaru> = tambah atau buat user account baru
 $ sudo adduser <namauserbaru> sudo = tambah atau buat user account baru yang bisa akses sudo
+$ sudo userdel <namauser> = hapus user tapi sebaiknya jangan dipakai kalau mau pakai sebaiknya :
+-r $ sudo userdel -r <namauser> = hapus user dan home foldernya
+    atau
 $ sudo deluser <namauser> = menghapus user
 $ sudo passwd <namauser> = ganti password user
 $ sudo addgroup <namagrup> = buat grup baru lebih user friendly
@@ -176,12 +181,14 @@ $ sudo groupadd <namagrup> = buat grup baru
 $ sudo groupdel <grup> = del grup
 $ sudo adduser <namauserbaru> <namagrup> = tambah user baru dan tambah ke grup
 $ sudo useradd <namauserbaru> = tambah user tapi cuma gitu aja sebaiknya gak pakai
-$ sudo useradd <namauserbaru> -m = tambah user dan buat home directory 
-$ sudo usermod <namauser> --shell /bin/bash = ganti pass ke bash
-$ sudo usermod -l <namauserbaru> <namauserlama> = ganti nama user
-$ sudo usermod -aG <namagrupyangmauditambah> <useryangmaudimasukin> = tambahin user ke grup baru
-$ sudo userdel <namauser> = hapus user tapi sebaiknya jangan dipakai
+-m $ sudo useradd <namauserbaru> -m = tambah user dan buat home directory 
+--shell $ sudo usermod <namauser> --shell /bin/bash = ganti pass ke bash
+-l $ sudo usermod -l <namauserbaru> <namauserlama> = ganti nama user
+-aG $ sudo usermod -aG <grup> <user> = tambahin user ke grup baru
 $ sudo gpasswd -d <user> <group> = mengeluarkan user dari group
+    atau
+$ sudo usermod -G <namauser> <namagrup> <namagrup1> = grup yang gak disebutkan berarti bakal dikeluarkan
+
 
 permission 
 $ sudo chown <user>:<group> <file.txt> = ganti owner
