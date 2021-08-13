@@ -52,6 +52,7 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 ~ = home working directory atau cd kosong aja juga balik ke home directory
 !! = jalankan command sebelumnya
 < $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
+<< = seperti diatas cuma dia bisa multiple line bisa digunakan untuk simpen file tanpa text editor
 > = ambil output program dan overwrite jadi sebuah text file
 $ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
 $ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
@@ -82,8 +83,8 @@ $ cp <{file1,file2}> <lokasihasilcopy> = copy beberapa file bersamaan
 $ cp -r <namafolder> <namafolderhasilcopy> = copy folder dan seluruh isinya
 $ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer
-$ whoami = check siapa saya
-$ who = check siapa lagi yang login selain saya
+$ whoami = check current user
+$ who -a = check siapa lagi yang login selain saya
 $ echo $HOME = check dimana home directory
 $ echo $PS1 = lihat sistem penamaan prompt dalam terminal
 $ groups = check grup apa
@@ -288,6 +289,8 @@ bisa dikombinasi dengan yang lainya contohnya $ grep -wirlP "\d{3}-\d{3}-\d{4}" 
 curl
 curl -i http://..... = menjalankan curl untuk melihat server
 
+backup
+rsync
 rsync membuat duplikate file atau folder untuk kepentingan backupnya
 $ rsync <folderyangmaudibackup/*> <backupfolder/>
 -r = $ rsync -r <folderyangmaudibackup/> <backupfolder/> = recursif copy termasuk folder yang di falamnya
@@ -298,7 +301,9 @@ tanpa/ = $ rsync -r <folderyangmaudibackup> <backupfolder/> = tanpa / dibelakang
 --delete = $ rsync -av --delete <folderyangmaudibackup/> <backupfolder/> = membuang file yang tidak ada di folder yang mau dibackup. Harus hati2 karena bisa menghapus file backup
 -z = compress file
 -p = kasih lihat progress
-
+disk to disk copying
+$ dd if=/dev/sda of=/dev/sdb 
+hati2 karena disk to disk bakal format (hapus) dulu file yang ada di disk yang akan dicopy
 
 SSH dan ssh dengan keygen
 
@@ -473,9 +478,51 @@ $ shutdown -h = halt dan matikan komp
 
 Program penting install debian
 
-apt install lsb_release
-apt install nmap
-apt install net-tools = ifconfig
-apt install iputils-ping = ping
-apt install dnsutils = nslookup
-apt install checkinstall = klo ada program yang ga bisa di install di repo
+$ apt install lsb_release
+$ apt install nmap
+$ apt install net-tools = ifconfig
+$ apt install iputils-ping = ping
+$ apt install dnsutils = nslookup
+$ apt install checkinstall = klo ada program yang ga bisa di install di repo
+
+compress file
+gzip
+$ gzip * = compress yang ada di dalam folder
+$ gzip -r <dir> = mengcompress semua yang ada di dalam termasuk subfolder
+$ gunzip <nama> = ngebuka hasil compress
+    atau
+    $ gzip -d <nama>
+bzip2
+$ bzip2 * = compress semua yang ada di dalam folder
+$ bunzip2 *.bz2 = decompress / ngebuka
+    atau
+    $ bzip2 -d <nama>
+xz
+xz * = compress semua file yang ada di folder satu persatu
+xz <file> = compress jadi file.xz default compress level (-6)
+xz -d *.xz = decompress
+xz -dk file.xz = decompress tanpa delete file xz meskipun sudah berhasil di compress
+zip
+zip <file> * = compress dan buat jadi file.zip
+zip -r <file>.zip ~ = backup home dir recursively
+unzip backup.zip = extract
+tar
+tar zcvf mydir.tar.gz mydir = bikin tar dan compress dengan gzip
+tar jcvf mydir.tar.bz2 mydir = bikin tar dan compress dengan bz2
+tar Jcvf mydir.tar.xz mydir = bikin tar dan compress dengan xz
+tar xvf mydir.tar = buka tar
+
+buat file tanpa text editor
+
+$ cat << <penandaapaaja> > file
+> line1
+> Line2
+> <penandaapaaja>
+Atau
+$ echo line1 > file
+$ echo Line2 > file
+
+kedua hal diatas menghasilkan file dengan line1 dan Line2 di dalam isinya
+
+Vim belajar:
+https://www.openvim.com/
