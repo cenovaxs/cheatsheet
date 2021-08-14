@@ -5,6 +5,7 @@ $ cat > <file> = semua yang diketik bakal dimasukkan ke dalam file sampai CTRL-D
 $ tac <file> = baca isi file terbalik dari line akhir ke line awal
 $ head <file> = baca 10 baris pertama dan masukkan ke dalam terminal
 $ tail <file> = baca 10 baris pertama dan masukkan ke dalam terminal
+$ tail -f <file> = baca file yang lognya berjalan terus live, jadi klo ada update langsung muncul juga updatenya
 -x $ head -x <file> = baca x baris pertama dan masukkan ke dalam terminal berlaku juga untuk tail
 $ less <file> = baca isi file yang panjang kayak nano cuma gabisa diedit
 $ touch file_name{1..3}.txt filename{a..d}.cpp = buat otomatis file_name1.txt, file_name2.txt, file_name3.txt, filenamea.ccp,filenameb.ccp,filenamec.ccp,filenamed.ccp
@@ -514,6 +515,15 @@ tar zcvf mydir.tar.gz mydir = bikin tar dan compress dengan gzip
 tar jcvf mydir.tar.bz2 mydir = bikin tar dan compress dengan bz2
 tar Jcvf mydir.tar.xz mydir = bikin tar dan compress dengan xz
 tar xvf mydir.tar = buka tar
+untuk melihat compress file tambahkan z didepan command berikut yang bisa:
+$ zcat <file.txt.gz> = liat file yang dicompress menggunakan cat
+$ zless <file.txt.gz> = less file compress
+$ zmore <file.txt.gz>
+$ zgrep -i less <file.gz> = cari kata di dalam compressed file
+$ zdiff <file1.txt.gz> <file2.txt.gz> = membandingkan
+untuk bz2 tinggal tambahin bz didepannya cth bzcat bzless bzgrep
+untuk xz tinggal tambahin xz didepannya cth xzcat xzless xzgrep
+
 
 buat file tanpa text editor
 
@@ -537,3 +547,24 @@ $ patch -p1 < patchfile
     atau
     $ patch originalfile patchfile
 $ file <dir> = menyebut fungsi sebenarnya file tersebut 
+
+SED
+$ sed s/<katalama>/<katabaru> <file> = mengubah katalama pertama di dalam file menjadi kata baru
+$ sed 1,2s/<katalama>/<katabaru>/g <file> = mengubah dua baris pertama di dalam file menjadi kata baru 
+$ sed s/<katalama>/<katabaru>/g <file> = mengubah seluruh katalama di dalam file menjadi kata baru 
+kalau mau save pake > atau >> setelahnya atau pakai -i tapi sebaiknya jangan
+bisa juga pake delimiter lain : contohnya $ sed s:<katalama>:<katabaru>:g <file>
+-f = sed -f <scriptfile> <filename> = pakai script gak diketik
+AWK
+$ awk '{ print $0 }' <file> = print semua file
+$ awk -F<separator> '{ print $1 }' <file> = -F (field) diikutin separator contohnya ; : spasi tab, kemudian print baris pertama
+$ awk -F: '{ print $1 $7 }' <file> = print baris pertama dan ketujuh
+
+$ sort <file> = print isi dalam file namun secara alphabetical a-z per baris
+$ cat file1 file2 | sort = sort dua file sekaligus
+-r $ sort -r <filename> = reverse terbalik sortnya
+-k $ sort -k <n> <filename> = mulai dari baris ke<n>
+$ sort file1 file2 | uniq > file3 = gabung dan sort file1 dan file 2 kemudian file yang terduplikasi pada file1 dan file2 dibuang dan dijadikan file3
+    atau
+-u $ sort -u file1 file2 > file3
+uniq -c <file> = menhitung jumlah line yang terduplikasi
