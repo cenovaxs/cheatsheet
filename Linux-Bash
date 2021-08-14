@@ -262,6 +262,8 @@ contoh klo ada johny sementara kata kunci yang dignakan john maka johny tidak te
 -B $ grep -win -B x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line sebelumnya juga
 -A $ grep -win -A x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line setelahnya juga
 -C $ grep -win -C x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line sebelum dan setelahnya juga
+-v = (invert) cari selain kata kunci
+[0-9] = cari line yang memiliki nomor 1 sampai 9 di dalamnya
 $ grep -win "<kata yang dicari>" ./*.txt = mencari dalam folder tertentu
 -r $ grep -winr "<kata yang dicari>" ./*.txt = mencari dalam folder dan subfoldernya
 -l $ grep -wirl "<kata yang dicari>" . = hanya tampilkan nama file dan folder yang ditemukan
@@ -283,8 +285,14 @@ contoh $ find . -type f -size -10k -iname "*" -exec grep -tn "sandwich" {} + > f
 = hasil dari find file dan grep diatas disimpan dalam file f.txt
 
 Regex posix grep
-. = apapun kayak bintang di terminal contoh:
-$ grep "...-...-...." text.txt = hasil yang didapat contohnya 123-456-7891
+langsung aja pake contoh biar gampang jelasin
+"the quick brown fox jumped over the lazy dog."
+. = character apa aja, cth : a.. = azy
+| = atau, cth : b.|j. = br dan ju
+$ = akhir kata, ..$ = dog
+* = lanjut sampai akhir kalimat = l.* = lazy dog.
+l.*y = lazy
+the.* = the quick brown fox jumped over the lazy dog.
 Regex perl -P (python regex) grep
 -P $ grep -P "\d{3}-\d{3}-\d{4}" names.filetype = hasil yang didapat contohnya 123-456-7891
 untuk mengaktifkan grep -P harus grep version gnu klo blum upgrade atau download dulu, untuk mac pake $ brew install grep --with-default-names
@@ -567,4 +575,9 @@ $ cat file1 file2 | sort = sort dua file sekaligus
 $ sort file1 file2 | uniq > file3 = gabung dan sort file1 dan file 2 kemudian file yang terduplikasi pada file1 dan file2 dibuang dan dijadikan file3
     atau
 -u $ sort -u file1 file2 > file3
-uniq -c <file> = menhitung jumlah line yang terduplikasi
+$ uniq -c <file> = menhitung jumlah line yang terduplikasi
+$ paste <file1> <file2> = gabungin line 1 di file1 dengan line 1 di file2 kemudian line2 di file1 dengan line2 di file2 disetop
+$ paste -d<delimiter> file1 file2 = idem namun pilih delimiter atau pemisah
+$ join file1 file2 = cek dua file lihat adanya persamaan, kemudian digabungkan sesuai dengan persamaannya
+$ wc -l <file> = hitung jumlah line yang tedapat di dalam file, opsi lain -c (byte), -m (huruf) 
+$ split <file> = membagi file menjadi maks 1000 line, utk settingan lebih lanjut > man
