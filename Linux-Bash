@@ -263,6 +263,8 @@ contoh klo ada johny sementara kata kunci yang dignakan john maka johny tidak te
 -A $ grep -win -A x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line setelahnya juga
 -C $ grep -win -C x "<kata yang dicari>" <namafile.filetype> = tampilkan sejumlah x line sebelum dan setelahnya juga
 -v = (invert) cari selain kata kunci
+-e = $ grep -e <pattern> -e <pattern2> <file> = kalau ada lebih dari 1 pattern 
+    cth $ grep -e ^ts -e st$ /etc/services
 [0-9] = cari line yang memiliki nomor 1 sampai 9 di dalamnya
 $ grep -win "<kata yang dicari>" ./*.txt = mencari dalam folder tertentu
 -r $ grep -winr "<kata yang dicari>" ./*.txt = mencari dalam folder dan subfoldernya
@@ -289,6 +291,7 @@ langsung aja pake contoh biar gampang jelasin
 "the quick brown fox jumped over the lazy dog."
 . = character apa aja, cth : a.. = azy
 | = atau, cth : b.|j. = br dan ju
+^ = awal kata, ^.. = the
 $ = akhir kata, ..$ = dog
 * = lanjut sampai akhir kalimat = l.* = lazy dog.
 l.*y = lazy
@@ -579,5 +582,20 @@ $ uniq -c <file> = menhitung jumlah line yang terduplikasi
 $ paste <file1> <file2> = gabungin line 1 di file1 dengan line 1 di file2 kemudian line2 di file1 dengan line2 di file2 disetop
 $ paste -d<delimiter> file1 file2 = idem namun pilih delimiter atau pemisah
 $ join file1 file2 = cek dua file lihat adanya persamaan, kemudian digabungkan sesuai dengan persamaannya
+$ wc <file>= hitung jumlah baris kata huruf secara berurutan
 $ wc -l <file> = hitung jumlah line yang tedapat di dalam file, opsi lain -c (byte), -m (huruf) 
 $ split <file> = membagi file menjadi maks 1000 line, utk settingan lebih lanjut > man
+$ string <file> | grep <katakunci> = mengambil kata yang bisa dibaca manusia untuk file yang bukan text
+tr
+$ tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ = mengubah huruf biasa menjadi huruf kapital
+    atau
+        $ cat <file> | tr a-z A-Z
+$ tr '{}' '()' < inputfile > outputfile = mengubah {} menjadi ()
+$ echo "This is for testing" | tr [:space:] '\t' = mengubah spasi menjadi tab
+$ echo "This   is   for    testing" | tr -s [:space:] = mengurangi spasi menjadi satu
+$ echo "the geek stuff" | tr -d 't' = menghilangkan huruf t
+$ tr -cd [:print:] < file.txt = membuang semua non printable character
+$ tr -s '\n' ' ' < file.txt = mengubah semua isi file menjadi satu line
+tee mengcopyoutput dan cat file secara bersamaan
+$ sudo find . -name "test" | tee /tmp/tee_output
+cut $ ls -l | cut -d" " -f3 = memperlihatkan baris ke 3 yang di delimiter dengan spasi kosong
