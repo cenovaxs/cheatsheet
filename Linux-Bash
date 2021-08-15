@@ -633,3 +633,10 @@ $	setelahnya adalah environment variable
 |	hasil output dijadikan input command berikutnya
 &&  kalau command berhasil maka jalankan command berikutnya
 ||  kalau command berhasil maka berikutnya gak akan dijalankan
+parameter = variable yang dimasukkan setelah bashscript
+contoh $ ls file1    maka file1 = $1 atau first parameter
+$0	Script name
+$1	First parameter
+$2, $3, etc.	Second, third parameter, etc.
+$*	All parameters
+$#	Number of arguments
