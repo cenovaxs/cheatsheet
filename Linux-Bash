@@ -616,3 +616,20 @@ non graphical browser linux:
 Lynx
 Elyks
 w3m
+
+bash scripting
+buat file hello.sh kemudian di awal file biasanya ada '#!/bin/bash' untuk menunjukkan file bash yang digunakan, kemudian diikuti oleh command contohnya 'echo Hello World'
+ubah file jadi executable $ chmod +x hello.sh
+untuk menjalankan gunakan $ bash hello.sh atau $ ./hello.sh
+kalau file belum executable maka harus pakai $ bash hello.sh
+echo "status: $" = nunjukin klo sukses 0 kalau gagal 2
+#	digunakan untuk comment, kecuali saat \#, atau #! when starting a script
+\	digunakan untuk pindah ke baris berikutnya
+;	kalimat setelahnya jadi command untuk dieksekusi berikutnya
+$	setelahnya adalah environment variable
+>	Redirect output
+>>	Append output
+<	Redirect input
+|	hasil output dijadikan input command berikutnya
+&&  kalau command berhasil maka jalankan command berikutnya
+||  kalau command berhasil maka berikutnya gak akan dijalankan
