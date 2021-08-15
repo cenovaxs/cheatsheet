@@ -112,9 +112,19 @@ $ exit = keluar dari terminal
 /tmp$ xpdyinfo | grep dim = lihat dimensi layar menggunakan cli
 
 Networking
-$ ip = info dan ganti network
+ip
+$ ip addr show = kyk ifconfig
+$ ip route show = $ route -n = $ netstat -nr = show routing table
+$ route add -net <ip> netmask <netip> gw <defaultgateway> def <device/wl01> = $ ip route add <ip/mask> via <defaultgateway> def <device/wl01> = set ip statis
+setelah itu $ service network restart
+$ route del -net address = $ ip route del = del ip statis 
+$ host <url> = lihat ip address url
+$ nslookup <url> = lihat ip address url
+$ dig <url> = lihat info tentang url
 $ ping 8.8.8.8 atau $ ping google.com = ping ke google
-$ ifconfig = check ip komputer
+$ ifconfig = check networking
+$ ifconfig eth0 192.168.1.5 netmask 255.255.255.0 up = set ip statis setelah itu $ service network restart
+$ sudo ethtool <ethid> = lihat info tentang ethernet port
 $ tcpdump = kayak wireshark di linux
 -c $ tcpdump -c <x> = ambil sejumlah x packet jaringan pertama
 -A $ tcpdump -A = tampilkan dalam bentuk format aslinya
@@ -123,7 +133,7 @@ $ tcpdump -c <x> -A <wl01> = seperti sebelumnya namun fokus hanya pada interface
 -XX $ tcpdump -XX -i <wl01>  = tampilkan dalam bentuk hex dan asci format
 $ tcpdump -i <wl01> port <xxxx> = target ke port tertentu saja
 $ netstat = aplikasi buat liat jaringan network
-$ netstat -nr = perlihatkan berdasarkan network (arp)
+$ netstat -nr = perlihatkan berdasarkan routing table
 $ netstat -i = perlihatkan berdasarkan interface (wireless/lan/loop)
 $ netstat -ta = perlihatkan berdasarkan active socket
 $ netstat -tan = perlihatkan berdasarkan active socket dan tampilkan dalam ip address
@@ -421,7 +431,7 @@ $ sudo crontab -e = buka crontab dengan root
 
 File penting dalam linux
 $ /etc/passwd
-$ /etc/hosts 
+$ /etc/hosts = bisa diganti isinya buat bikin dns sendiri
 $ /etc/shadow
 $ /etc/group
 $ /etc/network
@@ -599,3 +609,8 @@ $ tr -s '\n' ' ' < file.txt = mengubah semua isi file menjadi satu line
 tee mengcopyoutput dan cat file secara bersamaan
 $ sudo find . -name "test" | tee /tmp/tee_output
 cut $ ls -l | cut -d" " -f3 = memperlihatkan baris ke 3 yang di delimiter dengan spasi kosong
+
+non graphical browser linux:
+Lynx
+Elyks
+w3m
