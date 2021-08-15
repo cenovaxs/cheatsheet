@@ -122,6 +122,7 @@ $ host <url> = lihat ip address url
 $ nslookup <url> = lihat ip address url
 $ dig <url> = lihat info tentang url
 $ ping 8.8.8.8 atau $ ping google.com = ping ke google
+-c $ ping -c 3 8.8.8.8 = ping cuma sebanyak 3 kali
 $ ifconfig = check networking
 $ ifconfig eth0 192.168.1.5 netmask 255.255.255.0 up = set ip statis setelah itu $ service network restart
 $ sudo ethtool <ethid> = lihat info tentang ethernet port
@@ -312,7 +313,8 @@ untuk mengaktifkan grep -P harus grep version gnu klo blum upgrade atau download
 bisa dikombinasi dengan yang lainya contohnya $ grep -wirlP "\d{3}-\d{3}-\d{4}" names.filetype
 
 curl
-curl -i http://..... = menjalankan curl untuk melihat server
+curl -i http://..... = menjalankan curl untuk melihat server. -i artinya include server name, cookies, tanggal, httpversion dll
+curl -o saved.html https://www.google.com = simpan hasil buka website dan download menjadi saved.html, -0 = output disimpan
 
 backup
 rsync
