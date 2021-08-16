@@ -630,8 +630,8 @@ $	setelahnya adalah environment variable
 >>	Append output
 <	Redirect input
 |	hasil output dijadikan input command berikutnya
-&&  kalau command berhasil maka jalankan command berikutnya
-||  kalau command berhasil maka berikutnya gak akan dijalankan
+&&  and = kalau command berhasil maka jalankan command berikutnya
+||  or = kalau command berhasil maka berikutnya gak akan dijalankan
 parameter = variable yang dimasukkan setelah bashscript
 contoh $ ls file1    maka file1 = $1 atau first parameter
 $0	Script name
@@ -664,13 +664,36 @@ environment variable = digunakan sebagai shorcut atau kata kunci supaya lebih pe
 
 read <var> = menunggu input dari user dan kemudian di simpan dalam var
 function = subroutine = command yang dipakai berulang dalam satu program lihat contoh funtion.sh 
-check condition dalam if [[]], info lebih lanjut $ man 1 test
--e file	Checks if the file exists.
--d file	Checks if the file is a directory.
--f file	Checks if the file is a regular file (i.e. not a symbolic link, device node, directory, etc.)
--s file	Checks if the file is of non-zero size.
--g file	Checks if the file has sgid set.
--u file	Checks if the file has suid set.
--r file	Checks if the file is readable.
--w file	Checks if the file is writable.
--x file	Checks if the file is executable.
+check condition dalam if [[]], info lebih lanjut $ man 1 test atau https://kapeli.com/cheat_sheets/Bash_Test_Operators.docset/Contents/Resources/Documents/index
+!       logical not berarti membalik hasil true jadi none dan sebaliknya cara pakeknya : [[ ! condition ]]
+-e      file	Checks if the file exists.
+-d      file	Checks if the file is a directory.
+-f      file	Checks if the file is a regular file (i.e. not a symbolic link, device node, directory, etc.)
+-s      file	Checks if the file is of non-zero size.
+-g      file	Checks if the file has sgid set.
+-u      file	Checks if the file has suid set.
+-r      file	Checks if the file is readable.
+-w      file	Checks if the file is writable.
+-x      file	Checks if the file is executable.
+-h -L   file is symbolic link
+-z      file    string is null
+-n      file    string is not null
+-O      file    You are the owner of the file
+-G      file    Group id same with u
+-a  &&  and dan
+-o  ||  or atau
+-ne     int     not equal to = tidak sama dengan
+!=      string  idem
+-gt     int     greater than = lebih besar dari
+>       string  lebih besar menurut ASCII alphabetical order
+-eq     int     equal to = sama dengan
+==      string  sama dengan
+-ge     int     greater than equal = lebih besar sama dengan
+-lt     int     less then = lebih kecil dari
+<       string  lebih kecil menurut ASCII alphabetical order
+-le     int     less then equal = lebih kecil sama dengan
+-nt     file    newer then = file lebih baru daripada file kedua
+-ot     file    older then = file lebih tua daripada file kedua
+-ef     file    check file is hard link
+
+myLen1=${#string1}	hitung jumlah huruf pada string1 dan simpan dalam myLen1

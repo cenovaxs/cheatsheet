@@ -20,7 +20,7 @@ elif [ somothertest ] ; then
     echo Passed test2 
 fi
 
-#contoh pengaplikasian || sebagai pengganti elif
+#contoh pengaplikasian || atau or sebagai pengganti elif
 echo what is your name
 read name
 if [[ "$name" == John ]] || [[ "$name" == Ringgo ]] || [[ "$name" == George ]] || [[ "$name" == Paul ]]
