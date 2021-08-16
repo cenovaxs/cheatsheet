@@ -683,14 +683,14 @@ check condition dalam if [[]], info lebih lanjut $ man 1 test atau https://kapel
 -a  &&  and dan
 -o  ||  or atau
 -ne     int     not equal to = tidak sama dengan
-!=      string  idem
+!=      str     idem
 -gt     int     greater than = lebih besar dari
->       string  lebih besar menurut ASCII alphabetical order
+>       str       lebih besar menurut ASCII alphabetical order
 -eq     int     equal to = sama dengan
-==      string  sama dengan
+==      str       sama dengan
 -ge     int     greater than equal = lebih besar sama dengan
 -lt     int     less then = lebih kecil dari
-<       string  lebih kecil menurut ASCII alphabetical order
+<       str     lebih kecil menurut ASCII alphabetical order
 -le     int     less then equal = lebih kecil sama dengan
 -nt     file    newer then = file lebih baru daripada file kedua
 -ot     file    older then = file lebih tua daripada file kedua
