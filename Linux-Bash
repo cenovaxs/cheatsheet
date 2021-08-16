@@ -622,7 +622,6 @@ buat file hello.sh kemudian di awal file biasanya ada '#!/bin/bash' untuk menunj
 ubah file jadi executable $ chmod +x hello.sh
 untuk menjalankan gunakan $ bash hello.sh atau $ ./hello.sh
 kalau file belum executable maka harus pakai $ bash hello.sh
-echo "status: $" = nunjukin klo sukses 0 kalau gagal 2
 #	digunakan untuk comment, kecuali saat \#, atau #! when starting a script
 \	digunakan untuk pindah ke baris berikutnya
 ;	kalimat setelahnya jadi command untuk dieksekusi berikutnya
@@ -640,6 +639,7 @@ $1	First parameter
 $2, $3, etc.	Second, third parameter, etc.
 $*	All parameters
 $#	Number of arguments
+$?  cek status kalau 0=berhasil, 2=gagal 
 
 cara masukin command di dalam command
 $() atau ''
@@ -661,3 +661,16 @@ environment variable = digunakan sebagai shorcut atau kata kunci supaya lebih pe
         buka /etc/environment, edit file masukkan
             "export <var>=<isi>" 
                 $ source /etc/environment
+
+read <var> = menunggu input dari user dan kemudian di simpan dalam var
+function = subroutine = command yang dipakai berulang dalam satu program lihat contoh funtion.sh 
+check condition dalam if [[]], info lebih lanjut $ man 1 test
+-e file	Checks if the file exists.
+-d file	Checks if the file is a directory.
+-f file	Checks if the file is a regular file (i.e. not a symbolic link, device node, directory, etc.)
+-s file	Checks if the file is of non-zero size.
+-g file	Checks if the file has sgid set.
+-u file	Checks if the file has suid set.
+-r file	Checks if the file is readable.
+-w file	Checks if the file is writable.
+-x file	Checks if the file is executable.
