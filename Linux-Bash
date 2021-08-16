@@ -87,7 +87,7 @@ $ cp <fileyangmaudicopy> <namafilehasilcopy> = copy
 $ cp <{file1,file2}> <lokasihasilcopy> = copy beberapa file bersamaan 
 $ cp -r <namafolder> <namafolderhasilcopy> = copy folder dan seluruh isinya
 $ lsb_release -a = mengecek versi os
-$ uname -a = check nama komputer
+$ uname -a = check nama komputer, os, kernel
 $ whoami = check current user
 $ echo $USERNAME = idem diatas
 $ who -a = check siapa lagi yang login selain saya
@@ -640,3 +640,24 @@ $1	First parameter
 $2, $3, etc.	Second, third parameter, etc.
 $*	All parameters
 $#	Number of arguments
+
+cara masukin command di dalam command
+$() atau ''
+contohnya 
+$ ls /lib/modules/'uname -r' = yang ini untuk linux lama gak bisa dipakai buat ubuntu baru
+$ ls /lib/modules/$(uname -r) 
+
+environment variable = digunakan sebagai shorcut atau kata kunci supaya lebih pendek atau bila tidak mau memperlihatkan isi aslinya
+    temporary environment variable = hanya berlaku sementara kalau quit maka hilang 
+        $ env = lihat env variable yang ada
+        $ echo $<var> = $ printenv <var> = membuka ke terminal isi dari env var
+        $ export <var>=<isi> = <var>=<isi> ; export <var> = $ membuat env variable yang isinya var=isi
+        $ unset <var> = membuang var dan isinya dari list env
+    User Env variable = env permanen namun hanya berlaku pada user tertentu
+        buka ~/.bashrc , kemudian edit masukkan kata dibawah ini lokasi boleh dimana aja baris baru, biasanya diatas isinya, dan di save:
+            "export <var>=<isi>"
+                $ source ~/.bashrc = update bashrc supaya bisa kebaca yang baru dimasukin
+    Global Env variable = env permanen pada semua orang di komputer
+        buka /etc/environment, edit file masukkan
+            "export <var>=<isi>" 
+                $ source /etc/environment
