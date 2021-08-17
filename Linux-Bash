@@ -59,10 +59,6 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 < $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
 << = seperti diatas cuma dia bisa multiple line bisa digunakan untuk simpen file tanpa text editor
 > = ambil output program dan overwrite jadi sebuah text file
-$ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
-$ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
-    atau yang lebih singkat
-        $ 'program' >& 'all-output-file'
 >> = ambil output program dan ditambahkan output ke dalam text file
 & = membuat program berjalan di background
     contoh $ updatedb &
@@ -697,3 +693,22 @@ check condition dalam if [[]], info lebih lanjut $ man 1 test atau https://kapel
 -ef     file    check file is hard link
 
 myLen1=${#string1}	hitung jumlah huruf pada string1 dan simpan dalam myLen1
+debugging
+bash -x <script.sh>     menjalankan debugging
+bisa juga part tertentu debug
+set -x      tanda mulai debug
+set +x      tanda akhir debug
+
+file stream
+
+stdin	Standard Input, by default the keyboard/terminal for programs run from the command line	    0
+stdout	Standard output, by default the screen for programs run from the command line	            1
+stderr	Standard error, where output error messages are shown or saved	                            2
+cara menyimpan error file :
+$ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
+$ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
+    atau yang lebih singkat
+        $ 'program' >& 'all-output-file'
+
+untuk buat random Number Pakai $RANDOM
+$ echo $RANDOM
