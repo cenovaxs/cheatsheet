@@ -202,6 +202,7 @@ $ sudo gpasswd -d <user> <group> = mengeluarkan user dari group
     atau
 $ sudo usermod -G <namauser> <namagrup> <namagrup1> = grup yang gak disebutkan berarti bakal dikeluarkan
 $ chgrp <grup> <file> = pindah grup <file> ke dalam <grup>
+$ last = liat siapa yang login terakhir
 
 permission 
 $ sudo chown <user>:<group> <file.txt> = ganti owner
@@ -429,6 +430,22 @@ $ sudo crontab -e = buka crontab dengan root
 
 File penting dalam linux
 $ /etc/passwd
+    Username	    User login name	
+                    Should be between 1 and 32 characters long
+    Password	    User password (or the character x if the password is stored in the /etc/shadow file) in encrypted format	    
+                    Is never shown in Linux when it is being typed; this stops prying eyes
+    User ID (UID)	Every user must have a user id (UID)	
+                    UID 0 is reserved for root user
+                    UID's ranging from 1-99 are reserved for other predefined accounts
+                    UID's ranging from 100-999 are reserved for system accounts and groups
+                    Normal users have UID's of 1000 or greater
+    Group ID (GID)	The primary Group ID (GID); Group Identification Number stored in the /etc/group file	
+    User Info	    This field is optional and allows insertion of extra information about the user such as their name	
+                    For example: Rufus T. Firefly
+    Home Directory	The absolute path location of user's home directory	
+                    For example: /home/rtfirefly
+    Shell	        The absolute location of a user's default shell 	
+                    For example: /bin/bash
 $ /etc/hosts = bisa diganti isinya buat bikin dns sendiri
 $ /etc/shadow
 $ /etc/group
@@ -709,6 +726,61 @@ $ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kal
 $ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
     atau yang lebih singkat
         $ 'program' >& 'all-output-file'
+/def/null = folder spesial yang dimana kalau di output ke situ bakal hilang
+$ 'program' >& /dev/null 
+
+temporary file and folder yang akan dibuang sendiri
+$ mktemp /tmp/tempfile.XXXXXXXX = file sementara
+--suffix $ mktemp --suffix=.txt /tmp/tempfile.XXXXXXXX = akan menghasilkan file sementara dengan .txt dibelakang
+$ mktemp -d /tmp/tempdir.XXXXXXXX = folder sementara
 
 untuk buat random Number Pakai $RANDOM
 $ echo $RANDOM
+
+printer
+$ sudo systemctl status cups = lihat apakah daemon untuk printing jalan
+$ sudo systemctl stop cups = matiin daemon printing jadi gabs print
+$ sudo systemctl restart cups = jalankan kembali printing daemon
+$ sudo systemctl disable cups = buat agar waktu startup tidak mulai
+$ sudo systemctl enable cups = buat agar waktu startup mulai
+http://localhost:631 =  edit printer melalui gui browser
+cli untuk printing di linux
+$ lp <filename>	            To print the file to default printer
+$ lp -d printer <filename>	To print to a specific printer (useful if multiple printers are available)
+$ program | lp
+$ echo string | lp	        To print the output of a program
+$ lp -n number <filename>	To print multiple copies
+$ lpoptions -d printer	    To set the default printer
+$ lpq -a	                To show the queue status
+$ lpadmin	                To configure printer queues
+$ lpstat -p -d	            To get a list of available printers, along with their status
+$ lpstat -a	                To check the status of all connected printers, including job numbers
+$ cancel job-id
+     OR
+$ lprm job-id	            To cancel a print job
+$ lpmove job-id newprinter	To move a print job to new printer
+
+postscript dan pdf
+$ enscript -p psfile.ps textfile.txt	                            Convert a text file to PostScript (saved to psfile.ps)
+$ enscript -n -p psfile.ps textfile.txt	                            Convert a text file to n columns where n=1-9 (saved in psfile.ps)
+$ enscript textfile.txt	                                            Print a text file directly to the default printer
+$ pdf2ps file.pdf	                                                Converts file.pdf to file.ps
+$ ps2pdf file.ps	                                                Converts file.ps to file.pdf
+$ pstopdf input.ps output.pdf	                                    Converts input.ps to output.pdf
+$ pdftops input.pdf output.ps	                                    Converts input.pdf to output.ps
+$ convert input.ps output.pdf	                                    Converts input.ps to output.pdf
+$ convert input.pdf output.ps	                                    Converts input.pdf to output.ps
+$ qpdf --empty --pages 1.pdf 2.pdf -- 12.pdf	                    Merge the two documents 1.pdf and 2.pdf. The output will be saved to 12.pdf
+$ qpdf --empty --pages 1.pdf 1-2 -- new.pdf	                        Write only pages 1 and 2 of 1.pdf. The output will be saved to new.pdf
+$ qpdf --rotate=+90:1 1.pdf 1r.pdf                                  Rotate page 1 of 1.pdf 90 degrees clockwise and save to 1r.pdf
+$ qpdf --rotate=+90:1-z 1.pdf 1r-all.pdf                            Rotate all pages of 1.pdf 90 degrees clockwise and save to 1r-all.pdf
+$ qpdf --encrypt mypw mypw 128 -- public.pdf private.pdf            Encrypt with 128 bits public.pdf using as the passwd mypw with output as private.pdf
+$ qpdf --decrypt --password=mypw private.pdf file-decrypted.pdf     Decrypt private.pdf with output as file-decrypted.pdf. 
+$ gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite  -sOutputFile=all.pdf file1.pdf file2.pdf file3.pdf     gabungkan 3 file pdf jadi satu
+$ gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dDOPDFMARKS=false -dFirstPage=10 -dLastPage=20\           ambil hal 10-20 jadikan file baru
+-sOutputFile=split.pdf file.pdf
+$ pdfinfo <file>         nama program di apt = poppler-utils        untuk cek info file pdf
+    aplikasi lain yang berguna :
+    enscript    buat convert text ke postscript
+    flpsed      buat edit postscript
+    pdfmod      buat edit pdf
