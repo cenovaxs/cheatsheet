@@ -155,7 +155,6 @@ repository debian dpkg
 $ apt = versi lebih baru dan bagus hanya untuk debian
 $ apt update kemudian $ apt install <aplikasi> = hanya mengupdate aplikasi tertentu
 $ apt upgrade
-$ apt autoremove = membuang file yang sudah tidak dipakai setelah upgrade
 $ apt full-upgrade = menjalankan apt upgrade dan apt autoremove
 $ apt-get = command untuk install tapi sudah kuno diganti dengan yang baru yaitu apt
 $ apt-get install <aplikasi> = install aplikasi
@@ -169,16 +168,26 @@ $ apt-cache search <x> = buat cari file program yang terinstall kata kunci x
     atau bisa juga $ apt search <x> = versi yang lebih baru
 $ apt-cache policy <x> = liat versi aplikasi x
     atau $ apt policy <x>
+S sudo apt show <program> = tanya itu program apa
+$ sudo apt edit-sources = lihat sumber download apt bisa juga di edit kalau mau tambah repo
+$ sudo apt list = lihat semua aplikasi yang ada di repo
+$ sudo apt list --installed = lihat aplikasi yang telah di install
 $ sudo dpkg -i lokasifile/namafile = install dpkg melalui terminal
 untuk membersihkan installer yang rusak
-$sudo apt-get clean && sudo apt-get autoremove
-    atau bisa juga
-        $ apt clean && apt autoremove
-    kemudian
-$sudo apt-get -f install = menginstall aplikasi yang corrup. -f = fix
-    atau
-        $ apt -f install
-$dpkg --configure -a
+    $sudo apt-get clean && sudo apt-get autoremove
+        atau bisa juga
+            $ apt clean && apt autoremove
+        kemudian
+    $sudo apt-get -f install = menginstall aplikasi yang corrup. -f = fix
+        atau
+            $ apt -f install
+install dari github
+$ github clone <url>
+    baca dulu readme kemudian kalau ada requirements.txt lihat di readme install pake apa dan versi berapa misalnya npm atau pipe
+        $pip3 install -r requirements.txt
+            kemudian jalankan
+                $ python3 turbolister.py
+
 
 User admin
 $ su <userlain> = ganti user
