@@ -59,10 +59,6 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 < $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
 << = seperti diatas cuma dia bisa multiple line bisa digunakan untuk simpen file tanpa text editor
 > = ambil output program dan overwrite jadi sebuah text file
-$ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
-$ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
-    atau yang lebih singkat
-        $ 'program' >& 'all-output-file'
 >> = ambil output program dan ditambahkan output ke dalam text file
 & = membuat program berjalan di background
     contoh $ updatedb &
@@ -112,7 +108,7 @@ $ exit = keluar dari terminal
 /tmp$ xpdyinfo | grep dim = lihat dimensi layar menggunakan cli
 
 Networking
-ip
+$ nmcli = melihat device yang diketahui (bluetooth, wifi, lan)
 $ ip addr show = kyk ifconfig
 $ ip route show = $ route -n = $ netstat -nr = show routing table
 $ route add -net <ip> netmask <netip> gw <defaultgateway> def <device/wl01> = $ ip route add <ip/mask> via <defaultgateway> def <device/wl01> = set ip statis
@@ -215,6 +211,9 @@ $ sudo gpasswd -d <user> <group> = mengeluarkan user dari group
     atau
 $ sudo usermod -G <namauser> <namagrup> <namagrup1> = grup yang gak disebutkan berarti bakal dikeluarkan
 $ chgrp <grup> <file> = pindah grup <file> ke dalam <grup>
+$ last = liat siapa yang login terakhir
+$ chage --list <user> = lihat kapan passowrd expire
+$ sudo chage -E 2030-31-12 <user> = set password expire
 
 permission 
 $ sudo chown <user>:<group> <file.txt> = ganti owner
@@ -441,13 +440,31 @@ contoh :
 $ sudo crontab -e = buka crontab dengan root
 
 File penting dalam linux
+$ /var/log/auth.log = isinya tentang user login log untuk debian saja, untuk linux lain ada di /var/log/messages and/or /var/log/secure
 $ /etc/passwd
-$ /etc/hosts = bisa diganti isinya buat bikin dns sendiri
-$ /etc/shadow
+    Username	    User login name	
+                    Should be between 1 and 32 characters long
+    Password	    User password (or the character x if the password is stored in the /etc/shadow file) in encrypted format	    
+                    Is never shown in Linux when it is being typed; this stops prying eyes
+    User ID (UID)	Every user must have a user id (UID)	
+                    UID 0 is reserved for root user
+                    UID's ranging from 1-99 are reserved for other predefined accounts
+                    UID's ranging from 100-999 are reserved for system accounts and groups
+                    Normal users have UID's of 1000 or greater
+    Group ID (GID)	The primary Group ID (GID); Group Identification Number stored in the /etc/group file	
+    User Info	    This field is optional and allows insertion of extra information about the user such as their name	
+                    For example: Rufus T. Firefly
+    Home Directory	The absolute path location of user's home directory	
+                    For example: /home/rtfirefly
+    Shell	        The absolute location of a user's default shell 	
+                    For example: /bin/bash
+$ /etc/hosts        bisa diganti isinya buat bikin dns sendiri
+$ /etc/shadow       hash password
 $ /etc/group
 $ /etc/network
 $ /etc/init.d/<daemon> <option> = lokasi file menjalankan daemon (cthnya ssh) dengan option : start,stop,reload,restart,force-reload
-$ /etc/netplan = didalam folder tersebut terdapat yaml file yang bisa buat ganti default gateway, dns
+$ /etc/netplan      didalam folder tersebut terdapat yaml file yang bisa buat ganti default gateway, dns
+$ /etc/environment  isinya Path, global bisa diconfigurasi pake bash
     check type os dari etc = $ cat /etc/*issue
     check versi os dari etc = $ cat /etc/*release
     check nama host dari etc = $ cat /etc/hostname
@@ -706,3 +723,79 @@ check condition dalam if [[]], info lebih lanjut $ man 1 test atau https://kapel
 -ef     file    check file is hard link
 
 myLen1=${#string1}	hitung jumlah huruf pada string1 dan simpan dalam myLen1
+debugging
+bash -x <script.sh>     menjalankan debugging
+bisa juga part tertentu debug
+set -x      tanda mulai debug
+set +x      tanda akhir debug
+
+file stream
+
+stdin	Standard Input, by default the keyboard/terminal for programs run from the command line	    0
+stdout	Standard output, by default the screen for programs run from the command line	            1
+stderr	Standard error, where output error messages are shown or saved	                            2
+cara menyimpan error file :
+$ 'program' 2> 'errorfile' = mengambil keterangan error menjadi sebuah file, kalau tidak error akan ditampilkan di terminal meskipun output > file.txt sudah menjadi file.txt
+$ 'program' > 'all-output-file' 2>&1 = menyimpan output serta error ke dalam file
+    atau yang lebih singkat
+        $ 'program' >& 'all-output-file'
+/def/null = folder spesial yang dimana kalau di output ke situ bakal hilang
+$ 'program' >& /dev/null 
+
+temporary file and folder yang akan dibuang sendiri
+$ mktemp /tmp/tempfile.XXXXXXXX = file sementara
+--suffix $ mktemp --suffix=.txt /tmp/tempfile.XXXXXXXX = akan menghasilkan file sementara dengan .txt dibelakang
+$ mktemp -d /tmp/tempdir.XXXXXXXX = folder sementara
+
+untuk buat random Number Pakai $RANDOM
+$ echo $RANDOM
+
+printer
+$ sudo systemctl status cups = lihat apakah daemon untuk printing jalan
+$ sudo systemctl stop cups = matiin daemon printing jadi gabs print
+$ sudo systemctl restart cups = jalankan kembali printing daemon
+$ sudo systemctl disable cups = buat agar waktu startup tidak mulai
+$ sudo systemctl enable cups = buat agar waktu startup mulai
+http://localhost:631 =  edit printer melalui gui browser
+cli untuk printing di linux
+$ lp <filename>	            To print the file to default printer
+$ lp -d printer <filename>	To print to a specific printer (useful if multiple printers are available)
+$ program | lp
+$ echo string | lp	        To print the output of a program
+$ lp -n number <filename>	To print multiple copies
+$ lpoptions -d printer	    To set the default printer
+$ lpq -a	                To show the queue status
+$ lpadmin	                To configure printer queues
+$ lpstat -p -d	            To get a list of available printers, along with their status
+$ lpstat -a	                To check the status of all connected printers, including job numbers
+$ cancel job-id
+     OR
+$ lprm job-id	            To cancel a print job
+$ lpmove job-id newprinter	To move a print job to new printer
+
+postscript dan pdf
+$ enscript -p psfile.ps textfile.txt	                            Convert a text file to PostScript (saved to psfile.ps)
+$ enscript -n -p psfile.ps textfile.txt	                            Convert a text file to n columns where n=1-9 (saved in psfile.ps)
+$ enscript textfile.txt	                                            Print a text file directly to the default printer
+$ pdf2ps file.pdf	                                                Converts file.pdf to file.ps
+$ ps2pdf file.ps	                                                Converts file.ps to file.pdf
+$ pstopdf input.ps output.pdf	                                    Converts input.ps to output.pdf
+$ pdftops input.pdf output.ps	                                    Converts input.pdf to output.ps
+$ convert input.ps output.pdf	                                    Converts input.ps to output.pdf
+$ convert input.pdf output.ps	                                    Converts input.pdf to output.ps
+$ qpdf --empty --pages 1.pdf 2.pdf -- 12.pdf	                    Merge the two documents 1.pdf and 2.pdf. The output will be saved to 12.pdf
+$ qpdf --empty --pages 1.pdf 1-2 -- new.pdf	                        Write only pages 1 and 2 of 1.pdf. The output will be saved to new.pdf
+$ qpdf --rotate=+90:1 1.pdf 1r.pdf                                  Rotate page 1 of 1.pdf 90 degrees clockwise and save to 1r.pdf
+$ qpdf --rotate=+90:1-z 1.pdf 1r-all.pdf                            Rotate all pages of 1.pdf 90 degrees clockwise and save to 1r-all.pdf
+$ qpdf --encrypt mypw mypw 128 -- public.pdf private.pdf            Encrypt with 128 bits public.pdf using as the passwd mypw with output as private.pdf
+$ qpdf --decrypt --password=mypw private.pdf file-decrypted.pdf     Decrypt private.pdf with output as file-decrypted.pdf. 
+$ gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite  -sOutputFile=all.pdf file1.pdf file2.pdf file3.pdf     gabungkan 3 file pdf jadi satu
+$ gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dDOPDFMARKS=false -dFirstPage=10 -dLastPage=20\           ambil hal 10-20 jadikan file baru
+-sOutputFile=split.pdf file.pdf
+$ pdfinfo <file>         nama program di apt = poppler-utils        untuk cek info file pdf
+    aplikasi lain yang berguna :
+    enscript    buat convert text ke postscript
+    flpsed      buat edit postscript
+    pdfmod      buat edit pdf
+
+grub2 buat bukin password bios   https://help.ubuntu.com/community/Grub2/Passwords Furthermore, you never edit grub.cfg directly; instead, you can modify the configuration files in /etc/grub.d and /etc/defaults/grub, and then run update-grub, or grub2-mkconfig and save the new configuration file.
