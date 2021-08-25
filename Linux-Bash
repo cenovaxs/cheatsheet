@@ -98,6 +98,7 @@ $ id = info semua id user dan grup sebuah user
 $ groups <user> = melihat grup yang dimiliki user
 $ hostname = info hostname
 $ uname -a = info tentang os dan system
+$ echo XDG_CURRENT_DESKTOP = info desktop environment (Gnome/KDE/dll)
 $ date = melihat waktu
 $ ss = alat untuk lihat socket,session
 $ env = menjalankan program dalam lingkungan yang dimodif
