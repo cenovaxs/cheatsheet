@@ -184,6 +184,7 @@ $ github clone <url>
         $pip3 install -r requirements.txt
             kemudian jalankan
                 $ python3 turbolister.py
+Synaptic = debian packet manager = install manager untuk debian
 
 
 User admin
