@@ -420,13 +420,24 @@ CTRL-Z = menghentikan sementara program yang berjalan di terminal
 $ bg = membuat file berjalan di background (berguna apabila mau menjalankan aplikasi lain tapi sebelumnya harus CTRL-Z untuk disetop dulu)
 $ fg = membuat file berjalan di foreground (terminal terhenti)
 
-
+Daemons 
 service atau systemctl = menjalankan servis pilih salah satu antaranya saja tapi disarankan systemctl
 $ sudo service <namaprogram> start = menjalankan service
 $ sudo service <namaprogram> stop = menghentikan service
 $ sudo service <namaprogram> restart = merestart service
-$ sudo systemctl start <namaprogram> = menjalankan systemctl
-$ sudo systemctl stop <namaprogram> = menghentikan systemctl
+$ sudo systemctl start <namaprogram> = menjalankan daemon
+$ sudo systemctl stop <namaprogram> = menghentikan daemon
+$ sudo systemctl restart <namaprogram> = merestart daemon
+$ sudo systemctl reload <namaprogram> = mengupdate perubahan setting
+$ sudo systemctl reload-or-restart <namaprogram> = reload kalau ga bisa restart
+$ sudo systemctl status <namaprogram> = melihat status daemon
+$ sudo systemctl enable <namaprogram> = membuat program otomatis berjalan saat komp nyala
+$ sudo systemctl disable <namaprogram> = membuat program tidak langsung berjalan saat komp nyala
+$ sudo systemctl is-active <namaprogram> = melihat apakah program berjalan
+$ sudo systemctl is-enabled <namaprogram> = melihat apakah program otomatis dimulai saat komp nyala
+$ sudo systemctl list-units = lihat semua daemons yang teregistrasi dalam ram (active,listening,closed,waiting)
+-t $ sudo systemctl list-units -t <type> = berdasarkan tipe (contoh : service,timer,path)
+$ sudo systemctl list-unit-files = lihat semua daemons yang ada di sistem
 
 crontabs
 $ crontab -e = buka crontab
