@@ -27,5 +27,5 @@ if [[ "$name" == John ]] || [[ "$name" == Ringgo ]] || [[ "$name" == George ]] |
 then    
     echo welcome $name
 else
-    echo you are not welcome
+    echo $name you are not welcome here go away!!
 fi
