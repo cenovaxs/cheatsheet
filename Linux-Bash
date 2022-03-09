@@ -38,6 +38,7 @@ $ ls -l = (long) lihat termasuk permission, jumlah subfolder, user, group, size,
 $ ls -p = urut berdasarkan filetype
 $ ls -s = (size) urut berdasarkan file size
 $ ls -i = (inode) menampilkan angka id file atau folder
+$ \ls matiin warna dari ls
 $ ln <file1> <file2> = membuat link yaitu dua file dengan nama berbeda namun sebenarnya satu file
 $ ln -s <filetarget> <fileshortcut> = membuat shortcut file target
     kalau gak mau ganti nama bisa tapi musti beda folder
@@ -110,7 +111,7 @@ $ exit = keluar dari terminal
 
 Networking
 $ nmcli = melihat device yang diketahui (bluetooth, wifi, lan)
-$ ip addr show = $ ip ad = kyk ifconfig
+$ ip addr show = $ ip a = kyk ifconfig
 $ ip route show = $ route -n = $ netstat -nr = show routing table
 $ route add -net <ip> netmask <netip> gw <defaultgateway> def <device/wl01> = $ ip route add <ip/mask> via <defaultgateway> def <device/wl01> = set ip statis
 setelah itu $ service network restart
