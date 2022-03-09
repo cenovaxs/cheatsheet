@@ -1,0 +1,38 @@
+:q!             keluar tanpa save
+:w              save
+:q              keluar dan save
+u               undo
+ctrl+R          redo
+:help           help
+/<x>            cari kata menggunakan kata kunci <x>
+    n           untuk cari kata berikutnya
+    N           untuk cari kata sebelumnya
+*               ke kata yang sama berikutnya
+#               ke kata yang sama sebelumnya   
+gg              ke paling pertama di file
+G               Ke paling akhir di file
+<x>G            pindah ke line nomor <x> contoh 3G pindah ke line 3
+h               pindah kursor ke kiri
+j               pindah kursor ke bawah
+k               pindah kursor ke atas
+l               pindah kursor ke kanan
+w               pindah ke awal kata berikutnya
+e               pindah ke akhir kata
+b               pindah ke awal kata sebelumnya
+<x><y>          menjalankan perintah <y> sebanyak <x> kali contoh 3w berarti 3 kali w
+<x>i<z> <esc>   menulis <z> sebanyak <x> kali misalnya 3igo <escape> menulis gogogo
+%               pindah ke penutup parentheses (buat cari parentheses)
+0               ke awal baris
+$               ke akhir baris
+o               menulis + menambah baris dibawahnya
+O               menulis + menambah baris diatasnya
+x               menghapus huruf yang di kursor
+r               ganti huruf tanpa ke insert mode
+d               delete
+    dw          hapus kata sebelah kanan kursor
+    de          hapus kata dan pindah kursor ke akhir kata yang dihapus
+    db          hapus kata sebelum kursor
+    p           paste kata yang dihapus
+    d<x>w       hapus sejumlah <x> kata
+.               ulang perintah sebelumnya
+v               visual mode bisa pilih dengan e dan kursor kemudian delete dengan d
