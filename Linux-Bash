@@ -110,7 +110,7 @@ $ exit = keluar dari terminal
 
 Networking
 $ nmcli = melihat device yang diketahui (bluetooth, wifi, lan)
-$ ip addr show = kyk ifconfig
+$ ip addr show = $ ip ad = kyk ifconfig
 $ ip route show = $ route -n = $ netstat -nr = show routing table
 $ route add -net <ip> netmask <netip> gw <defaultgateway> def <device/wl01> = $ ip route add <ip/mask> via <defaultgateway> def <device/wl01> = set ip statis
 setelah itu $ service network restart
@@ -475,6 +475,8 @@ $ /etc/hosts        bisa diganti isinya buat bikin dns sendiri
 $ /etc/shadow       hash password
 $ /etc/group
 $ /etc/network
+    /etc/network/interfaces = setting ip static atau dhcp ganti dns dan info interface lainnya
+$ /etc/resolv.conf          = melihat dan mengganti dns server   
 $ /etc/init.d/<daemon> <option> = lokasi file menjalankan daemon (cthnya ssh) dengan option : start,stop,reload,restart,force-reload
 $ /etc/netplan      didalam folder tersebut terdapat yaml file yang bisa buat ganti default gateway, dns
 $ /etc/environment  isinya Path, global bisa diconfigurasi pake bash
