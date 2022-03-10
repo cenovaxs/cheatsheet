@@ -201,6 +201,8 @@ $ sudo userdel <namauser> = hapus user tapi sebaiknya jangan dipakai kalau mau p
     atau
 $ sudo deluser <namauser> = menghapus user
 $ sudo passwd <namauser> = ganti password user
+    $ passwd -l <namauser> = kunci user supaya gak bisa login
+    $ passwd -u <namauser> = buka kunci supaya bisa login lagi
 $ sudo addgroup <namagrup> = buat grup baru lebih user friendly
 $ sudo groupadd <namagrup> = buat grup baru
 $ sudo groupdel <grup> = del grup
@@ -216,7 +218,7 @@ $ sudo usermod -G <namauser> <namagrup> <namagrup1> = grup yang gak disebutkan b
 $ chgrp <grup> <file> = pindah grup <file> ke dalam <grup>
 $ last = liat siapa yang login terakhir
 $ chage --list <user> = lihat kapan passowrd expire
-$ sudo chage -E 2030-31-12 <user> = set password expire
+$ sudo chage -E 2030-31-12 <user> = set password expire. Silahkan --help check simple kok
 
 permission 
 $ sudo chown <user>:<group> <file.txt> = ganti owner
