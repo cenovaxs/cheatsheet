@@ -35,15 +35,25 @@ $               ke akhir baris
 o               menulis + menambah baris dibawahnya
 O               menulis + menambah baris diatasnya
 x               menghapus huruf yang di kursor
-r               ganti huruf tanpa ke insert mode
+r               replace huruf masuk ke insert
 d               delete
+    dd          hapus satu baris
     dw          hapus kata sebelah kanan kursor
     de          hapus kata dan pindah kursor ke akhir kata yang dihapus
     db          hapus kata sebelum kursor
     p           paste kata yang dihapus
     d<x>w       hapus sejumlah <x> kata
+D               hapus semua kata dari kursor sampai akhir baris
+cc              hapus satu baris tapi baris kosongnya tetap ada dan masuk ke insert mode
+C               Hampir sama kyk D tapi masuk ke mode insert
+y               copy sebaris
+p               paste
+P               paste ke atas
 .               ulang perintah sebelumnya
-v               visual mode bisa pilih dengan e dan kursor kemudian delete dengan d
+v               visual mode bisa pilih e, kursor navigasi, kemudian 
+    d           untuk delete
+    y           untuk copy kemudian 
+    p           untuk paste
 untuk mensave preference dalam vim :
     buat atau ganti file $ ~/.vimrc
         didalamnya tulis contoh:
