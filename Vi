@@ -25,8 +25,11 @@ j               pindah kursor ke bawah
 k               pindah kursor ke atas
 l               pindah kursor ke kanan
 w               pindah ke awal kata berikutnya
+W               pindah ke setelah spasi berikutnya 
 e               pindah ke akhir kata
+E               pindah ke akhir kata setelah spasi
 b               pindah ke awal kata sebelumnya
+B               pindah ke awal kata spasi sebelumnya
 <x><y>          menjalankan perintah <y> sebanyak <x> kali contoh 3w berarti 3 kali w
 <x>i<z> <esc>   menulis <z> sebanyak <x> kali misalnya 3igo <escape> menulis gogogo
 %               pindah ke penutup parentheses (buat cari parentheses)
@@ -38,14 +41,19 @@ x               menghapus huruf yang di kursor
 r               replace huruf masuk ke insert
 d               delete
     dd          hapus satu baris
-    dw          hapus kata sebelah kanan kursor
-    de          hapus kata dan pindah kursor ke akhir kata yang dihapus
+    dw          hapus sampai awal kata sebelah kanan kursor
+    diw         hapus kata 
+    de          hapus sampai akhir kata 
     db          hapus kata sebelum kursor
     p           paste kata yang dihapus
     d<x>w       hapus sejumlah <x> kata
-D               hapus semua kata dari kursor sampai akhir baris
+    d0          hapus semua kata dari kursor sampai awal
+D atau d$       hapus semua kata dari kursor sampai akhir baris
 cc              hapus satu baris tapi baris kosongnya tetap ada dan masuk ke insert mode
 C               Hampir sama kyk D tapi masuk ke mode insert
+ciw             ganti satu kata
+ci"             ganti isi quotation
+ci(             ganti isi parentheses
 y               copy sebaris
 p               paste
 P               paste ke atas
