@@ -4,6 +4,10 @@
 u               undo
 ctrl+R          redo
 :help           help
+:set number     memberi nomor pada baris
+:set relativenumber     memberi nomor untuk mempermudah naik turun dalam vim
+:set tabstop=<x>    setting jumlah space dalam tab sebanyak x
+:colorscheme    menganti warna vi  
 i               ngetik mulai sebelum kursor
 a               ngetik mulai setelah kursor
 I               ngetik mulai dari awal baris
@@ -40,3 +44,13 @@ d               delete
     d<x>w       hapus sejumlah <x> kata
 .               ulang perintah sebelumnya
 v               visual mode bisa pilih dengan e dan kursor kemudian delete dengan d
+untuk mensave preference dalam vim :
+    buat atau ganti file $ ~/.vimrc
+        didalamnya tulis contoh:
+            set number
+            set relativenumber
+            set tabstop=4
+            set autoindent
+            set shiftwidth=4
+            set mouse=a
+            colorscheme slate
