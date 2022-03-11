@@ -4,6 +4,10 @@
 u               undo
 ctrl+R          redo
 :help           help
+i               ngetik mulai sebelum kursor
+a               ngetik mulai setelah kursor
+I               ngetik mulai dari awal baris
+A               ngetik mulai dari akhir baris
 /<x>            cari kata menggunakan kata kunci <x>
     n           untuk cari kata berikutnya
     N           untuk cari kata sebelumnya
