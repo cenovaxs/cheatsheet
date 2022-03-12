@@ -408,6 +408,7 @@ $ ps -eLF = lihat info per thread
 $ ps axo <custom1,custom2,....> = memperlihatkan berdasarkan pilihan sendiri lihat man ps biar jelas
 $ ps aux | grep <namayangdicari> = menfilter hasil dengan hanya menampilkan namayangdicari
 $ pgrep <namaprogram> = menampilkan PID proses id program yang dicari, kalau program yang sama jalan lebih dari satu maka pid juga lebih dari satu, urutan menurut waktu jadi yang dibuka pertama akan ada diatas sementara yang terakhir akan ada dibelakang
+$ ps fax = memperlihatkan proses dengan parent childnya 
 $ pstree = memperlihatkan proses dengan tree jadi kelihatan parent childrennya 
 ?$ pkill <namaprogram> = mematikan proses berdasarkan namaprogram
 $ kill <pid1> <pid2> = mematikan proses berdasarkan id bisa beberapa sekaligus
