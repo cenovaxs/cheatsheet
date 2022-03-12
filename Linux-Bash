@@ -221,6 +221,8 @@ $ chage --list <user> = lihat kapan passowrd expire
 $ sudo chage -E 2030-31-12 <user> = set password expire. Silahkan --help check simple kok
 
 permission 
+file r=bisa buka, w=bisa tulis, x=bisa jalankan atau run
+folder r=bisa ls, w=bisa cp,rm,mkdir, x=bisa cd
 $ sudo chown <user>:<group> <file.txt> = ganti owner
 $ sudo chown -R <user>:<group> <./Dir> = -R berarti ganti beserta isi yang ada di dalam folder dir
 drwxrwxrwx = huruf 1 d kalau folder kalau file dia -, huruf 2-4 permission untuk owner, huruf 5-7 permission untuk group, huruf 8-0 permission untuk (publik) yang lain
@@ -231,7 +233,7 @@ r (read) – 4
 w (write) – 2
 x (execute) – 1
     atau
-$ sudo chmod ugoa+-rwx, ugoa+-rwx, ugoa+-rwx <file>
+$ sudo chmod <ugoa+-=rwx>,<ugoa+-=rwx>,<ugoa+-=rwx> <file>
     u = user
     g = user lain yang ada di group
     o = user lain yang tidak ada di group
@@ -239,7 +241,7 @@ $ sudo chmod ugoa+-rwx, ugoa+-rwx, ugoa+-rwx <file>
         kalau dikosongin maka default = a / semua user
     + = tambah mode
     - = kurang mode
-        contoh sudo chmod go-w = membuat user lain untuk tidak bisa mengedit
+        contoh sudo chmod u=rx,go-w = membuat user lain untuk tidak bisa mengedit
 
 find = cari file dan folder di linux 
  
