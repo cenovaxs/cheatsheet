@@ -45,6 +45,7 @@ $ ln -s <filetarget> <fileshortcut> = membuat shortcut file target
         contoh $ ln -s ../text.txt .
 $ pwd = posisi sekarang
 $ tree = ngeliat directory semua tanpa GUI
+$ df -h = liat disk usage semuanya
 $ cd = pindah folder
 $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa untuk semua command
 ? = single wildcard jadinya misalnya lupa namanya tp inget satu atau dua huruf pertama maka yang tidak diketahui bisa direplace dengan ?
