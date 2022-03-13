@@ -114,6 +114,8 @@ Networking
 $ nmcli = melihat device yang diketahui (bluetooth, wifi, lan)
 $ ip addr show = $ ip a = kyk ifconfig
 $ ip route show = $ route -n = $ netstat -nr = show routing table
+$ ip link set <int> down = matiin wifi atau lan contoh : $ sudo ip link set ens3 down
+$ ip link set <int> up = nyalain wifi atau lan
 $ route add -net <ip> netmask <netip> gw <defaultgateway> def <device/wl01> = $ ip route add <ip/mask> via <defaultgateway> def <device/wl01> = set ip statis
 setelah itu $ service network restart
 $ route del -net address = $ ip route del = del ip statis 
