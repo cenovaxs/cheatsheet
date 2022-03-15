@@ -1,4 +1,4 @@
-# STRING
+# Huruf (STRING)
 
 # Quote
 # contoh dibawah '' yang salah
@@ -71,3 +71,22 @@ print(sentence)
 print(dir(message))
 # untuk mencari tau apa fungsi dari method tersebut
 print(help(str))
+
+# Angka (Integer dan float)
+num=10
+
+prin(type(num))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
