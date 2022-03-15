@@ -68,14 +68,13 @@ hasil = 9.87654321
 sentence = f'hasil = {hasil:.4}'
 print(sentence)
 # untuk mengecek method apa saja yang bisa digunakan
-print(dir(message))
+#print(dir(message))
 # untuk mencari tau apa fungsi dari method tersebut
-print(help(str))
+#print(help(str))
 
 # Angka (Integer dan float)
 num=10
-
-prin(type(num))
+print(type(num))
 
 
 
