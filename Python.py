@@ -75,6 +75,13 @@ print(sentence)
 # Angka (Integer dan float)
 num=10
 print(type(num))
+#floor division // ambil hasil bagi pertama contoh:
+print(7//2) #3
+print(4//2) #2
+#modulus % ambil sisa dari hasil bagi contoh:
+print(7%4) #3
+
+
 
 
 
