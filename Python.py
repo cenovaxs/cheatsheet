@@ -78,12 +78,29 @@ print(type(num))
 #floor division // ambil hasil bagi pertama contoh:
 print(7//2) #3
 print(4//2) #2
-#modulus % ambil sisa dari hasil bagi contoh:
-print(7%4) #3
-
-
-
-
+#modulus % ambil sisa dari hasil bagi, biasanya digunakan untuk cek ganjil genap contoh:
+print(7%4) #3 
+#pangkat ** 
+print(2**4) #2pangkat4 = 16
+#*= kali jumlah, bisa juga -= , +=, /=, contoh
+num = 20
+num /= 4
+print(num) # hasilnya 20/4 = 5.0
+#abs absolut, menghilangkan minus
+print(abs(-30)) #hasilnya 30
+print(abs(30))  #hasilnya 30
+#round pembulatan
+print(round(3.49)) #hasilnya 3
+print(round(3.5)) #hasilnya 4
+print(round(3.634578, 4)) #dibulatkan sampai 4 angka dibelakang koma
+#comparison
+print(3==3) #apakah 3 sama dengan 3 
+print(3!=3) #apakah 3 tidak sama dengan 3?
+print(3>=2) #apakah 3 lebih besar sama dengan 2
+print(3<=2) #apakah 3 lebih kecil sama dengan 2
+#str(), int(), float() method untuk mengubah menjadi str, int ,float contoh
+str1='100'
+print(float(str1))
 
 
 
