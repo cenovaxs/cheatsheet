@@ -102,13 +102,27 @@ print(3<=2) #apakah 3 lebih kecil sama dengan 2
 str1='100'
 print(float(str1))
 
+#List and Tuples
+matpel = ['sejarah','mat', 'fis','agama']
+print(len(matpel)) #melihat jumlah item dalam list
+print(matpel[0]) #melihat hanya isi item pertama
+print(matpel[-1]) #melihat hanya isi item terakhir
+print(matpel[0:2]) #melihat isi pertama sampai kedua
+print(matpel[:2]) #sama kyk diatas
+print(matpel[2:]) #melihat isi ketiga sampai akhir
+print(matpel[::-1]) #melihat isi reverse
+print(matpel[-1:0:-1]) #dari belakang ke nomor 2
 
+matpel.append('seni') #tambah dibelakang
+print(matpel)
+matpel.insert(0,'seni')#tambah di posisi awal, bisa juga diatur posisi sesuai dengan keinginan
 
-
-
-
-
-
+matpel2=['seni', 'olahraga'] #apabila mau menggabungkan list tidak bisa menggunakan append
+matpel.append(matpel2) #karena akan menambahkan list di dalam list
+print(matpel)
+matpel = ['sejarah','mat', 'fis','agama'] #gunakan extend untuk menggabungkan dua list
+matpel.extend(matpel2)
+print(matpel)
 
 
 
