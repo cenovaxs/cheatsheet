@@ -223,5 +223,25 @@ print(seta.intersection(setb))
 #difference mengambil hanya yang berbeda dalam 2 set
 print(seta.difference(setb))
 
+#Dictionary
 
-
+murid = {'name':'John', 'age': 25, 'courses':['Math','CompSci']}
+#mengambil dari dictionary
+print(murid['name']) #tapi ini tidak disarankan karena kalau ga ada maka bakal error
+#cara yang disarankan dalam mengambil dict:
+print(murid.get('name')) # kalau ini misalny ga ada maka akan none
+print(murid.get('asfn o3wh1'))
+print(murid.get('asfn o3wh1','Not Found')) #kalau ga mau none bisa diganti dengan yang lain
+#cara mengupdate dict, kalau sudah ada key di dalamnya maka isinya akan diganti dengan yang baru
+murid['phone'] = '089111555'
+print(murid)
+#atau .update cara lain mengupdate
+murid.update({'name': "Jane", 'phone': '750384', 'school': 'OL'})
+print(murid)
+#del hapus
+del murid['school']
+print(murid)
+#pop hapus dan return value
+phone = murid.pop('phone')
+print(murid)
+print(phone)
