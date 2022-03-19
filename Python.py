@@ -1,5 +1,9 @@
 # Huruf (STRING)
 
+#type()
+message = 'string'
+print(type(message))
+
 # Quote
 # contoh dibawah '' yang salah
 # message = 'Bobby's World'
@@ -113,17 +117,111 @@ print(matpel[2:]) #melihat isi ketiga sampai akhir
 print(matpel[::-1]) #melihat isi reverse
 print(matpel[-1:0:-1]) #dari belakang ke nomor 2
 
-matpel.append('seni') #tambah dibelakang
+#append tambah dibelakang
+matpel.append('seni') 
 print(matpel)
-matpel.insert(0,'seni')#tambah di posisi awal, bisa juga diatur posisi sesuai dengan keinginan
+#tambah di posisi awal, bisa juga diatur posisi sesuai dengan keinginan
+matpel.insert(0,'seni')
 
 matpel2=['seni', 'olahraga'] #apabila mau menggabungkan list tidak bisa menggunakan append
 matpel.append(matpel2) #karena akan menambahkan list di dalam list
 print(matpel)
+
+#extend menggabungkan dua list
 matpel = ['sejarah','mat', 'fis','agama'] #gunakan extend untuk menggabungkan dua list
 matpel.extend(matpel2)
 print(matpel)
 
+#membuang list
+matpel.remove(matpel[0])
+print(matpel)
+#atau
+matpel.remove('mat')
+print(matpel)
+#pop membuang yang paling belakang dan return value
+popped = matpel.pop()
+popped2 = matpel.pop()
+print(matpel)
+print(popped) #olahraga
+print(popped2) #seni
+
+#reverse sebutkan isi list dari belakang
+matpel = ['sejarah','mat', 'fis','agama', 'bahasa']
+matpel.reverse()
+print(matpel)
+
+#sort atur sesuai aplhabetical
+matpel.sort()
+print(matpel)
+#bisa juga digunakan untuk mengurutkan angka dari kecil ke besar
+listangka = [6,24,52,100,2,5,20,80] 
+listangka.sort()
+print(listangka)
+#kalau mau terbalik bisa dengan:
+listangka.sort(reverse=True)
+print(listangka)
+
+#sorted kyk sort tapi return value, ini kepakai kalau ga mau ganti originalnya
+sorted_matpel = sorted(matpel)
+print(sorted_matpel)
+
+#min value minimum yang paling rendah
+print(min(matpel))
+#max value paling tinggi
+print(max(matpel))
+#sum jumlah
+print(sum(listangka))
+
+#index cari urutan 
+print(matpel.index('fis')) #2 karena fis ada diurutan ke tiga
+
+#cek apakah ada di dalam list
+print('fis' in matpel) #True
+
+#enumerate
+for ea in enumerate(matpel):
+    print(ea) #hasil masih dalam bentuk list
+#yang rapih
+for no, ea in enumerate(matpel):
+    print(no, ea)
+#kalau mau mulai dari 1 bukan 0
+for no, ea in enumerate(matpel, start=1):
+    print(no, ea)
+
+#join jadi satu string
+matpel_join = ' - '.join(matpel) #bisa pake koma, atau apapun kalau mau yang lain tinggal ganti aja
+print(matpel_join)
+#split ubah string jadi list
+matpel3 = matpel_join.split(" - ")
+print(matpel3)
+
+#tuple () kyk list tapi immutable gabs diganti
+
+#set {} kyk list tapi gak ada order (unordered list) dan gak bisa doble ini cocok buat ngeeliminasi yang doble2
+
+# list() convert menjadi list 
+atuple =(1,2,3,4,5)
+alist = list(atuple)
+print(type(alist)) #jadi list
+# set() convert menjadi set
+aset = set(atuple)
+print(type(aset))
+# tuple() convert menjadi tuple
+btuble = tuple(aset)
+print(type(btuble))
+
+#union ini khusus untuk set aja mengabungkan 2 set
+seta = set(matpel)
+print(seta)
+setb = {'agama', 'sejarah','mat','geo','bio'}
+print(setb)
+print(seta.union(matpel2))
+
+#intersection mengambil hanya yang sama dalam 2 set
+print(seta.intersection(setb))
+
+#difference mengambil hanya yang berbeda dalam 2 set
+print(seta.difference(setb))
 
 
 
