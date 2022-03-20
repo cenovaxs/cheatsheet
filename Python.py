@@ -82,6 +82,24 @@ print(sentence)
 # print(help(str))
 
 # Angka (Integer dan float)
+"""
+List dibawah adalah prioritas logical python 
+
+()	                                            Parentheses
+**	                                            Exponent
++x, -x, ~x	                                    Unary plus, Unary minus, Bitwise NOT
+*, /, //, %	                                    Multiplication, Division, Floor division, Modulus
++, -	                                        Addition, Subtraction
+<<, >>	                                        Bitwise shift operators
+&	                                            Bitwise AND
+^	                                            Bitwise XOR
+|	                                            Bitwise OR
+==, !=, >, >=, <, <=, is, is not, in, not in	Comparisons, Identity, Membership operators
+not	                                            Logical NOT
+and	                                            Logical AND
+or	                                            Logical OR
+"""
+
 num = 10
 print(type(num))
 # floor division // ambil hasil bagi pertama contoh:
@@ -186,6 +204,7 @@ print(matpel.index('fis'))  # 2 karena fis ada diurutan ke tiga
 print('fis' in matpel)  # True
 
 # enumerate
+print('enumarate')
 for ea in enumerate(matpel):
     print(ea)  # hasil masih dalam bentuk list
 # yang rapih
@@ -437,3 +456,61 @@ info = {'name': 'john', 'age': 20}
 student_info(info, courses)
 # ini gak bisa info duluan harus args dulu baru kwargs
 student_info(*courses, **info)
+
+#module import
+
+print("module")
+
+import module
+print(matpel)
+print(module.find(matpel,"sejarah"))
+
+#as
+
+import module as mm
+print(mm.find(matpel, "sejarah"))
+
+#from
+
+from module import find #kalau mau import lebih dari satu bisa pake coma contoh:
+#from module import find, test
+print(find(matpel, 'sejarah'))
+
+# from as
+
+from module import find as fi
+print(find(matpel, 'sejarah'))
+
+#sys
+import sys
+print(sys.path) #untuk mengecek module dari mana saja
+#setting path
+"sys.path.append('/home/pujas')"
+#diatas contoh setting path 
+#Carakedua tulis di .profile (ubuntu) :
+#export Pythonpath="/home/pujas" 
+#(windows) system properties > env variables > new > variable name : PYTHONPATH variable value: C:\Users\pujas
+
+#stdlib yang berguna
+
+#random
+
+import random
+print(random.choice(matpel)) #memilih random dari list
+
+#math
+
+import math
+print(math.radians(90))
+
+#tanggal
+
+import datetime
+import calendar
+print(datetime.date.today())
+print(calendar.isleap(2220))
+
+#OS
+import os
+print(os.getcwd()) #print working directory
+print(os.__file__) #cek lokasi os.py
