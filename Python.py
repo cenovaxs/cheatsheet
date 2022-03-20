@@ -1,8 +1,13 @@
 # Huruf (STRING)
 
-#type()
+#type() mengecek type variabel
+from multiprocessing import Condition
+
+
 message = 'string'
-print(type(message))
+print(type(message)) 
+#Id() mengecek lokasi dalam memory
+print(id(message))
 
 # Quote
 # contoh dibawah '' yang salah
@@ -223,8 +228,8 @@ print(seta.intersection(setb))
 #difference mengambil hanya yang berbeda dalam 2 set
 print(seta.difference(setb))
 
-#Dictionary
-
+#Dictionary kyk list tapi satu unitnya terdiri dari key dan value
+print('\nDictionary\n')
 murid = {'name':'John', 'age': 25, 'courses':['Math','CompSci']}
 #mengambil dari dictionary
 print(murid['name']) #tapi ini tidak disarankan karena kalau ga ada maka bakal error
@@ -245,3 +250,66 @@ print(murid)
 phone = murid.pop('phone')
 print(murid)
 print(phone)
+#len untuk liat berapa key
+print(len(murid))
+#key untuk kasih liat key
+print(murid.keys())
+#values untuk kasih liat values
+print(murid.values())
+#items untuk kasih liat semuanya
+print(murid.items())
+#dictionary loop
+for key in murid:
+    print(key) #metode ini cuma akan menampilkan key
+#kalau mau menampilkan key dan values maka:
+for key, value in murid.items():
+    print(key,value)
+#if kalau True maka lanjut kalau False maka stop
+print('\nConditionals and Booleans\n')
+if True:
+    print('if')
+#is membandingkan apakah berada dalam satu memori yang sama
+a=[1,2,3]
+b=[1,2,3]
+print(a == b)
+print(a is b)
+print(id(a))
+print(id(b)) # a is not b karena 
+#else
+if False:
+    print('if')
+else:
+    print('else')
+#elif
+if False:
+    print('if')
+elif True:
+    print('elif')
+else:
+    print('else')
+
+#and or
+user = 'Admin'
+logged_in = True
+
+if user == 'Admin' and logged_in:
+    print('Welcome Admin')
+else:
+    print('Bad Creds')
+#not 
+if not logged_in:
+    print('please login')
+else:
+    print("login successful")
+
+#apa saja yang termasuk false:
+#False
+#None
+#0
+#empty sequence contohnya "", '', [], {}, ()
+
+condition = -10
+if condition:
+    print('true')
+else:
+    print('false')
