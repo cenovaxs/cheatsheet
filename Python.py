@@ -1,6 +1,17 @@
 # Huruf (STRING)
 
 # type() mengecek type variabel
+# kalau mau import lebih dari satu bisa pake coma contoh:
+from module import find
+import os
+import calendar
+import datetime
+import math
+import random
+import sys
+from module import find as fi
+import module as mm
+import module
 from multiprocessing import Condition
 
 
@@ -457,60 +468,78 @@ student_info(info, courses)
 # ini gak bisa info duluan harus args dulu baru kwargs
 student_info(*courses, **info)
 
-#module import
+# module import
 
 print("module")
 
-import module
 print(matpel)
-print(module.find(matpel,"sejarah"))
+print(module.find(matpel, "sejarah"))
 
-#as
+# as
 
-import module as mm
 print(mm.find(matpel, "sejarah"))
 
-#from
+# from
 
-from module import find #kalau mau import lebih dari satu bisa pake coma contoh:
 #from module import find, test
 print(find(matpel, 'sejarah'))
 
 # from as
 
-from module import find as fi
 print(find(matpel, 'sejarah'))
 
-#sys
-import sys
-print(sys.path) #untuk mengecek module dari mana saja
-#setting path
+# sys
+print(sys.path)  # untuk mengecek module dari mana saja
+# setting path
 "sys.path.append('/home/pujas')"
-#diatas contoh setting path 
-#Carakedua tulis di .profile (ubuntu) :
-#export Pythonpath="/home/pujas" 
-#(windows) system properties > env variables > new > variable name : PYTHONPATH variable value: C:\Users\pujas
+# diatas contoh setting path
+# Carakedua tulis di .profile (ubuntu) :
+# export Pythonpath="/home/pujas"
+# (windows) system properties > env variables > new > variable name : PYTHONPATH variable value: C:\Users\pujas
 
-#stdlib yang berguna
+# stdlib yang berguna
 
-#random
+# random
 
-import random
-print(random.choice(matpel)) #memilih random dari list
+print(random.choice(matpel))  # memilih random dari list
 
-#math
+# math
 
-import math
 print(math.radians(90))
 
-#tanggal
+# tanggal
 
-import datetime
-import calendar
 print(datetime.date.today())
 print(calendar.isleap(2220))
 
-#OS
-import os
-print(os.getcwd()) #print working directory
-print(os.__file__) #cek lokasi os.py
+# OS
+print(os.getcwd())  # print working directory
+print(os.__file__)  # cek lokasi os.py
+
+"""pip program installer python
+
+$ pip help
+
+$ pip list
+untuk lihat aplikasi yang sudah diinstall
+
+$ pip search <package name>
+untuk cari paket di repo
+
+$ pip uninstall <package name>
+
+$ pip list -o
+untuk lihat apakah ada update 
+
+$ pip install -U <package name>
+update
+
+$ pip freeze
+simpan list paket yang digunakan
+
+$ pip freeze > <list.txt>
+jadiin ke text untuk linux
+
+$ pip install -r <list.txt>
+untuk install aplikasi dari list
+"""
