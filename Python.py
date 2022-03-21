@@ -543,3 +543,31 @@ jadiin ke text untuk linux
 $ pip install -r <list.txt>
 untuk install aplikasi dari list
 """
+
+# local, Enclossing, Global, Built-in
+
+x = 'global x'
+
+
+def test():
+    global x  # membuat var local dipakai global
+    print(x)
+
+
+test()
+print(x)
+
+
+def outer():
+    y = "outer y"
+
+    def inner():
+        nonlocal y  # membuat var dipakai non local
+        y = 'inner y'
+        print(y)
+
+    inner()
+    print(y)
+
+
+outer()
