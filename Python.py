@@ -571,3 +571,6 @@ def outer():
 
 
 outer()
+
+
+#list comprehension
