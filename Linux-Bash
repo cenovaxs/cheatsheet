@@ -121,6 +121,10 @@ setelah itu $ service network restart
 $ route del -net address = $ ip route del = del ip statis 
 $ host <url> = lihat ip address url
 $ nslookup <url> = lihat ip address url
+    nslookup
+    > server <ip address> = ganti default server
+    > set type=mx = ganti type ke contohnya mx mail server, txt ,dll
+    > set debug = melihat info lanjut kyk ttl 
 $ dig <url> = lihat info tentang url
 $ ping 8.8.8.8 atau $ ping google.com = ping ke google
 -c $ ping -c 3 8.8.8.8 = ping cuma sebanyak 3 kali
@@ -482,7 +486,8 @@ $ /etc/passwd
                     For example: /home/rtfirefly
     Shell	        The absolute location of a user's default shell 	
                     For example: /bin/bash
-$ /etc/hosts        bisa diganti isinya buat bikin dns sendiri
+$ /etc/hosts        host file bisa diganti isinya buat bikin dns sendiri
+    untuk windows 10 ada di : c:\Windows\System32\Drivers\etc\hosts
 $ /etc/shadow       hash password
 $ /etc/group
 $ /etc/network
