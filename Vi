@@ -30,15 +30,15 @@ e               pindah ke akhir kata
 E               pindah ke akhir kata setelah spasi
 b               pindah ke awal kata sebelumnya
 B               pindah ke awal kata spasi sebelumnya
-! t<x>            pindah ke satu huruf sebelum <x>
-! f<x>            pindah ke huruf <x>
+t<x>            pindah ke satu huruf sebelum <x>
+f<x>            pindah ke huruf <x>
 <x><y>          menjalankan perintah <y> sebanyak <x> kali contoh 3w berarti 3 kali w
 <x>i<z> <esc>   menulis <z> sebanyak <x> kali misalnya 3igo <escape> menulis gogogo
 %               pindah ke penutup parentheses (buat cari parentheses)
 0               ke awal baris
 $               ke akhir baris
-! o               menulis + menambah baris dibawahnya
-! O               menulis + menambah baris diatasnya
+o               menulis + menambah baris dibawahnya
+O               menulis + menambah baris diatasnya
 x               menghapus huruf yang di kursor
 r               replace huruf masuk ke insert
 m<x>            marking ditandain
