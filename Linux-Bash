@@ -428,6 +428,8 @@ $ uptime = lihat komputer sudah nyala berapa lama
 CTRL-Z = menghentikan sementara program yang berjalan di terminal
 $ bg = membuat file berjalan di background (berguna apabila mau menjalankan aplikasi lain tapi sebelumnya harus CTRL-Z untuk disetop dulu)
 $ fg = membuat file berjalan di foreground (terminal terhenti)
+$ lscpu = lihat informasi cpu
+$ nproc = lihat jumlah cpu
 
 Daemons 
 service atau systemctl = menjalankan servis pilih salah satu antaranya saja tapi disarankan systemctl
