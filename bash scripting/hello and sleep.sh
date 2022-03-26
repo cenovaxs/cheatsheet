@@ -5,3 +5,7 @@ read Name
 # display variable output
 echo ""
 echo Hi $Name
+sleep 3
+echo "halo lagi"
+sleep 3
+echo "udah ah cape!"
