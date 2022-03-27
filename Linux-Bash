@@ -4,7 +4,7 @@ $ cat <file> <file2> = baca kedua isi file secara berurutan ke dalam terminal
 $ cat > <file> = semua yang diketik bakal dimasukkan ke dalam file sampai CTRL-D dipencet
 $ tac <file> = baca isi file terbalik dari line akhir ke line awal
 $ head <file> = baca 10 baris pertama dan masukkan ke dalam terminal
-$ tail <file> = baca 10 baris pertama dan masukkan ke dalam terminal
+$ tail <file> = baca 10 baris terakhir dan masukkan ke dalam terminal
 $ tail -f <file> = baca file yang lognya berjalan terus live, jadi klo ada update langsung muncul juga updatenya
 -x $ head -x <file> = baca x baris pertama dan masukkan ke dalam terminal berlaku juga untuk tail
 $ less <file> = baca isi file yang panjang kayak nano cuma gabisa diedit
@@ -74,9 +74,13 @@ $ dirs = memperlihatkan daftar dir yang disimpan oleh pushd
 $ mkdir <namafolder> = bikin folder
     -p atau --parents = bikin parent folder kalau belum ada ini kepake klo bikin folder di dalam folder dan belum ada foldernya
     contoh $ mkdir -p /home/pujas/belumadafolder1/belumadafolder2/file
+    kalau ada spasi harus pake '' 
+    contoh $ mkdir 'test folder'  
+    atau pakai backslash \ untuk escape character
+    contoh $ mkdir test\ folder 
 $ rm <namafile >= delete file
 $ rm -i <namafile> = interactive mode berarti ada pertanyaan are u sure? biasanya dipakai kalau ada banyak file sekaligus
-$ rm -r <namafolder> = delete folder dan seluruh isinya
+$ rm -r <namafolder> = delete folder dan seluruh isinya, meski kosong harus pakai -r
 $ rm ./* = delete isi folder saja atau $ rm Documents/* = delete semua file yang ada di dalam folder Documents
 $ rm ./*.txt = delete semua yang ada .txt
 $ mv <file/folderyangmaudipindah> <foldertujuan> = ganti nama atau pindah lokasi kalau sudah ada foldernya

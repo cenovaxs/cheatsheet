@@ -1,0 +1,47 @@
+ls              idem linux
+ls C:\          list drive C
+-Force    ls -Force C:\   List termasuk yang hidden
+pwd             idem linux
+cd              idem linux
+cd .\Downloads\ ganti ke folder Downloads kelebihan dia bisa tab dan balik lagi ke awal
+cd ..           idem linux
+cd ~            idem linux
+mkdir           idem linux
+    mkdir 'folder baru'         kalau pakai spasi harus pakai tanda petik
+    atau
+    mkdir folder` baru          pakai backtic untuk escape character dibawah ~
+history         lihat history command kyk linux
+CTRL-R          Cari command di history kyk linux
+atau
+#<command yang mau dicari> kemudian tab untuk autocomplete
+clear atau CTRL-R       clear screen idem linux
+cp <namafile> <lokasi>  copy kyk linux
+    contoh cp myfile C:\Users\pujas
+-Verbose
+-Recurse    cp <folder> <lokasi> -Recurse -Verbose      Recurse copy folder dan isinya Verbose kasih liat file satu persatu
+mv <namafile> <namafilebaru>                rename kyk linux
+mv <namafile> <lokasi>                      pindah kyk linux
+rm <namafile> -Force -Recurse               idem kyk linux
+cat                                         idem kyk linux
+-Head    cat <namafile> -Head <x>                membaca isi file sebanyak <x> baris pertama
+-Tail    cat <namafile> -Tail <x>                membaca isi file sebanyak <x> baris terakhir    
+more                                        idem kyk linux
+start <program> <namafile>                  menjalankan program dari powershell
+Get-Alias <command>                         cari nama asli command di powershell
+
+Cari kata dalam file
+
+Indexing option > Advanced > file types > index properties and file contents        ini mengaktifvasi windows untuk cari kata di dalam file
+Select-String <katakunci> <file>            cari kata dalam file
+    contoh Select-String mobil *.txt
+-Filter
+ls <folder> -Recurse -Filter *.txt          mencari semua file yang ada .txt
+echo woof                   tulis echo ke terminal kyk linux
+>   "redirector"      echo woof > file.txt        tulis echo ke file.txt kyk linux
+>>  "append"         echo guk > file.txt         tambah guk ke file txt tanpa ngedelete isinya kyk linux
+|   cat file.txt | Select-String uk            cari kata yang ada uk dari file txt kyk piping linux
+contoh 
+cat file.txt | Select-String uk > file2.txt    cari kata yang ada uk kemudian dijadikan file2.txt
+std error sama kayak linux
+rm folder 2> error.txt              simpan pesan error ke error.txt
+$null   rm folder 2> $null                  simpan dan langsung dibuang filenya
