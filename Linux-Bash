@@ -38,14 +38,17 @@ $ ls -l = (long) lihat termasuk permission, jumlah subfolder, user, group, size,
 $ ls -p = urut berdasarkan filetype
 $ ls -s = (size) urut berdasarkan file size
 $ ls -i = (inode) menampilkan angka id file atau folder
+$ ls /proc = perlihatkan process dan idnya
 $ \ls matiin warna dari ls
 $ ln <file1> <file2> = membuat link yaitu dua file dengan nama berbeda namun sebenarnya satu file
-$ ln -s <filetarget> <fileshortcut> = membuat shortcut file target
+$ ln -s <filetarget> <fileshortcut> = membuat shortcut file target softlink
     kalau gak mau ganti nama bisa tapi musti beda folder
         contoh $ ln -s ../text.txt .
+$ ln <filetarget> <fileshortcut> = membuat hardlink. Hardlink bedanya meskipun file original di delete file hardlink tetep ada
 $ pwd = posisi sekarang
 $ tree = ngeliat directory semua tanpa GUI
-$ df -h = liat disk usage semuanya
+$ df -h = disk free liat disk yang belum dipakai semua device
+$ du -h = disk usage lihat ukuran file yang dipilih, kalau tidak ada maka current directory
 $ cd = pindah folder
 $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa untuk semua command
 ? = single wildcard jadinya misalnya lupa namanya tp inget satu atau dua huruf pertama maka yang tidak diketahui bisa direplace dengan ?
@@ -90,6 +93,7 @@ $ cp <{file1,file2}> <lokasihasilcopy> = copy beberapa file bersamaan
 $ cp -r <namafolder> <namafolderhasilcopy> = copy folder dan seluruh isinya
 $ lsb_release -a = mengecek versi os
 $ uname -a = check nama komputer, os, kernel
+    uname -r = check kernel version
 $ whoami = check current user
 $ echo $USERNAME = idem diatas
 $ who -a = check siapa lagi yang login selain saya
@@ -103,7 +107,6 @@ $ echo $SHELL = dimana lokasi shell
 $ id = info semua id user dan grup sebuah user 
 $ groups <user> = melihat grup yang dimiliki user
 $ hostname = info hostname
-$ uname -a = info tentang os dan system
 $ echo XDG_CURRENT_DESKTOP = info desktop environment (Gnome/KDE/dll)
 $ date = melihat waktu
 $ ss = alat untuk lihat socket,session
@@ -113,6 +116,7 @@ $ lsusb = list usb
 $ lsof = list openfile
 $ exit = keluar dari terminal
 /tmp$ xpdyinfo | grep dim = lihat dimensi layar menggunakan cli
+
 
 Networking
 $ nmcli = melihat device yang diketahui (bluetooth, wifi, lan)
@@ -182,6 +186,8 @@ $ sudo apt edit-sources = lihat sumber download apt bisa juga di edit kalau mau 
 $ sudo apt list = lihat semua aplikasi yang ada di repo
 $ sudo apt list --installed = lihat aplikasi yang telah di install
 $ sudo dpkg -i lokasifile/namafile = install dpkg melalui terminal
+$ sudo dpkg -r <file> = uninstall dpkg
+$ sudo dpkg -l = lihat list program yang terinstall
 untuk membersihkan installer yang rusak
     $sudo apt-get clean && sudo apt-get autoremove
         atau bisa juga
@@ -214,6 +220,7 @@ $ sudo deluser <namauser> = menghapus user
 $ sudo passwd <namauser> = ganti password user
     $ passwd -l <namauser> = kunci user supaya gak bisa login
     $ passwd -u <namauser> = buka kunci supaya bisa login lagi
+    $ passwd -e <namauser> = paksa user ganti password sendiri saat login
 $ sudo addgroup <namagrup> = buat grup baru lebih user friendly
 $ sudo groupadd <namagrup> = buat grup baru
 $ sudo groupdel <grup> = del grup
@@ -253,6 +260,24 @@ $ sudo chmod <ugoa+-=rwx>,<ugoa+-=rwx>,<ugoa+-=rwx> <file>
     + = tambah mode
     - = kurang mode
         contoh sudo chmod u=rx,go-w = membuat user lain untuk tidak bisa mengedit
+Special permission
+setUID                          setUID membuat owner dapat menjalankan root file tanpa harus login menjadi root 
+s $ chmod u+s <file>           
+    atau
+    chmod 4755 <file>           tambah 4 sebelum numerik file permission
+    -rwsr-xr-x                  hasil ada s menggantikan x di user permission
+
+setGID                          setGID membuat anggota grup dapat menjalankan root file tanpa harus login menjadi root 
+$ chmod g+s <file>              
+    atau
+$ chmod 2755 <file>             tambah 2 sebelum numerik file permission
+    -rwxr-sr-x                  hasil ada s menggantikan x di group permisson
+
+Stiky bit                       Membuat file dapat ditulis oleh semua orang tapi hanya root yang bisa hapus contoh tmp folder
+t $ chmod +t <file>
+    atau
+  $ chmod 1755 <file>           tambah 1 sebelum numerik file permission
+    -rwxr-xr-t
 
 find = cari file dan folder di linux 
  
@@ -342,6 +367,40 @@ curl
 curl -i http://..... = menjalankan curl untuk melihat server. -i artinya include server name, cookies, tanggal, httpversion dll
 curl -o saved.html https://www.google.com = simpan hasil buka website dan download menjadi saved.html, -0 = output disimpan
 
+disk
+
+crwxrwxrwx      character device kyk keyboard mouse yang transmit data karakter per karakter
+brwxrwxrwx      block device kyk usb, harddisk, cd rom yang transmit data dalam bentuk blok per blok
+
+$ sudo parted -l            lihat disk yang ada di komp
+$ sudo parted /dev/sdb      pilih disk yang mau di parted
+(parted) print              kasih lihat info disk yang dipilih
+(parted) mklabel gpt        buat dalam label gpt
+(parted) mkpart primary ext4 0Mib 5Gib      buat disk partisi baru mulai dari 0-5GB primary (mbr) dan fs ext4 (linux)
+(parted) quit               keluar
+$ sudo mkfs -t ext4 /dev/sdb1       format berdasarkan configurasi parted diatas
+dalam linux kita harus mount ke folder lain agar bisa diakses berikut caranya
+$ sudo mount /dev/sdb1 /my_usb/         
+untuk cabut usb bisa dengan :
+$ sudo umount /dev/sdb1         unmount devicenya atau
+    atau
+$ sudo umount /my_usb/          unmount folder aksesnya
+
+$ cat /etc/fstab            untuk cek device dan untuk edit permanent mount
+$ sudo blkid                cek UUID tiap device
+
+bikin swap menggunakan flash disk
+$ sudo parted /dev/sdb
+(parted) mkpart primary linux-swap 5Gib 100%        bikin swap dari memory 5G sampai sisanya
+(parted) quit
+$ sudo mkswap /dev/sdb2         apply partition
+$ sudo swapon /dev/sdb2         dijalankan swapnya
+
+untuk autostart masukkan ke dalam :
+/etc/fstab
+
+$ sudo fsck /dev/sda            check dan repair tapi harus dalam keadaan unmount
+
 backup
 rsync
 rsync membuat duplikate file atau folder untuk kepentingan backupnya
@@ -355,8 +414,10 @@ tanpa/ = $ rsync -r <folderyangmaudibackup> <backupfolder/> = tanpa / dibelakang
 -z = compress file
 -p = kasih lihat progress
 disk to disk copying
-$ dd if=/dev/sda of=/dev/sdb 
+$ unmount /dev/sda
+$ dd if=/dev/sda of=/dev/sdb        backup ke harddisk lain
 hati2 karena disk to disk bakal format (hapus) dulu file yang ada di disk yang akan dicopy
+$ dd if=/dev/sda of=~/backupimage.img bs=100M       backup ke image, bs berarti byte per cycle, boleh dipake atau ngak
 
 SSH dan ssh dengan keygen
 
@@ -414,18 +475,24 @@ $ ps aux (BSD syntax) = lihat semua process dalam terminal offline
 -a. View processes of all users rather than just the current user.
 -u. Provide detailed information about each of the processes
 -x. Include processes that are controlled not by users but by daemons.
-$ ps -e (standart syntax) = lihat semua process
+$ ps -e (standart syntax) = lihat semua process termasuk yang bukan user
+$ ps -f = full
 $ ps -eLF = lihat info per thread
 $ ps axo <custom1,custom2,....> = memperlihatkan berdasarkan pilihan sendiri lihat man ps biar jelas
 $ ps aux | grep <namayangdicari> = menfilter hasil dengan hanya menampilkan namayangdicari
 $ pgrep <namaprogram> = menampilkan PID proses id program yang dicari, kalau program yang sama jalan lebih dari satu maka pid juga lebih dari satu, urutan menurut waktu jadi yang dibuka pertama akan ada diatas sementara yang terakhir akan ada dibelakang
 $ ps fax = memperlihatkan proses dengan parent childnya 
-$ pstree = memperlihatkan proses dengan tree jadi kelihatan parent childrennya 
+$ pstree = memperlihatkan proses dengan tree jadi kelihatan parent childrennya
+$ cat /proc/<pid>/status  = lihat info lebih tentang process spesifik 
+    contoh $ cat /proc/1805/status
 ?$ pkill <namaprogram> = mematikan proses berdasarkan namaprogram
 $ kill <pid1> <pid2> = mematikan proses berdasarkan id bisa beberapa sekaligus
 $ kill -9 <pid> = $ kill -SIGKILL <pid> = mematikan proses meskipun unresponsive
 contoh $ kill -9 6300 = mematikan proses dengan id 6300
 $ killall <namaprogram> = mematikan semua program berdasarkan nama program
+$ kill -KILL <pid> = mematikan secara paksa 
+$ kill -TSPD <pid> = pause process sama kyk CTR-Z
+$ kill -CONT <pid> = melanjutkan proses yang di pause
 $ renice <ni> <pid> = mengubah prioritas process ni berkisar -20 sampai +19 dengan -20 paling utama dan +19 paling rendah
 $ jobs = kasih liat background process
 $ jobs -l = lebih lengkap ada pid
@@ -473,6 +540,9 @@ $ sudo crontab -e = buka crontab dengan root
 
 File penting dalam linux
 $ /var/log/auth.log = isinya tentang user login log untuk debian saja, untuk linux lain ada di /var/log/messages and/or /var/log/secure
+$ /var/log/dmesg = isinya tentang system starup messages, klo ada masalah dengan boot up bisa cek folder tersebut
+$ /var/log/kern.log = semua masalah kernel termasuk boot up
+$ /var/log/syslog = semua logging disimpan disana kecuali log tentang off event
 $ /etc/passwd
     Username	    User login name	
                     Should be between 1 and 32 characters long
@@ -493,7 +563,7 @@ $ /etc/passwd
 $ /etc/hosts        host file bisa diganti isinya buat bikin dns sendiri
     untuk windows 10 ada di : c:\Windows\System32\Drivers\etc\hosts
 $ /etc/shadow       hash password
-$ /etc/group
+$ /etc/group        liat group dan member
 $ /etc/network
     /etc/network/interfaces = setting ip static atau dhcp ganti dns dan info interface lainnya
 $ /etc/resolv.conf          = melihat dan mengganti dns server   
@@ -511,6 +581,8 @@ $ /etc/environment  isinya Path, global bisa diconfigurasi pake bash
         /proc/mounts
         /proc/partitions
     check dns = $ systemd-resolve --status
+$ /etc/apt/sources.list     lihat daftar alamat repository apt
+$ /etc/lsb-release          lihat versi ubuntu
         
 membuat command sendiri
 buka file .bashrc di home 

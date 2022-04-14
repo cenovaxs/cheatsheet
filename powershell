@@ -45,3 +45,87 @@ cat file.txt | Select-String uk > file2.txt    cari kata yang ada uk kemudian di
 std error sama kayak linux
 rm folder 2> error.txt              simpan pesan error ke error.txt
 $null   rm folder 2> $null                  simpan dan langsung dibuang filenya
+
+Get-LocalUser           Lihat daftar user
+Get-LocalGroup          Lihat daftar grup
+Get-LocalGroupMember <nama Group>   lihat daftar member dari grup
+net user <username> <newpassword>         ganti password
+atau bisa juga
+net user <username> *                       ganti password dengan prompt
+masukin password
+net user <username> /logonpasswordchg:yes       Ganti password tapi suruh user sendiri yang kerjain
+net user <username> * /add                      bikin user baru dengan prompt
+net user <username> <newpassword> /add /logonpasswordchg:yes        tambah sekaligus user prompt dalams satu line
+net user <username> /delete                     delete user
+Remove-LocalUser <username>                     delete user
+icacls <folder>                                 lihat permission
+    icacls /?                                   help
+icacls <location> /grant <user>                 kasih permission ke sebuah folder
+    contoh : icacls 'C:\Sample Folder\' /grant 'Everyone:(OI)(CI)(F)'           Kasih permission ke smua orang
+        icacls 'C:\Sample Folder\' /grant 'Authenticated Users:(OI)(CI)(F)'    kasih permission ke semua kecuali guest
+icacls <location> /remove <user>        hapus permission
+icacls 'C:\Sample Folder\' /remove Everyone 
+
+Archive
+Compress-Archive -Path <targetfile> <hasilzip>.zip                              bikin zip lewat powershell
+    contoh
+    Compress-Archive -Path C:\Users\pujas\samplefolder ~\samplefolder.zip           
+
+Aplikasi
+
+Chocolatey 
+Tambah Chocolatey sebagai repository
+Register-PackageSource -Name chocolatey -ProviderName Chocolatey -Location http://chocolatey.org/api/v2   
+Get-PackageSource                                               verifikasi apa repository yang digunakan
+Find-Package sysinternals -IncludeDependencies                  cari program dalam hal ini contohnya sysinternals
+Install-Package -Name sysinternals                              install sysinternals
+Get-Package -name sysinternals                                  verifikasi apakah sudah terinstall
+Uninstall-Package -Name sysinternals                            uninstall
+
+Diskpart
+
+C:\ Diskpart            menjalankan aplikasi
+DISKPART> list disk           liat daftar disk
+DISKPART> select disk 1       pilih disk 1
+DISKPART> clean               delete semua partisi yang ada di disk
+DISKPART> create partition primary      buat partisi
+DISKPART> list partition                lihat partisi
+DISKPART> select partition 1            pilih partisi 1
+DISKPART> active                        aktivasi
+DISKPART> format FS=NTFS label=my-tumb=drive quick      Format dengan FS tipe file, label nama, quick format
+
+untuk info lebih lengkap tentang diskpart :
+https://technet.microsoft.com/en-us/library/cc766465(v=ws.10).aspx
+
+Symlink
+shorcut dalam windows hanya berfungsi untuk GUI tidak dalam terminal
+untuk bikin shorcut yang bisa dibuka harus menggunakan symlink
+symlink hanya bisa di cmd tidak di power shell
+mklink <namasymlink> <namatarget.filetype> 
+contoh
+>mklink test_symlink test.txt
+
+hardlink kyk symlink tapi meskipun namanya diganti masih bisa digunakan:
+>mklink /H test_symlink test.txt
+
+fsutil repair query C:              lihat status perbaikan disk
+
+chkdsk C:               check disk
+chkdsk /F C:            fix disk error
+
+Process
+taskkill /pid 5865      Stop process melalui pid untuk cmd dan powershell
+tasklist                lihat process untuk cmd dan powershell
+atau
+Get-Process             lihat process untuk powershell
+untuk mendapatkan 3 process teratas yang menggunakan cpu:
+Get-Process | Sort CPU -descending | Select -first 3 -Property ID, ProcessName, CPU
+
+process explorer        download aja mirip task manager cuma bisa pause
+
+Share folder
+net share <namafolder>=<alamat dalam windows> /grant:<orang lain yang mau di share>,<tipe akses>
+contoh net share ShareMe=C:\Users\cindy\Desktop\ShareMe /grant:everyone,full
+
+cara akses
+windows explorer > file > Map network drive > masukkan \\<computername>\<sharedfolder>
