@@ -542,6 +542,9 @@ contoh :
 15 14 * * * ls > /home/nick/lt/cronres.txt = command akan dijalankan setiap jam 14.15 setiap hari
 $ sudo crontab -e = buka crontab dengan root
 
+Logging terminal
+$ script <filename.log>     semua yang diketik di terminal akan di safe dalam file kalau sudah selesai CTRL-D atau exit     
+
 File penting dalam linux
 $ /var/log/auth.log = isinya tentang user login log untuk debian saja, untuk linux lain ada di /var/log/messages and/or /var/log/secure
 $ /var/log/dmesg = isinya tentang system starup messages, klo ada masalah dengan boot up bisa cek folder tersebut

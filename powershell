@@ -130,6 +130,10 @@ contoh net share ShareMe=C:\Users\cindy\Desktop\ShareMe /grant:everyone,full
 cara akses
 windows explorer > file > Map network drive > masukkan \\<computername>\<sharedfolder>
 
+Logging powershell
+
+Start-Transcript -Path C:\Transcript.txt           akan menyimpan semua yang diketik di dalam powershell ke dalam file , "Stop-Transcript" untuk quit dan safe ke dalam file Transcript.txt
+
 Service (daemon kalo di linux)
 
 Get-Service                 lihat semua service yang ada di windows
@@ -140,3 +144,5 @@ Get-Service wuauserv | Format-List *    lihat informasi lebih banyak tentang ser
 Stop-Service <aplikasi>                 menyetop aplikasi
 Start-Service <aplikasi>                memulai aplikasi
 
+
+ 
