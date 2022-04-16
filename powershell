@@ -129,3 +129,14 @@ contoh net share ShareMe=C:\Users\cindy\Desktop\ShareMe /grant:everyone,full
 
 cara akses
 windows explorer > file > Map network drive > masukkan \\<computername>\<sharedfolder>
+
+Service (daemon kalo di linux)
+
+Get-Service                 lihat semua service yang ada di windows
+Get-Service <aplikasi>      lihat informasi service pada aplikasi tertentu
+Get-Service wuauserv        lihat service windows update
+
+Get-Service wuauserv | Format-List *    lihat informasi lebih banyak tentang service
+Stop-Service <aplikasi>                 menyetop aplikasi
+Start-Service <aplikasi>                memulai aplikasi
+
