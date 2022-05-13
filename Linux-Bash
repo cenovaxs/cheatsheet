@@ -281,6 +281,10 @@ t $ chmod +t <file>
   $ chmod 1755 <file>           tambah 1 sebelum numerik file permission
     -rwxr-xr-t
 
+locate = kyk find lebih cepet tapi gak update
+$ locate <namafile> = cari file dalam komputer
+$ updatedb = updat database karena locate itu hanya cari file dalam databasenya saja, jadi harus diupdate
+
 find = cari file dan folder di linux 
  
 $ find = kasih lihat semua file dan folder di current directory (bisa pake titik atau ngak sama aja)
