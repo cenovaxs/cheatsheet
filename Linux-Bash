@@ -64,6 +64,7 @@ $ cd dir1/dir2 = langsung pindah 2 langkah ke dir2, bisa seterusnya dan bisa unt
 < $ 'program' < 'file.txt' = mengambil file.txt kemudian dijadikan input program
 << = seperti diatas cuma dia bisa multiple line bisa digunakan untuk simpen file tanpa text editor
 > = ambil output program dan overwrite jadi sebuah text file
+$ > <test.txt> = kyk touch 
 >> = ambil output program dan ditambahkan output ke dalam text file
 & = membuat program berjalan di background
     contoh $ updatedb &
@@ -208,6 +209,8 @@ Synaptic = debian packet manager = install manager untuk debian
 
 
 User admin
+$ getent <user/grup/dll> <nama> = lihat informasi
+    contoh $ getent group sudo = lihat informasi grup sudo 
 $ su <userlain> = ganti user
 $ su - <userlain> = dan ke home folder user tersebut
 $ sudo su = sudo root = ganti jadi root
@@ -575,6 +578,7 @@ $ /etc/hosts        host file bisa diganti isinya buat bikin dns sendiri
     untuk windows 10 ada di : c:\Windows\System32\Drivers\etc\hosts
 $ /etc/shadow       hash password
 $ /etc/group        liat group dan member
+$ /etc/sudoers      mengatur siapa aja yang bisa sudo
 $ /etc/network
     /etc/network/interfaces = setting ip static atau dhcp ganti dns dan info interface lainnya
 $ /etc/resolv.conf          = melihat dan mengganti dns server   
