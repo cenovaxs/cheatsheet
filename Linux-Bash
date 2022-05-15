@@ -430,6 +430,20 @@ $ dd if=/dev/sda of=~/backupimage.img bs=100M       backup ke image, bs berarti 
 
 SSH dan ssh dengan keygen
 
+ssh server 
+$ apt update
+$ apt full-upgrade
+$ apt install openssh-server
+$ apt install nano
+$ apt install net-tools
+$ nano /etc/ssh/sshd_config
+    masukkan "PermitRootLogin yes" dibawah #PermitRootLogin prohibit-password
+        kemudian safe changes
+$ service ssh start
+$ netstat -ant = untuk check apakah sudah berjalan
+$ ssh -p <portlokal> root@<iplokal> = setting port
+
+ssh client
 $ ssh -V = check versi ssh
 kalo stuck karena pernah ssh ke komp lain: $ ssh-keygen -R 192.168.x.yyy (x.yyy ip komp target baru)
 $ ssh-keygen = buat ssh key
