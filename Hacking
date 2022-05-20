@@ -19,4 +19,21 @@ nmap <iptarget> = lihat port terbuka
 
 contoh:
 $ nmap -oG - 192.168.1.0-255 -p 22 -vv > /home/cenovaxs/hasil = menscan 192.168.1.0 sampai 192.168.1.255 dengan port 22 hasil grabaple rapih kemudian disimpan di file bernama hasil
-[hackertarget] >
+
+theHarvester
+ini buat cari info tentang website                                            
+$ theHarvester -d networkchuck.com -l 250 -b google
+        -d  target
+        -l  limit berapa banyak                                                       -b  source pencarian                                                  
+
+recon-ng
+untuk pertama kali harus download modul caranya
+marketplace refresh
+marketplace install all
+
+hackertarget
+>modules load hackertarget
+[hackertarget] > options  = untuk liat bisa apa aja
+[hackertarget] > options set source networkchuck.com  = set target website
+[hackertarget] > info  = lihat info                                           [hackertarget] > run = execute module
+[hackertarget] > show hosts = kasih lihat subdomain dengan ip addressnya
