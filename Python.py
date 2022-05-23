@@ -1,19 +1,19 @@
 # Huruf (STRING)
+from multiprocessing import Condition
+import module
+import module as mm
+from module import find as fi
+import sys
+import random
+import math
+import datetime
+import calendar
+import os
+from module import find
+print("\nHuruf (STRING)\n")
 
 # type() mengecek type variabel
 # kalau mau import lebih dari satu bisa pake coma contoh:
-from module import find
-import os
-import calendar
-import datetime
-import math
-import random
-import sys
-from module import find as fi
-import module as mm
-import module
-from multiprocessing import Condition
-
 
 message = 'string'
 print(type(message))
@@ -63,6 +63,7 @@ message = message.replace('world', 'universe')
 print(message)
 
 # concatenate
+print("\nconcatenate\n")
 # cara 1
 awal = "This is"
 akhir = awal + " " + message
@@ -93,6 +94,7 @@ print(sentence)
 # print(help(str))
 
 # Angka (Integer dan float)
+print("\nAngka (integer dan float)\n")
 """
 List dibawah adalah prioritas logical python 
 
@@ -141,6 +143,7 @@ str1 = '100'
 print(float(str1))
 
 #List and Tuples
+print("\nList and Tuples\n")
 matpel = ['sejarah', 'mat', 'fis', 'agama']
 print(len(matpel))  # melihat jumlah item dalam list
 print(matpel[0])  # melihat hanya isi item pertama
@@ -152,6 +155,7 @@ print(matpel[::-1])  # melihat isi reverse
 print(matpel[-1:0:-1])  # dari belakang ke nomor 2
 
 # append tambah dibelakang
+print("\nappend\n")
 matpel.append('seni')
 print(matpel)
 # tambah di posisi awal, bisa juga diatur posisi sesuai dengan keinginan
@@ -164,11 +168,13 @@ print(matpel)
 
 # extend menggabungkan dua list
 # gunakan extend untuk menggabungkan dua list
+print("\nextend\n")
 matpel = ['sejarah', 'mat', 'fis', 'agama']
 matpel.extend(matpel2)
 print(matpel)
 
 # membuang list
+print("\nremove\n")
 matpel.remove(matpel[0])
 print(matpel)
 # atau
@@ -182,11 +188,13 @@ print(popped)  # olahraga
 print(popped2)  # seni
 
 # reverse sebutkan isi list dari belakang
+print("\nreverse\n")
 matpel = ['sejarah', 'mat', 'fis', 'agama', 'bahasa']
 matpel.reverse()
 print(matpel)
 
 # sort atur sesuai aplhabetical
+print("\nsort\n")
 matpel.sort()
 print(matpel)
 # bisa juga digunakan untuk mengurutkan angka dari kecil ke besar
@@ -208,14 +216,15 @@ print(max(matpel))
 # sum jumlah
 print(sum(listangka))
 
-# index cari urutan
+# index cari no urutan
 print(matpel.index('fis'))  # 2 karena fis ada diurutan ke tiga
 
 # cek apakah ada di dalam list
 print('fis' in matpel)  # True
 
 # enumerate
-print('enumarate')
+print('\nenumerate/kasih nomor\n')
+
 for ea in enumerate(matpel):
     print(ea)  # hasil masih dalam bentuk list
 # yang rapih
@@ -226,6 +235,7 @@ for no, ea in enumerate(matpel, start=1):
     print(no, ea)
 
 # join jadi satu string
+print("\njoin\n")
 # bisa pake koma, atau apapun kalau mau yang lain tinggal ganti aja
 matpel_join = ' - '.join(matpel)
 print(matpel_join)
@@ -238,6 +248,7 @@ print(matpel3)
 # set {} kyk list tapi gak ada order (unordered list) dan gak bisa doble ini cocok buat ngeeliminasi yang doble2
 
 # list() convert menjadi list
+print("\nconvert\n")
 atuple = (1, 2, 3, 4, 5)
 alist = list(atuple)
 print(type(alist))  # jadi list
@@ -395,6 +406,7 @@ while True:
     x += 1
 
 # function
+print("\nfunction\n")
 
 
 def hello_func():
@@ -423,7 +435,8 @@ print(hello_func())
 # upper bisa di chain bisa dilakukan karena return dari hello func adalah str
 print(hello_func().upper())
 
-# argument variabel
+# argument variabel , maksudnya bisa kyk x = apapun, jadi bisa digonta ganti variabelnya
+print('\narg and kwarg\n')
 
 
 def hello_func(arg):
@@ -435,7 +448,7 @@ print(hello_func('test'))
 # multiple argumen variabel
 
 
-def hello_func(arg, nama='kamu'):  # nama default value
+def hello_func(arg, nama='kamu'):  # nama sebagai default value
     return f'{arg} {nama} Function berhasil'
 
 
@@ -453,7 +466,7 @@ def student_info(*args, **kwargs):
 student_info('math', 'art', age=20, name='john')
 
 # versi yang lebih rapih
-print('versi yang lebih rapih')
+print('\nversi yang lebih rapih\n')
 
 
 def student_info(*args, **kwargs):
@@ -466,11 +479,11 @@ info = {'name': 'john', 'age': 20}
 
 student_info(info, courses)
 # ini gak bisa info duluan harus args dulu baru kwargs
-student_info(*courses, **info)
+student_info(*courses, **info)  # pakai * untuk hasilnya terpisah beda line
 
 # module import
 
-print("module")
+print("\nmodule\n")
 
 print(matpel)
 print(module.find(matpel, "sejarah"))
@@ -500,6 +513,7 @@ print(sys.path)  # untuk mengecek module dari mana saja
 # stdlib yang berguna
 
 # random
+print("\nrandom\n")
 
 print(random.choice(matpel))  # memilih random dari list
 
@@ -573,4 +587,4 @@ def outer():
 outer()
 
 
-#list comprehension
+# list comprehension
