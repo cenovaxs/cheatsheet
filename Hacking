@@ -16,24 +16,47 @@ nmap <iptarget> = lihat port terbuka
 -sV = Service version
 -F = Fast (hanya scan port yang biasa ditarget)
 --open = hanya scan yang open saja
+-sn = ping semua cari tau device apa yang ada dalam network
 
 contoh:
 $ nmap -oG - 192.168.1.0-255 -p 22 -vv > /home/cenovaxs/hasil = menscan 192.168.1.0 sampai 192.168.1.255 dengan port 22 hasil grabaple rapih kemudian disimpan di file bernama hasil
+
+
+website recon yang recommended
+
+hunter.io = gali info di internet bisa liat account email siapa aja, dan email tersebut login ke account apa aja
+chekusername.com = lihat username apa aja yang tersedia di berbagai internet
+whatsmyname.app = mirip checkusername.com
+namecheckup.com = check nama untuk cari domain yang tersedia plus username di internet
+dnsdumpster.com = check subdomain + geo location, dns server, mx record, text record, host record, visual map domain
+www.nmmapper.com = subdomain geo location, dll. alteratif dnsdumpster
+https://www.spyse.com = subdomain alternatif tapi musti bayar dan server mati 
+
+program
+
+sublist3r = aplikasi python buat cek subdomain pake search engine database
 
 theHarvester
 ini buat cari info tentang website                                            
 $ theHarvester -d networkchuck.com -l 250 -b google
         -d  target
-        -l  limit berapa banyak                                                       -b  source pencarian                                                  
+        -l  limit berapa banyak                                                     
+        -b  source pencarian                                                  
 
 recon-ng
 untuk pertama kali harus download modul caranya
 marketplace refresh
 marketplace install all
 
+
 hackertarget
 >modules load hackertarget
 [hackertarget] > options  = untuk liat bisa apa aja
 [hackertarget] > options set source networkchuck.com  = set target website
-[hackertarget] > info  = lihat info                                           [hackertarget] > run = execute module
+[hackertarget] > info  = lihat info                                           
+[hackertarget] > run = execute module
 [hackertarget] > show hosts = kasih lihat subdomain dengan ip addressnya
+
+Bug bounty website
+hackerone.com
+bugcrowd.com

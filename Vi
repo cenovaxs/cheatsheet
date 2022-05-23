@@ -69,6 +69,10 @@ v               visual mode bisa pilih e, kursor navigasi, kemudian
     d           untuk delete
     y           untuk copy kemudian 
     p           untuk paste
+termux copy ke aplikasi lain:
+tahan right click sampe keluar menu terus pilih copy      untuk copy dari termux ke clipboard
+[ctrl] [alt] v atau tahan right click kemudian pilih paste    untuk paste dari clipboard atau aplikasi berbeda ke vi
+
 untuk mensave preference dalam vim :
     buat atau ganti file $ ~/.vimrc
         didalamnya tulis contoh:
