@@ -373,8 +373,21 @@ untuk mengaktifkan grep -P harus grep version gnu klo blum upgrade atau download
 bisa dikombinasi dengan yang lainya contohnya $ grep -wirlP "\d{3}-\d{3}-\d{4}" names.filetype
 
 curl
-curl -i http://..... = menjalankan curl untuk melihat server. -i artinya include server name, cookies, tanggal, httpversion dll
+curl <link> = buka website dalam terminal
+curl -i http://..... = melihat server response -i artinya include server name, cookies, tanggal, httpversion dll
 curl -o saved.html https://www.google.com = simpan hasil buka website dan download menjadi saved.html, -0 = output disimpan
+
+wget
+wget <link> = download link komputer
+--mirror = download beserta child website
+--page-requistes = download js dan css
+--convert-link = buat link child website menjadi lokal
+--no-clobber = tidak akan mendupikasi apapun
+--no-parent = tidak akan download atasnya (parentnya)
+--domains <link> = hanya akan download yang <link> dan childnya tidak akan download ke website lainnya
+contoh
+wget --mirror --page-requistes --convert-link -no-clobber --no-parent --domains cereal.guru https://cereal.guru
+
 
 disk
 

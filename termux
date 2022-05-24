@@ -1,0 +1,9 @@
+lokasi termux ada di emulator
+aksesnya lewat Android Storage Acess Framework
+nanti dari situ ada pilihan device, google drive, termux
+
+shorcut 
+ctr-alt c = buat terminal baru
+ctr-alt n = pindah ke terminal berikutnya
+ctr-alt p = pindah ke terminal sebelumnya
+ctr-alt v = paste dari clipboard ke terminal
