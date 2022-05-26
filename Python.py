@@ -146,13 +146,27 @@ print(float(str1))
 print("\nList and Tuples\n")
 matpel = ['sejarah', 'mat', 'fis', 'agama']
 print(len(matpel))  # melihat jumlah item dalam list
+#List Slicing
+print("\nList Slicing\n")
+
+# rumusnya list[star:stop:step]
+print(matpel[1:5])
+# bisa juga negatif
+print(matpel[-5:-1])
 print(matpel[0])  # melihat hanya isi item pertama
 print(matpel[-1])  # melihat hanya isi item terakhir
 print(matpel[0:2])  # melihat isi pertama sampai kedua
 print(matpel[:2])  # sama kyk diatas
 print(matpel[2:])  # melihat isi ketiga sampai akhir
 print(matpel[::-1])  # melihat isi reverse
-print(matpel[-1:0:-1])  # dari belakang ke nomor 2
+print(matpel[-1:0:-1])  # mulai dari belakang ke nomor 2
+print(matpel[-1::-2])  # mulai dari belakang skip satu
+print(matpel[::-1]) # reverse list
+
+# bisa juga slice String
+print("\nString Slicing\n")
+string_slicing = "Lorem Ipsum"
+print(string_slicing[6:]) # hasilnya Ipsum 
 
 # append tambah dibelakang
 print("\nappend\n")
@@ -586,5 +600,39 @@ def outer():
 
 outer()
 
-
 # list comprehension
+print("\nList Comprehension\n")
+# coding standart :
+nums = [0,1,2,3,4,5,6]
+
+hasil = []
+for n in nums:
+    hasil.append(n**2)
+print(hasil)
+
+# kalau dengan list comprehension persamaannya:
+
+hasil2 = [x**2 for x in nums]
+print(hasil2)
+
+# contoh lainnya menggunakan if:
+# coding biasa:
+hasil3 = []
+for n in nums:
+    if n%2==0:
+        hasil3.append(n)
+print(hasil3)
+# List comprehension:
+hasil3 = [n for n in nums if n%2==0]
+print(hasil3)
+
+# loop in loop
+# standart
+hasil4 = []
+for huruf in 'abcd':
+    for angka in range(4):
+        hasil4.append([huruf,angka])
+print(hasil4)
+# LC
+hasil4 = [[huruf,angka] for huruf in 'abcd' for angka in range(4)]
+print(hasil4)
