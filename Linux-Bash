@@ -376,6 +376,11 @@ curl
 curl <link> = buka website dalam terminal
 curl -i http://..... = melihat server response -i artinya include server name, cookies, tanggal, httpversion dll
 curl -o saved.html https://www.google.com = simpan hasil buka website dan download menjadi saved.html, -0 = output disimpan
+curl -d "<key1=data1&key2=data2>" http..... = untuk kirim post request
+curl -X PUT -d "<key1=data1&key2=data2>" <link> = untuk kirim put request
+curl -X DELETE "<key1=data1&key2=data2>" <link> = untuk kirim delete request
+curl -u <username>:<password> <link> = untuk kirim username dan password 
+curl -o <namafilediharddisk> <link> = untuk donwload ke file
 
 wget
 wget <link> = download link komputer
