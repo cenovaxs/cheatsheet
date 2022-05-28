@@ -495,29 +495,36 @@ student_info(info, courses)
 # ini gak bisa info duluan harus args dulu baru kwargs
 student_info(*courses, **info)  # pakai * untuk hasilnya terpisah beda line
 
-# module import
+# module import dan std library
 
 print("\nmodule\n")
-
+#import module
+# ini bakal nyari module yang ada dalam local folder
 print(matpel)
 print(module.find(matpel, "sejarah"))
+# harus dalam format <module>.<function>
 
 # as
-
+#import module as mm
 print(mm.find(matpel, "sejarah"))
 
-# from
-
-#from module import find, test
+# from dipakai supaya pendek jadi langsung function aja
+#from module import find
+#from module import find, test  = untuk mengimport multiple
+#from module import *  = untuk menimport semua function 
 print(find(matpel, 'sejarah'))
 
 # from as
-
-print(find(matpel, 'sejarah'))
+#from module import find as fi
+print(fi(matpel, 'sejarah'))
 
 # sys
+print("\nsys.path\n")
 print(sys.path)  # untuk mengecek module dari mana saja
-# setting path
+# local folder, std lbr, dll
+
+# setting path 
+# untuk nambah custom path caranya:
 "sys.path.append('/home/pujas')"
 # diatas contoh setting path
 # Carakedua tulis di .profile (ubuntu) :
