@@ -1,5 +1,5 @@
 # Huruf (STRING)
-from multiprocessing import Condition
+from multiprocessing import Condition, queues
 import module
 import module as mm
 from module import find as fi
@@ -146,7 +146,7 @@ print(float(str1))
 print("\nList and Tuples\n")
 matpel = ['sejarah', 'mat', 'fis', 'agama']
 print(len(matpel))  # melihat jumlah item dalam list
-#List Slicing
+# List Slicing
 print("\nList Slicing\n")
 
 # rumusnya list[star:stop:step]
@@ -161,12 +161,12 @@ print(matpel[2:])  # melihat isi ketiga sampai akhir
 print(matpel[::-1])  # melihat isi reverse
 print(matpel[-1:0:-1])  # mulai dari belakang ke nomor 2
 print(matpel[-1::-2])  # mulai dari belakang skip satu
-print(matpel[::-1]) # reverse list
+print(matpel[::-1])  # reverse list
 
 # bisa juga slice String
 print("\nString Slicing\n")
 string_slicing = "Lorem Ipsum"
-print(string_slicing[6:]) # hasilnya Ipsum 
+print(string_slicing[6:])  # hasilnya Ipsum
 
 # append tambah dibelakang
 print("\nappend\n")
@@ -325,7 +325,7 @@ for key in murid:
 for key, value in murid.items():
     print(key, value)
 # if kalau True maka lanjut kalau False maka stop
-print('\nConditionals and Booleans\n')
+print('\nConditionals and Booleans (if else)\n')
 if True:
     print('if')
 # is membandingkan apakah berada dalam satu memori yang sama
@@ -375,9 +375,9 @@ else:
     print('false')
 
 # loop
-print('Loop')
+print('\nLoop\n')
 # break
-
+print('\nfor\n')
 nums = [1, 2, 3, 4, 5]
 
 for num in nums:
@@ -403,7 +403,7 @@ for num in nums:
 # range loop sebanyak x kali
 for i in range(10):
     print(i)  # ini akan ngeloop sampai 10 kali dari 0-9
-
+print('\nWhile\n')
 # while kalau pakai while bisa infinite loop
 x = 0
 while x < 10:
@@ -510,8 +510,8 @@ print(mm.find(matpel, "sejarah"))
 
 # from dipakai supaya pendek jadi langsung function aja
 #from module import find
-#from module import find, test  = untuk mengimport multiple
-#from module import *  = untuk menimport semua function 
+# from module import find, test  = untuk mengimport multiple
+# from module import *  = untuk menimport semua function
 print(find(matpel, 'sejarah'))
 
 # from as
@@ -523,7 +523,7 @@ print("\nsys.path\n")
 print(sys.path)  # untuk mengecek module dari mana saja
 # local folder, std lbr, dll
 
-# setting path 
+# setting path
 # untuk nambah custom path caranya:
 "sys.path.append('/home/pujas')"
 # diatas contoh setting path
@@ -610,7 +610,7 @@ outer()
 # list comprehension
 print("\nList Comprehension\n")
 # coding standart :
-nums = [0,1,2,3,4,5,6]
+nums = [0, 1, 2, 3, 4, 5, 6]
 
 hasil = []
 for n in nums:
@@ -626,11 +626,11 @@ print(hasil2)
 # coding biasa:
 hasil3 = []
 for n in nums:
-    if n%2==0:
+    if n % 2 == 0:
         hasil3.append(n)
 print(hasil3)
 # List comprehension:
-hasil3 = [n for n in nums if n%2==0]
+hasil3 = [n for n in nums if n % 2 == 0]
 print(hasil3)
 
 # loop in loop
@@ -638,10 +638,10 @@ print(hasil3)
 hasil4 = []
 for huruf in 'abcd':
     for angka in range(4):
-        hasil4.append([huruf,angka])
+        hasil4.append([huruf, angka])
 print(hasil4)
 # LC
-hasil4 = [[huruf,angka] for huruf in 'abcd' for angka in range(4)]
+hasil4 = [[huruf, angka] for huruf in 'abcd' for angka in range(4)]
 print(hasil4)
 
 print('\nZip Function\n')
@@ -658,18 +658,35 @@ print("\nDictionary Comprehension\n")
 my_dict = {}
 for name, hero in zip(names, heroes):
     my_dict[name] = hero
+
 print(my_dict)
 # DC
-my_dict2 = {name: hero for name, hero in zip (names, heroes)}
+my_dict2 = {name: hero for name, hero in zip(names, heroes)}
 print(my_dict2)
 # misalnya kita mau buang peter
-my_dict2 = {name: hero for name, hero in zip (names, heroes) if name != 'Peter'}
+my_dict2 = {name: hero for name, hero in zip(names, heroes) if name != 'Peter'}
 print(my_dict2)
 
+# Ini bisa juga untuk SET
+
+# Generator Expression
+
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# generator normal :
 
 
+def gen_func(nums):
+    for n in nums:
+        yield n*n
 
 
+my_gen = gen_func(nums)
 
+print(list(my_gen))
 
+# generator comprehension :
 
+my_gen = (n*n for n in nums)
+
+print(list(my_gen))
