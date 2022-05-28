@@ -643,3 +643,33 @@ print(hasil4)
 # LC
 hasil4 = [[huruf,angka] for huruf in 'abcd' for angka in range(4)]
 print(hasil4)
+
+print('\nZip Function\n')
+
+names = ['Bruce', 'Clark', 'Peter', 'Logan', 'Wade']
+heroes = ['Batman', 'Superman', 'Spiderman', 'Wolverine', 'Deadpool']
+
+# zip function = pair two list into one
+print(dict(zip(names, heroes)))
+
+# dictionary comprehension
+print("\nDictionary Comprehension\n")
+# coding normal
+my_dict = {}
+for name, hero in zip(names, heroes):
+    my_dict[name] = hero
+print(my_dict)
+# DC
+my_dict2 = {name: hero for name, hero in zip (names, heroes)}
+print(my_dict2)
+# misalnya kita mau buang peter
+my_dict2 = {name: hero for name, hero in zip (names, heroes) if name != 'Peter'}
+print(my_dict2)
+
+
+
+
+
+
+
+
