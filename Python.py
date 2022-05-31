@@ -535,9 +535,21 @@ def student_info(*args, **kwargs):
 courses = ['math', 'art']
 info = {'name': 'john', 'age': 20}
 
-student_info(info, courses)
-# ini gak bisa info duluan harus args dulu baru kwargs
-student_info(*courses, **info)  # pakai * untuk hasilnya terpisah beda line
+# kalau tanpa bintang dibuat maka akan dianggap args kemudian kwargs menjadi dictionary kosong
+student_info(info, courses) 
+# ({'name': 'john', 'age': 20}, ['math', 'art'])   >>semua jadi satu tuple
+# {}   >> hasilnya dict kosong
+
+student_info(courses, info)
+#(['math', 'art'], {'name': 'john', 'age': 20})
+#{}
+
+# pakai * untuk hasilnya terpisah beda line tapi harus tuple dulu baru dict kalau terbalik error
+student_info(*courses, **info)  
+# ('math', 'art')
+# {'name': 'john', 'age': 20}
+
+
 
 # module import dan std library
 
@@ -627,22 +639,28 @@ $ pip install -r <list.txt>
 untuk install aplikasi dari list
 """
 
+
+print("\nScope\n")
+# prioritas dalam variabel mengikuti acuan LEGB :
 # local, Enclossing, Global, Built-in
+x = 'global x' # contoh variable global
+print(x) # global x
 
-x = 'global x'
-
+def test0():
+    x = 'local x' # contoh variable local
 
 def test():
     global x  # membuat var local dipakai global
+    x = 'local x' # variabel harus ditaroh setelah command global kalau
     print(x)
 
 
-test()
-print(x)
+test() # local x
+print(x) # local x
 
 
 def outer():
-    y = "outer y"
+    y = "outer y" # contoh enclosing 
 
     def inner():
         nonlocal y  # membuat var dipakai non local
@@ -654,6 +672,8 @@ def outer():
 
 
 outer()
+# inner y
+# inner y
 
 # list comprehension
 print("\nList Comprehension\n")
@@ -720,6 +740,18 @@ my_dict2 = {name: hero for name, hero in zip(names, heroes) if name != 'Peter'}
 print(my_dict2)
 
 # Ini bisa juga untuk SET
+print('\nSet Comprehension\n')
+# normal coding
+nums = [1,1,1,2,3,4,5,5,3,2,4,5]
+my_set = set(nums)
+for n in nums:
+    my_set.add(n)
+print(my_set)
+
+# Set Comprehension
+my_set = {n for n in nums}
+print(my_set)
+
 
 # Generator Expression
 
