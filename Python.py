@@ -21,6 +21,11 @@ print(type(message))  # <class 'str'>
 # Id() mengecek lokasi dalam memory
 print(id(message))  # 3229004571568
 
+# untuk mengecek method apa saja yang bisa digunakan
+print(dir(message))  # ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+# untuk mencari tau apa fungsi dari perintah tersebut :
+print(help(print))  # hasilnya panjang lihat aja di terminal
+
 # Quote
 # contoh dibawah '' yang salah
 # message = 'Bobby's World'
@@ -64,7 +69,7 @@ message = message.replace('world', 'universe')
 print(message)  # Booby"s universe
 
 # concatenate
-print("\nconcatenate\n")
+print("\nconcatenate and formating\n")
 # cara 1
 awal = "This is"
 akhir = awal + " " + message
@@ -82,6 +87,9 @@ print(akhir)  # pujas putri
 # cara 2.2
 akhir = '{name} {age}'.format(name='Pujas', age='34')
 print(akhir)  # Pujas 34
+# cara 2.3 pakai kwargs
+person = {'name': 'Pujas', 'age': 31}
+akhir = 'My Name is {name} and my age is {age}'.format(**person)
 # cara 3 f string untuk python 3.6 keatas
 akhir = f'{awal} {message}'
 print(akhir)  # This is Booby"s universe
@@ -92,17 +100,6 @@ print(akhir)  # This is BOOBY"S UNIVERSE
 tambah = f'seratus tambah seribu sama dengan {100+1000}'
 print(tambah)  # seratus tambah seribu sama dengan 1100
 # contoh lain n:02 berarti dua digit
-for n in range(1, 11):
-    sentence = f'Hitung {n:02}'
-    print(sentence)
-# contoh lain {:.4f} berarti 3 digit setelah coma dengan pembulatan dan f yang berarti floating
-hasil = 9.87654321
-sentence = f'hasil = {hasil:.4}'
-print(sentence)  # hasil = 9.877
-# untuk mengecek method apa saja yang bisa digunakan
-# print(dir(message))
-# untuk mencari tau apa fungsi dari method tersebut
-# print(help(str))
 
 # Angka (Integer dan float)
 print("\nAngka (integer dan float)\n")
@@ -154,12 +151,30 @@ print(3 <= 2)  # apakah 3 lebih kecil sama dengan 2
 str1 = '100'
 print(float(str1))
 # print format set digit
+
+print('\nNumber Format\n')
 print('\nSet digit\n')
 # nambahin angka total berapa digit termasuk koma dan titik
 num1 = '{:05}'.format(num)
 print(num1)  # hasilnya 005.0
 num2 = '{:.3f}'.format(num)  # nambahin angka dibelakang koma (pembulatan)
 print(num2)  # hasilnya 5.000
+
+for n in range(1, 11):
+    # print 2 digit kalau ada koma termasuk di dalamnya
+    sentence = f'Hitung {n:02}'
+    print(sentence)
+# contoh lain {:.4f} berarti 4 digit setelah coma dengan pembulatan dan f yang berarti floating
+hasil = 9.87654321
+sentence = f'hasil = {hasil:.4}'  # berarti 3 digit setelah koma
+print(sentence)  # hasil = 9.877
+
+num3 = '{:,}'.format(1000**2)  # kasih koma setiap 3 angka
+print(num3)  # 1,000,000
+
+# bisa juga dikombinasi koma dan titik
+num4 = '{:,.2f}'.format(1000**2)
+print(num4)  # 1,000,000.00
 
 #List and Tuples
 print("\nList and Tuples\n")
@@ -536,19 +551,18 @@ courses = ['math', 'art']
 info = {'name': 'john', 'age': 20}
 
 # kalau tanpa bintang dibuat maka akan dianggap args kemudian kwargs menjadi dictionary kosong
-student_info(info, courses) 
+student_info(info, courses)
 # ({'name': 'john', 'age': 20}, ['math', 'art'])   >>semua jadi satu tuple
 # {}   >> hasilnya dict kosong
 
 student_info(courses, info)
 #(['math', 'art'], {'name': 'john', 'age': 20})
-#{}
+# {}
 
 # pakai * untuk hasilnya terpisah beda line tapi harus tuple dulu baru dict kalau terbalik error
-student_info(*courses, **info)  
+student_info(*courses, **info)
 # ('math', 'art')
 # {'name': 'john', 'age': 20}
-
 
 
 # module import dan std library
@@ -596,14 +610,31 @@ print("\nrandom\n")
 print(random.choice(matpel))  # memilih random dari list
 
 # math
+print('\nMath\n')
 
 print(math.radians(90))  # 1.5707963267948966
 
 # tanggal
 
+print('\nDatetime\n')
+
 print(datetime.date.today())
 print(calendar.isleap(2220))  # True
 
+print('\nFormat Datetime\n')
+my_date = datetime.datetime(2022, 5, 31, 22, 51)
+# Default python format    2022-05-31 22:51:00
+print('Default python format\t', my_date)
+print('\nCustom Datetime\t')
+# untuk format yang lain cari di internet "strftime" atau "strptime"
+newDatetime = '{:%B %d %Y}'.format(my_date)
+print(newDatetime)  # May 31 2022
+# contoh lain lebih complex
+complexdate = '{0:%B %d, %Y} jatuh pada hari {0:%A} dan hari ke {0:%j}'.format(
+    my_date)  # jangan lupa taruh 0 karena kita menggunakan 3 variabel namun satu argument
+print(complexdate)  # May 31, 2022 jatuh pada hari Tuesday dan hari ke 151
+
+print('\nOS\n')
 # OS
 # print working directory
 print(os.getcwd())  # E:\pujas\programing\cheatsheet
@@ -643,24 +674,26 @@ untuk install aplikasi dari list
 print("\nScope\n")
 # prioritas dalam variabel mengikuti acuan LEGB :
 # local, Enclossing, Global, Built-in
-x = 'global x' # contoh variable global
-print(x) # global x
+x = 'global x'  # contoh variable global
+print(x)  # global x
+
 
 def test0():
-    x = 'local x' # contoh variable local
+    x = 'local x'  # contoh variable local
+
 
 def test():
     global x  # membuat var local dipakai global
-    x = 'local x' # variabel harus ditaroh setelah command global kalau
+    x = 'local x'  # variabel harus ditaroh setelah command global kalau
     print(x)
 
 
-test() # local x
-print(x) # local x
+test()  # local x
+print(x)  # local x
 
 
 def outer():
-    y = "outer y" # contoh enclosing 
+    y = "outer y"  # contoh enclosing
 
     def inner():
         nonlocal y  # membuat var dipakai non local
@@ -742,7 +775,7 @@ print(my_dict2)
 # Ini bisa juga untuk SET
 print('\nSet Comprehension\n')
 # normal coding
-nums = [1,1,1,2,3,4,5,5,3,2,4,5]
+nums = [1, 1, 1, 2, 3, 4, 5, 5, 3, 2, 4, 5]
 my_set = set(nums)
 for n in nums:
     my_set.add(n)
