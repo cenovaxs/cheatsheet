@@ -1,6 +1,10 @@
 # Huruf (STRING)
 from multiprocessing import Condition, queues
+from time import time
+from tkinter import Variable
 from traceback import print_tb
+
+from jinja2 import Environment, FunctionLoader
 import module
 import module as mm
 from module import find as fi
@@ -579,7 +583,7 @@ print(module.find(matpel, "sejarah"))  # 4
 print(mm.find(matpel, "sejarah"))  # 4
 
 # from dipakai supaya pendek jadi langsung function aja
-#from module import find
+# from module import find
 # from module import find, test  = untuk mengimport multiple
 # from module import *  = untuk menimport semua function
 print(find(matpel, 'sejarah'))  # 4
@@ -636,11 +640,84 @@ print(complexdate)  # May 31, 2022 jatuh pada hari Tuesday dan hari ke 151
 
 print('\nOS\n')
 # OS
+# lihat method apa saja yang bisa dilakukan os
+print(dir(os))
 # print working directory
 print(os.getcwd())  # E:\pujas\programing\cheatsheet
 # cek lokasi os.py
-# C:\Users\pujas\AppData\Local\Programs\Python\Python38\lib\os.py
-print(os.__file__)
+print(os.__file__) # C:\Users\pujas\AppData\Local\Programs\Python\Python38\lib\os.py
+
+# pindah folder
+# os.chdir('/home/kali/Programming/Cheatsheet') # pindah working directory
+
+# ls menggunakan OS
+print(os.listdir()) # kyk ls di bash melihat file dan folder yang ada di working directory
+
+# buat folder ada dua cara :
+# os.mkdir('new folder') # ini cuma bikin satu folder
+# os.makedirs('newfolder1/newfolder2') # ini untuk bikin folder dengan subfoldernya
+
+# delete folder ada dua cara :
+# os.rmdir('new folder') # delete satu folder
+# os.removedirs('newfolder1/newfolder2') # delete multiple folder 
+
+# os.rename('nama lama', 'nama baru') # ganti nama
+
+# print(os.stat('file')) # liat statistic file
+# print(os.stat('file').st_size) # liat ukuradsan file
+# print(os.stat('file').st_mttime) # liat waktu modifikasi
+
+# untuk liat human readable time
+# modtime = (os.stat('file').st_mttime)
+# print(datetime.datetime.fromtimestamp(modtime))
+# datetime.datetime bisa disingkat pakai # from datetime import datetime
+
+# tree list (os.walk) digunakan untuk melihat seluruh folder dan subfolder serta file
+# os walk akan membuat generator dengan urutan sbb berikut: path, folder, file
+# print(list(os.walk('/home/kali/Programming/test folder')))
+# cara yang baik untuk mengaksesnya adalah :
+"""
+for path, dir, file in os.walk('/home/kali/Programming/test folder')
+    print('path:', path)
+    print('folder:', dir)
+    print('file:', file)
+    print()
+"""
+
+# Environment Variable melihat path
+# print(os.environ.get('HOME')) # in buat linux dan mac
+# print(os.environ.get('USERPROFILE')) # buat windows
+
+# ambil nama file aja
+# print(os.path.basename('~/Programming/test folder/python.py')) # python.py
+
+# ambil nama folder saja
+# print(os.path.dirname('~/Programming/test folder/python.py')) # ~/Programming/test folder
+
+# ambil nama folder dan file
+# print(os.path.split('~/Programming/test folder/python.py')) # ('~/Programming/test folder', 'python.py')
+
+# check apakah file tersebut ada
+# print(os.path.exists('~/Programming/test folder/test.py')) # False
+# false karena gak boleh pake ~ dia harus full path
+# print(os.path.exists('/home/kali/Programming/test folder/test.py')) # True
+
+# test apakah directory
+# print(os.path.isdir('/home/kali/Programming/test folder/test.py')) # False
+
+# test apakah file
+# print(os.path.isfile('/home/kali/Programming/test folder/test.py')) # True
+
+# lepas extension 
+# print(os.path.splitext('/home/kali/Programming/test folder/test.py')) # ('/home/kali/Programming/test folder/test', '.py')
+
+# Nyambung path bisa pakai contatination tp ada mehod yang otomatis
+# os.path.join(path1, path2)
+# os.path.join(os.environ.get('HOME'), 'test.txt')
+# hasil : /home/kali/test.txt
+
+# untuk yang lain bisa dicek disini:
+# print(dir(os.path))
 
 """pip program installer python
 
