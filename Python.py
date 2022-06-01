@@ -1,4 +1,6 @@
 # Huruf (STRING)
+import pytz
+from hashlib import new
 from multiprocessing import Condition, queues
 from time import time
 from tkinter import Variable
@@ -622,13 +624,49 @@ print(math.radians(90))  # 1.5707963267948966
 
 print('\nDatetime\n')
 
-print(datetime.date.today())
+print(datetime.datetime.today())    # tanggal hari ini local
+# tanggal hari ini default local tp bisa diganti
+print(datetime.datetime.now())
+print(datetime.datetime.utcnow())   # tanggal hari ini ikut timezone UTC
 print(calendar.isleap(2220))  # True
 
+# datetime.date hanya mengakomodasi tahun bulan hari
+# datetime.time hanya mengakomodasi jam menit detik microsecond
+# datetime.datetime mengakomodasi semuanya
+
 print('\nFormat Datetime\n')
-my_date = datetime.datetime(2022, 5, 31, 22, 51)
+my_date = datetime.datetime(2022, 5, 31, 22, 51, 0)
 # Default python format    2022-05-31 22:51:00
 print('Default python format\t', my_date)
+
+# ambil hanya tertentu tahun/tanggal/bulan/dll
+print(my_date.year)     # 2022
+print(my_date.month)    # 5
+print(my_date.day)      # 31
+print(my_date.hour)     # 22
+print(my_date.minute)   # 51
+print(my_date.second)   # 0
+
+# weekday cek hari apa?
+print(my_date.weekday())  # 1   karena jatuh hari selasa mengikuti aturan :
+# senin 0 minggu 6
+print(my_date.isoweekday())  # 2
+# senin 1 minggu 7
+
+# untuk tambah hari
+tdelta = datetime.timedelta(days=7)  # set time delta 7 hari
+print(my_date + tdelta)  # 2022-06-07 22:51:00
+# bisa juga dikurang
+print(my_date - tdelta)  # 2022-05-24 22:51:00
+
+# cari selisih hari
+# yang harus diperhatikan keduanya haru sama jenisnya tidak boleh datetime.date dengan datetime.datetime
+new_date = datetime.datetime(2022, 6, 1)
+print(new_date - my_date)  # 1:09:00
+print(my_date - new_date)  # -1 day, 22:51:00
+# bisa diubah dalam detik
+print((my_date - new_date).total_seconds())  # -4140.0
+
 print('\nCustom Datetime\t')
 # untuk format yang lain cari di internet "strftime" atau "strptime"
 newDatetime = '{:%B %d %Y}'.format(my_date)
@@ -638,6 +676,47 @@ complexdate = '{0:%B %d, %Y} jatuh pada hari {0:%A} dan hari ke {0:%j}'.format(
     my_date)  # jangan lupa taruh 0 karena kita menggunakan 3 variabel namun satu argument
 print(complexdate)  # May 31, 2022 jatuh pada hari Tuesday dan hari ke 151
 
+print('\nPytz timezone aware datetime\n')
+# pytz timezone aware datetime
+# pip install pytz
+#import pytz
+
+# cara apply :
+# 1 datetime.datetime
+my_date2 = datetime.datetime(2022, 5, 31, 22, 51, 0, tzinfo=pytz.UTC)
+print(my_date2)  # 2022-05-31 22:51:00+00:00
+# 2 datetime.datetime.now
+dt_now = datetime.datetime.now(tz=pytz.UTC)
+print(dt_now)
+# 3 datetime.datetime.utcnow
+dt_utcnow = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
+print(dt_utcnow)
+# pilih timezone sesuai yang diinginkan
+dt_jakarta = dt_now.astimezone(pytz.timezone('Asia/Jakarta'))
+print(dt_jakarta)  # 2022-06-01 23:38:41.909889+07:00
+
+# untuk lihat list timezone lainnya dapat dilihat di pytz.all_timezones:
+"""
+for tz in pytz.all_timezones:
+    print(tz)
+"""
+# cara ubah naive datetime ke timezone aware
+naive = datetime.datetime.now()
+jkttime = pytz.timezone('Asia/Jakarta')
+waktujakarta = jkttime.localize(naive)
+print(waktujakarta)  # 2022-06-01 23:51:53.986948+07:00
+
+# format datetime
+# iso format
+print(waktujakarta.isoformat())  # 2022-06-01T23:57:44.949860+07:00
+# custom format strftime
+print(waktujakarta.strftime('%B %d, %Y'))  # June 01, 2022
+
+# ubah dari string ke datetime strptime
+dt_string = 'June 01, 2022'
+dt_convert = datetime.datetime.strptime(dt_string, '%B %d, %Y')
+print(dt_convert)  # 2022-06-01 00:00:00
+
 print('\nOS\n')
 # OS
 # lihat method apa saja yang bisa dilakukan os
@@ -645,13 +724,15 @@ print(dir(os))
 # print working directory
 print(os.getcwd())  # E:\pujas\programing\cheatsheet
 # cek lokasi os.py
-print(os.__file__) # C:\Users\pujas\AppData\Local\Programs\Python\Python38\lib\os.py
+# C:\Users\pujas\AppData\Local\Programs\Python\Python38\lib\os.py
+print(os.__file__)
 
 # pindah folder
 # os.chdir('/home/kali/Programming/Cheatsheet') # pindah working directory
 
 # ls menggunakan OS
-print(os.listdir()) # kyk ls di bash melihat file dan folder yang ada di working directory
+# kyk ls di bash melihat file dan folder yang ada di working directory
+print(os.listdir())
 
 # buat folder ada dua cara :
 # os.mkdir('new folder') # ini cuma bikin satu folder
@@ -659,7 +740,7 @@ print(os.listdir()) # kyk ls di bash melihat file dan folder yang ada di working
 
 # delete folder ada dua cara :
 # os.rmdir('new folder') # delete satu folder
-# os.removedirs('newfolder1/newfolder2') # delete multiple folder 
+# os.removedirs('newfolder1/newfolder2') # delete multiple folder
 
 # os.rename('nama lama', 'nama baru') # ganti nama
 
@@ -708,7 +789,7 @@ for path, dir, file in os.walk('/home/kali/Programming/test folder')
 # test apakah file
 # print(os.path.isfile('/home/kali/Programming/test folder/test.py')) # True
 
-# lepas extension 
+# lepas (split) extension
 # print(os.path.splitext('/home/kali/Programming/test folder/test.py')) # ('/home/kali/Programming/test folder/test', '.py')
 
 # Nyambung path bisa pakai contatination tp ada mehod yang otomatis
