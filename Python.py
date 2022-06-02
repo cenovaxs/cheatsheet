@@ -1,20 +1,14 @@
 # Huruf (STRING)
 import pytz
-from hashlib import new
-from multiprocessing import Condition, queues
 from time import time
-from tkinter import Variable
-from traceback import print_tb
-
-from jinja2 import Environment, FunctionLoader
 import module
 import module as mm
 from module import find as fi
 import sys
-import random
-import math
-import datetime
-import calendar
+import random 
+import math 
+import datetime 
+import calendar 
 import os
 from module import find
 print("\nHuruf (STRING)\n")
@@ -69,6 +63,9 @@ print(message.count('o'))  # 3
 
 # cari kata di dalamnya kalau ada tunjukkan dimana lokasinya kalau ga ada -1
 print(message.find('world'))  # 8
+
+# Strip hilangin huruf atau space kosong setelah dan sebelum kata
+print(message.strip())
 
 # ganti kata sebagian dari variabel
 message = message.replace('world', 'universe')
@@ -965,3 +962,91 @@ print(list(my_gen))  # [1, 4, 9, 16, 25, 36, 49, 64, 81]
 my_gen = (n*n for n in nums)
 
 print(list(my_gen))  # [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# File Objects - Reading Writing files
+print('\nFile Objects - Reading Writing Files\n')
+
+# Tanpa context manager:
+"""
+f = open('test.txt', 'r') # Argumen pertama path file, Argumen kedua r untuk read, w untuk write, r+w untuk read and write
+# contoh path file > f = open('/home/pujas/Programming/cheatsheet/Vi', 'r')
+# method .name untuk melihat nama dari file, .mode untuk cek apakah write atau read, .closed untuk ngecek apakah sudah diclose
+print(f.name) # test.txt
+print(f.mode) # r
+print(f.closed) # False
+print(f.read()) # Isi dari file txt. Read kalau selesai membaca dia akan ke akhir jadinya tidak bisa baca ulang
+print(f.read(100)) # membaca isi 100 character pertama saja
+print(len(f.read())) # melihat berapa Character sampai tulisan habis
+print(f.tell()) # melihat posisi sudah sampai dimana
+f.seek(0) # kembali ke posisi 0 awal
+print(f.readlines()) # membuat list yang berisi setiap baris dalam isi file, jadi bisa dipanggil per baris
+print(f.readline(), end='') # membaca baris per baris, argumen2 end='' mengatur hasilnya menjadi spasi karena karena default dari end adalah baris baru
+
+f.close() # harus di close biar file gak bocor dan bikin error
+"""
+
+# dengan context manager:
+
+""" Cara 1 dengan read method
+with open('test.txt', 'r') as f: 
+    print(f.read())
+"""
+
+""" Cara 2 dengan baca satu persatu
+with open('test.txt', 'r') as f: 
+    print(f.readline(), end='') # baris perta,a
+    print(f.readline()) # baris berikutnya
+    print(f.readline())
+print(f.closed) # True  > karena context manager otomatis close filenya 
+"""
+
+# Cara yang lebih rapih dengan for tanpa method read
+"""
+with open('test.txt', 'r') as f: 
+    for line in f:
+        print(line, end='')
+"""
+
+# Membaca menggunakan While
+"""
+with open('test.txt', 'r') as f:
+    size_to_read = 10
+    f_contents = f.read(size_to_read)
+    while len(f_contents) > 0:
+        print(f_contents, end='*')
+        f_contents = f.read(size_to_read)
+"""
+
+# Menulis Write
+"""
+with open('test.txt', 'w') as f: # kalau file belum ada maka bakal dibuat file baru
+    f.write('Test') # tulis Test ke dalam file
+    f.write('lagi') # lanjut tulis lagi setelah Test
+"""
+
+# Copy Text File
+"""
+with open('test.txt', 'r') as rf:
+    with open('test_copy.txt', 'w') as wf:
+        for line in rf:
+            wf.write(line)
+"""
+
+# Copy non text file harus ubah pakai binary mode
+"""
+with open('test.jpg', 'rb') as rf:
+    with open('test_copy.jpg', 'wb') as wf:
+        for line in rf:
+            wf.write(line)
+"""
+
+# Copy non text file dengan chunk size
+"""
+with open('test.jpg', 'rb') as rf:
+    with open('test_copy.jpg', 'wb') as wf:
+        chunk_size = 4096
+        read_chunk = rf.read(chunk_size)
+        while len(read_chunk) > 0 :
+            wf.write(read_chunk)
+            read_chunk = rf.read(chunk_size)
+"""
