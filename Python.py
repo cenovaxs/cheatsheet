@@ -5,10 +5,10 @@ import module
 import module as mm
 from module import find as fi
 import sys
-import random 
-import math 
-import datetime 
-import calendar 
+import random
+import math
+import datetime
+import calendar
 import os
 from module import find
 print("\nHuruf (STRING)\n")
@@ -610,7 +610,22 @@ print(sys.path)  # ['e:\\pujas\\programing\\cheatsheet', 'C:\\Users\\pujas\\AppD
 # random
 print("\nrandom\n")
 
+matpel = ['sejarah', 'mat', 'fis', 'agama', 'bahasa']
+
+print(random.random())  # buat random antara 0 - 1 dalam float
+print(random.uniform(1, 10))  # random antara 1 - 10 dalam float
+print(random.randint(1, 10))  # random antara 1 - 10 integer
 print(random.choice(matpel))  # memilih random dari list
+print(random.choices(matpel, k=10))  # random dari list sebanyak k kali
+# weights mengatur seberapa kali lebih sering dia bakal muncul
+print(random.choices(matpel, weights=[5, 20, 10, 1, 3], k=10))
+deck = list(range(1, 53))
+print(deck)
+# kyk kocok kartu ambil random yang ud diambil tidak diambil lagi sampai semua diambil
+random.shuffle(deck)
+print(deck)
+# ambil sebanyak 5 kali, 5 nomor acak dari deck
+print(random.sample(deck, k=5))
 
 # math
 print('\nMath\n')
