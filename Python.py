@@ -1015,7 +1015,7 @@ print('\nFile Objects - Reading Writing Files\n')
 
 # Tanpa context manager:
 """
-f = open('test.txt', 'r') # Argumen pertama path file, Argumen kedua r untuk read, w untuk write, r+w untuk read and write
+f = open('test.txt', 'r') # Argumen pertama path file, Argumen kedua r untuk read, w untuk write, a untuk append r+w untuk read and write
 # contoh path file > f = open('/home/pujas/Programming/cheatsheet/Vi', 'r')
 # method .name untuk melihat nama dari file, .mode untuk cek apakah write atau read, .closed untuk ngecek apakah sudah diclose
 print(f.name) # test.txt
@@ -1070,6 +1070,12 @@ with open('test.txt', 'w') as f: # kalau file belum ada maka bakal dibuat file b
     f.write('Test') # tulis Test ke dalam file
     f.write('lagi') # lanjut tulis lagi setelah Test
 """
+
+# Menambah Append
+
+# with open('test.txt', 'a') as f: # ini akan menambah, file lama tidak akan dihapus
+#     f.write('\nTambah') # tulis Test ke dalam file
+#     f.write('\nlagi') # lanjut tulis lagi setelah Test
 
 # Copy Text File
 """

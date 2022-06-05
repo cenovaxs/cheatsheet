@@ -1,0 +1,41 @@
+# dari youtube https://youtu.be/q5uM4VKywbA
+import csv
+
+# with open('Python sample/names.csv', 'r') as csv_file:
+#     csv_reader = csv.reader(csv_file)  # membaca csv, hasilnya kyk generator harus diiterate
+
+#     next(csv_reader)  # Ini untuk skip judul kalau mau
+#     for i in csv_reader:
+#         print(i)  # ['first_name', 'last_name', 'email']
+#         print(i[0])  # 'first_name'
+#     # print(list(csv_reader)) # ini juga bisa tapi jadi list di dalam list
+
+# with open('Python sample/names.csv', 'r') as csv_file:
+#     csv_reader = csv.reader(csv_file)
+
+#     with open('new_names.csv', 'w') as new_file:
+#         csv_writer = csv.writer(new_file, delimiter='-') # menulis csv optional menggunakan - sebagai pemisah
+
+#         for line in csv_reader:
+#             csv_writer.writerow(line) # menulis di csv
+
+# with open('Python sample/names.csv', 'r') as csv_file:
+#     csv_reader = csv.reader(csv_file, delimiter='\t') # delimiter pada read digunakan apabila file csv menggunakan delimiter yang bukan defautnya yaitu coma
+
+# Yang paling benar menggunakan Dict reader karena coding bakal mudah dibaca
+
+with open('names.csv', 'r') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+
+    with open('new_names.csv', 'w') as new_file:
+        fieldnames = ['first_name', 'last_name']
+
+        # fieldnames= harus diisi
+        csv_writer = csv.DictWriter(
+            new_file, fieldnames=fieldnames, delimiter='\t')
+
+        csv_writer.writeheader()
+
+        for line in csv_reader:
+            del line['email']
+            csv_writer.writerow(line)
