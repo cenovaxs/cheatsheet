@@ -1,6 +1,6 @@
 # Huruf (STRING)
 import pytz
-from time import time
+import time
 import module
 import module as mm
 from module import find as fi
@@ -11,6 +11,9 @@ import datetime
 import calendar
 import os
 from module import find
+
+t1 = time.time()
+
 print("\nHuruf (STRING)\n")
 
 # type() mengecek type variabel
@@ -1065,3 +1068,37 @@ with open('test.jpg', 'rb') as rf:
             wf.write(read_chunk)
             read_chunk = rf.read(chunk_size)
 """
+
+# generator kyk list tapi menunggu untuk di eksekusi, ini bisa simpan memory
+print("\nGenerator\n")
+
+
+def kuadrat(q2):
+    for i in q2:
+        yield (i*i)
+
+
+hasil_gen = kuadrat([1, 2, 3, 4])
+
+# generator gak bisa di print kayak list dia harus di iterate satu persatu
+print(hasil_gen)  # <generator object kuadrat at 0x0000013DEE39D900>
+
+# cara panggil
+# 1 lewat next(). Next akan panggil satu hasil generator berikutnya
+print(next(hasil_gen))  # 1
+print(next(hasil_gen))  # 4
+print(next(hasil_gen))  # 9
+print(next(hasil_gen))  # 16
+# print(next(hasil_gen))  # StopIteration  > Kalau diterusin error stop iteration
+
+# 2 lewat iterasi  > tapi kalau generator sudah pernah di next() dia mulai dari berikutnya, jadi kalau ada next harus ikutin
+for num in hasil_gen:
+    print(num)
+
+
+# Time
+
+print(time.sleep(0))  # pause selama 0 detik
+# menghitung lama proses
+t2 = time.time()  # time menunjukkan detik setelah epoch (1st January 1970)
+print(t2-t1)  # di awal code ada t1=time.time(), t2-t1 menunjukkan waktu yang diperlukan komputer untuk menjalankan program sampai titik ini
