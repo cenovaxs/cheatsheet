@@ -14,26 +14,23 @@ for f in os.listdir():
     if f == '.DS_Store':
         continue
 
-    file_name, file_ext = os.path.splitext(f)
+    file_name, file_ext = os.path.splitext(f) # memisahkan name file dengan extension
     # print(file_name)
 
     # One way to do this
-    f_title, f_course, f_number = file_name.split('-')
+    f_title, f_course, f_number = file_name.split('-') # memisahkan title, course dan nomor dari nama file
 
     # print('{}-{}-{}{}'.format(f_number, f_course, f_title, file_ext))
 
     # Need to remove whitespace
-    f_title = f_title.strip()
+    f_title = f_title.strip() # strip digunakan untuk membersihkan dari space kosong
     f_course = f_course.strip()
     # f_number = f_number.strip()
 
     # Want to remove the number sign?
     # f_number = f_number.strip()[1:]
 
-    # One thing I noticed about this output is that if it was sorted by filename
-    # then the 1 and 10 would be next to each other. How do we fix this? One way we can fix this is to pad
-    # the numbers. So instead of 1, we'll make it 01. If we had hundreds of files then this would maybe need to be 001.
-    # We can do this in Python with zfill
+    # kemudian karena ada dua digit 10 maka angka 10 akan di sort setelah angka 1, cara untuk menyelesaikannya adalah bikin jadi 2 digit 1 - 01, 2 - 02 dst
     f_number = f_number.strip()[1:].zfill(2)
 
     # print('{}-{}-{}{}'.format(f_number, f_course, f_title, file_ext))

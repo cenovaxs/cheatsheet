@@ -27,7 +27,8 @@ print(id(message))  # 3229004571568
 # untuk mengecek method apa saja yang bisa digunakan
 print(dir(message))  # ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 # untuk mencari tau apa fungsi dari perintah tersebut :
-print(help(print))  # hasilnya panjang lihat aja di terminal
+
+# print(help(print))  # hasilnya panjang lihat aja di terminal
 
 # Quote
 # contoh dibawah '' yang salah
@@ -383,6 +384,34 @@ for key in murid:
 # kalau mau menampilkan key dan values maka:
 for key, value in murid.items():
     print(key, value)
+
+# generator kyk list tapi menunggu untuk di eksekusi, ini bisa simpan memory
+print("\nGenerator\n")
+
+
+def kuadrat(q2):
+    for i in q2:
+        yield (i*i)
+
+
+hasil_gen = kuadrat([1, 2, 3, 4])
+
+# generator gak bisa di print kayak list dia harus di iterate satu persatu
+print(hasil_gen)  # <generator object kuadrat at 0x0000013DEE39D900>
+
+# cara panggil
+# 1 lewat next(). Next akan panggil satu hasil generator berikutnya
+print(next(hasil_gen))  # 1
+print(next(hasil_gen))  # 4
+print(next(hasil_gen))  # 9
+print(next(hasil_gen))  # 16
+# print(next(hasil_gen))  # StopIteration  > Kalau diterusin error stop iteration
+
+# 2 lewat iterasi  > tapi kalau generator sudah pernah di next() dia mulai dari berikutnya, jadi kalau ada next harus ikutin
+for num in hasil_gen:
+    print(num)
+
+
 # if kalau True maka lanjut kalau False maka stop
 print('\nConditionals and Booleans (if else)\n')
 if True:
@@ -1012,7 +1041,7 @@ with open('test.txt', 'r') as f:
 
 """ Cara 2 dengan baca satu persatu
 with open('test.txt', 'r') as f: 
-    print(f.readline(), end='') # baris perta,a
+    print(f.readline(), end='') # baris pertama
     print(f.readline()) # baris berikutnya
     print(f.readline())
 print(f.closed) # True  > karena context manager otomatis close filenya 
@@ -1069,36 +1098,9 @@ with open('test.jpg', 'rb') as rf:
             read_chunk = rf.read(chunk_size)
 """
 
-# generator kyk list tapi menunggu untuk di eksekusi, ini bisa simpan memory
-print("\nGenerator\n")
-
-
-def kuadrat(q2):
-    for i in q2:
-        yield (i*i)
-
-
-hasil_gen = kuadrat([1, 2, 3, 4])
-
-# generator gak bisa di print kayak list dia harus di iterate satu persatu
-print(hasil_gen)  # <generator object kuadrat at 0x0000013DEE39D900>
-
-# cara panggil
-# 1 lewat next(). Next akan panggil satu hasil generator berikutnya
-print(next(hasil_gen))  # 1
-print(next(hasil_gen))  # 4
-print(next(hasil_gen))  # 9
-print(next(hasil_gen))  # 16
-# print(next(hasil_gen))  # StopIteration  > Kalau diterusin error stop iteration
-
-# 2 lewat iterasi  > tapi kalau generator sudah pernah di next() dia mulai dari berikutnya, jadi kalau ada next harus ikutin
-for num in hasil_gen:
-    print(num)
-
-
 # Time
 
 print(time.sleep(0))  # pause selama 0 detik
 # menghitung lama proses
 t2 = time.time()  # time menunjukkan detik setelah epoch (1st January 1970)
-print(t2-t1)  # di awal code ada t1=time.time(), t2-t1 menunjukkan waktu yang diperlukan komputer untuk menjalankan program sampai titik ini
+print(t2-t1)  # di awal code ada t1=time.time() di baris 15, t2-t1 menunjukkan waktu yang diperlukan komputer untuk menjalankan program sampai titik ini
