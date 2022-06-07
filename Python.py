@@ -1,4 +1,5 @@
 # Huruf (STRING)
+import re
 import pytz
 import time
 import module
@@ -21,6 +22,7 @@ print("\nHuruf (STRING)\n")
 
 message = 'string'
 print(type(message))  # <class 'str'>
+print(r'\nspasi\n')  # r membuat ignore special case sehingga \n tetap ter print
 # Id() mengecek lokasi dalam memory
 print(id(message))  # 3229004571568
 
@@ -491,6 +493,7 @@ for num in nums:
 # range loop sebanyak x kali
 for i in range(10):
     print(i)  # ini akan ngeloop sampai 10 kali dari 0-9
+
 print('\nWhile\n')
 # while kalau pakai while bisa infinite loop
 x = 0
@@ -1110,3 +1113,34 @@ print(time.sleep(0))  # pause selama 0 detik
 # menghitung lama proses
 t2 = time.time()  # time menunjukkan detik setelah epoch (1st January 1970)
 print(t2-t1)  # di awal code ada t1=time.time() di baris 15, t2-t1 menunjukkan waktu yang diperlukan komputer untuk menjalankan program sampai titik ini
+
+print('\nRegex\n')
+
+
+text_to_search = '''
+abcdefghijklmnopqurtuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+1234567890
+Ha HaHa
+MetaCharacters (Need to be escaped):
+. ^ $ * + ? { } [ ] \ | ( )
+coreyms.com
+321-555-4321
+123.555.1234
+123*555*1234
+800-555-1234
+900-555-1234
+Mr. Schafer
+Mr Smith
+Ms Davis
+Mrs. Robinson
+Mr. T
+'''
+
+sentence = 'Start a sentence and then bring it to an end'
+
+pattern = re.compile(r'start', re.I)
+
+matches = pattern.search(sentence)
+
+print(matches)

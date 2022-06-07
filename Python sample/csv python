@@ -34,8 +34,8 @@ with open('names.csv', 'r') as csv_file:
         csv_writer = csv.DictWriter(
             new_file, fieldnames=fieldnames, delimiter='\t')
 
-        csv_writer.writeheader()
+        csv_writer.writeheader()  # kalau masukkan header
 
         for line in csv_reader:
-            del line['email']
+            del line['email']  # kalau mau buang satu bagian
             csv_writer.writerow(line)
