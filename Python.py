@@ -1139,6 +1139,17 @@ Mr. T
 
 sentence = 'Start a sentence and then bring it to an end'
 
+# cara 1 pakai finditer harus di loop
+
+pattern = re.compile(r'haha', re.I)
+
+pattern_finditer = pattern.finditer(text_to_search)
+
+for i in (pattern_finditer):
+    print(i)
+
+# cara 2 pakai search langsung
+
 pattern = re.compile(r'start', re.I)
 
 matches = pattern.search(sentence)
