@@ -1168,17 +1168,17 @@ pattern = re.compile(r'(https)?(://)?(www\.)?(.+)\.[a-zA-Z0-9-.]+')
 pattern_finditer = pattern.finditer(text_to_search)
 
 for i in (pattern_finditer):
-    print(i.group(0)) # group 0 = print semua
-    print(i.group(4)) # group n = print hanya group ke n
+    print(i.group(0))  # group 0 = print semua
+    print(i.group(4))  # group n = print hanya group ke n
 
 # shorcut substition group cari pattern dari existing regex
 
-suba = pattern.sub(r'\3\4', text_to_search) # pakai ulang regex dari pattern
+suba = pattern.sub(r'\3\4', text_to_search)  # pakai ulang regex dari pattern
 # print(suba)
 
 # cara 2 pakai search tapi hanya keluar hasil pertama aja
 
-pattern = re.compile(r'start', re.I) # re.I =re.IGNORECASE
+pattern = re.compile(r'start', re.I)  # re.I =re.IGNORECASE
 
 matches = pattern.search(sentence)
 
@@ -1204,27 +1204,45 @@ print(matches)
 
 print('\nTry Except Else Finally\n')
 
-#Try  Except
+# Try  Except
 
 # program tetap jalan dan bisa membuat pesan custom apabila ada error
-try:    
-    hsl = skg + 3 
-except Exception: 
+try:
+    hsl = skg + 3
+except Exception:
     print('Variable tidak ada')
 
 # Exception as
 try:
     hsl = skg + 3
-except Exception as e: 
-    print(e) # print default error message dan program tetap lanjut
+except Exception as e:
+    print(e)  # print default error message dan program tetap lanjut
 
-# Specific exception & Multiple exception
+# Specific exception & Multiple exception Else exception, Finally
 
 try:
     hsl = skg + 3
-except FileNotFoundError: # akan mengecek berurutan mulai dari yang pertama
-    print("File tidak ada")   
-except NameError: # karena error NameError, maka ini yang dipilih
+    print(hsl)  # perintah bisa dijalankan disini atau setelah else
+except FileNotFoundError:  # akan mengecek error berurutan mulai dari yang pertama
+    print("File tidak ada")
+except NameError:  # karena error NameError, maka ini yang dipilih
     print('Variable tidak ada')
-except Exception: # yang umum harus ditaroh paling bawah
+except Exception:  # yang umum harus ditaroh paling bawah
     print("Unknown Error")
+else:
+    # bedanya kalau setelah else ada error lagi gak terdeteksi dan program interrupt setelah error
+    print(hsl)
+finally:
+    print('finally')  # meskipun ada error di else finally akan tetap berjalan
+
+print("tanpa finally")
+
+# Raise bikin error/exception sendiri
+
+skg = 5
+try:
+    hsl = skg + 3
+    if hsl == 8:
+        raise Exception
+except Exception:
+    print('Sacred number detected')
