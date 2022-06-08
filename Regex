@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=sa-TUpSx1JA
 \s      - Whitespace (space, tab, newline)
 \S      - Not Whitespace (space, tab, newline)
 
-\b      - Word Boundary
+\b      - Word Boundary = \W ditambah _
 \B      - Not a Word Boundary
 ^       - Beginning of a String
 $       - End of a String
@@ -31,3 +31,20 @@ email :
 [a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
 website :
 (https)?(://)?(www\.)?.+\.[a-zA-Z0-9-.]+
+contoh [^ ] :
+mkat
+cat
+bat
+mat
+pat
+-at
+.at
+_at
+$at
+^at
+pilih semuanya kecuali bat :
+[^b]at
+pilih cat atau bat atau mkat saja :
+(b|c|mk)at
+pilih semua kecuali ^at :
+[\w.$-]

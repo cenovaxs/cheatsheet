@@ -1,6 +1,5 @@
 # Huruf (STRING)
 import re
-from certifi import contents
 import pytz
 import time
 import module
@@ -1126,6 +1125,8 @@ Ha HaHa
 MetaCharacters (Need to be escaped):
 . ^ $ * + ? { } [ ] \ | ( )
 coreyms.com
+https://www.youtube.com
+http://google.com
 321-555-4321
 123.555.1234
 123*555*1234
@@ -1149,14 +1150,6 @@ pattern_finditer = pattern.finditer(text_to_search)
 for i in (pattern_finditer):
     print(i)
 
-# cara 2 pakai search langsung
-
-pattern = re.compile(r'start', re.I)
-
-matches = pattern.search(sentence)
-
-print(matches)
-
 # untuk regex pada file lain bisa kombinasikan with open
 """
 with open('data.txt', 'r', endoding='utf-8') as f:
@@ -1167,3 +1160,71 @@ with open('data.txt', 'r', endoding='utf-8') as f:
     for i in (pattern_finditer):
         print(i)
 """
+
+# Group
+
+pattern = re.compile(r'(https)?(://)?(www\.)?(.+)\.[a-zA-Z0-9-.]+')
+
+pattern_finditer = pattern.finditer(text_to_search)
+
+for i in (pattern_finditer):
+    print(i.group(0)) # group 0 = print semua
+    print(i.group(4)) # group n = print hanya group ke n
+
+# shorcut substition group cari pattern dari existing regex
+
+suba = pattern.sub(r'\3\4', text_to_search) # pakai ulang regex dari pattern
+# print(suba)
+
+# cara 2 pakai search tapi hanya keluar hasil pertama aja
+
+pattern = re.compile(r'start', re.I) # re.I =re.IGNORECASE
+
+matches = pattern.search(sentence)
+
+print(matches)
+
+
+# Cara 3 pakai findall # yang keluar bentuknya string kalau ada group maka buat tuple dengan hasilnya per grup
+
+pattern = re.compile(r'\d{3}\W\d{3}\W\d{3}', re.IGNORECASE)
+
+pattern_finditer = pattern.findall(text_to_search)
+
+for i in (pattern_finditer):
+    print(i)
+
+# cara 4 pakai match tapi hanya menemukan cara pertama saja jangan dipakai
+
+pattern = re.compile(r'start', re.I)
+
+matches = pattern.search(sentence)
+
+print(matches)
+
+print('\nTry Except Else Finally\n')
+
+#Try  Except
+
+# program tetap jalan dan bisa membuat pesan custom apabila ada error
+try:    
+    hsl = skg + 3 
+except Exception: 
+    print('Variable tidak ada')
+
+# Exception as
+try:
+    hsl = skg + 3
+except Exception as e: 
+    print(e) # print default error message dan program tetap lanjut
+
+# Specific exception & Multiple exception
+
+try:
+    hsl = skg + 3
+except FileNotFoundError: # akan mengecek berurutan mulai dari yang pertama
+    print("File tidak ada")   
+except NameError: # karena error NameError, maka ini yang dipilih
+    print('Variable tidak ada')
+except Exception: # yang umum harus ditaroh paling bawah
+    print("Unknown Error")
