@@ -1,5 +1,6 @@
 # Huruf (STRING)
 import re
+from certifi import contents
 import pytz
 import time
 import module
@@ -1141,7 +1142,7 @@ sentence = 'Start a sentence and then bring it to an end'
 
 # cara 1 pakai finditer harus di loop
 
-pattern = re.compile(r'haha', re.I)
+pattern = re.compile(r'\d{3}\W\d{3}\W\d{3}', re.I)
 
 pattern_finditer = pattern.finditer(text_to_search)
 
@@ -1155,3 +1156,14 @@ pattern = re.compile(r'start', re.I)
 matches = pattern.search(sentence)
 
 print(matches)
+
+# untuk regex pada file lain bisa kombinasikan with open
+"""
+with open('data.txt', 'r', endoding='utf-8') as f:
+    contents = f.read()
+
+    pattern_finditer = pattern.finditer(text_to_search)
+
+    for i in (pattern_finditer):
+        print(i)
+"""
