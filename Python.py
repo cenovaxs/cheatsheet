@@ -48,8 +48,13 @@ print(callable(a)) # False karena a itu tidak callable
 # untuk melihat lokasi python yang digunakan :
 """ 
 import sys
+sys.version
 sys.executable
 """
+print('\nsys version')
+print(sys.version)  
+print('\nsys executable')
+print(sys.executable)
 
 print(r'\nspasi\n')  # r membuat ignore special case sehingga \n tetap ter print
 # Id() mengecek lokasi dalam memory
@@ -1275,3 +1280,32 @@ try:
         raise Exception
 except Exception:
     print('Sacred number detected')
+
+print("\nEnvironment Variable (simpen password di luar file python")
+print("Linux/Mac")
+"""
+umum (windows Linux, Mac, Windows)
+1 di file python :
+import os
+db_user = os.environ.get('DB_USER')
+db_password = os.environ.get('DB_PASS')
+
+2.1 Linux
+Simpen password python di .bashrc
+Kalau mac di .bash_profile
+buka .bashrc lokasinya di home
+kemudian masukkan berikut di dalam file .bashrc :
+export DB_USER="Username"    >> ganti sesuai username
+export DB_PASS="Password"    >> ganti sesuai password
+
+atau
+
+2.2 Windows
+cari "environment variables" di advance system settings > system properties > Environment Variables
+User Variables > New 
+Variable name : DB_USER
+Variable value : Username   >> ganti sesuai username
+User Variables > New
+Variable name : DB_PASS
+Variable value : Password   >> ganti sesuai password
+"""
