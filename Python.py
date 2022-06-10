@@ -24,26 +24,31 @@ message = 'string'
 print(type(message))  # <class 'str'>
 # mengecek class menggunakan is instance, bisa juga mengecek class buatan di OOP
 # isinstance
-print(isinstance(message, str)) # True
+print(isinstance(message, str))  # True
 
 # hassattr
+
+
 class Person:
     name = "John"
     age = 36
     country = "Norway"
 
-x = hasattr(Person, 'age') # apakah ada attribute age dalam class person
+
+x = hasattr(Person, 'age')  # apakah ada attribute age dalam class person
 print(x)  # True
 
 # callable
 
+
 def x():
     a = 5
-    
-print(callable(x)) # True
+
+
+print(callable(x))  # True
 
 a = 5
-print(callable(a)) # False karena a itu tidak callable
+print(callable(a))  # False karena a itu tidak callable
 
 # untuk melihat lokasi python yang digunakan :
 """ 
@@ -52,7 +57,7 @@ sys.version
 sys.executable
 """
 print('\nsys version')
-print(sys.version)  
+print(sys.version)
 print('\nsys executable')
 print(sys.executable)
 
@@ -139,9 +144,22 @@ print(akhir)  # This is Booby"s universe
 # kelebihan f string bisa mengunakan method dan function
 akhir = f'{awal} {message.upper()}'
 print(akhir)  # This is BOOBY"S UNIVERSE
-# contoh tambah langsung di dalam f string
+# contoh f string dictionary kwargs
+# This is BOOBY"S UNIVERSE
+akhir = f'My Name is {person["name"]} and my age is {person["age"]}'
+# inget untuk contoh diatas harus diperhatikan quotenya biar gak error
+# contoh artimatika langsung di dalam f string
 tambah = f'seratus tambah seribu sama dengan {100+1000}'
 print(tambah)  # seratus tambah seribu sama dengan 1100
+# for dengan f'
+for n in range(10):
+    kalimat = f"countdown {n:02}"
+    print(kalimat)
+# f' dengan datetime
+birthday = datetime.datetime(1990, 1, 1)
+kalimat = f"Ulang tahunku tanggal {birthday:%B %d, %Y}"
+print(kalimat)
+
 # contoh lain n:02 berarti dua digit
 
 # Angka (Integer dan float)
