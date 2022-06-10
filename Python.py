@@ -22,6 +22,35 @@ print("\nHuruf (STRING)\n")
 
 message = 'string'
 print(type(message))  # <class 'str'>
+# mengecek class menggunakan is instance, bisa juga mengecek class buatan di OOP
+# isinstance
+print(isinstance(message, str)) # True
+
+# hassattr
+class Person:
+    name = "John"
+    age = 36
+    country = "Norway"
+
+x = hasattr(Person, 'age') # apakah ada attribute age dalam class person
+print(x)  # True
+
+# callable
+
+def x():
+    a = 5
+    
+print(callable(x)) # True
+
+a = 5
+print(callable(a)) # False karena a itu tidak callable
+
+# untuk melihat lokasi python yang digunakan :
+""" 
+import sys
+sys.executable
+"""
+
 print(r'\nspasi\n')  # r membuat ignore special case sehingga \n tetap ter print
 # Id() mengecek lokasi dalam memory
 print(id(message))  # 3229004571568
