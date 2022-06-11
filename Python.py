@@ -1327,3 +1327,19 @@ User Variables > New
 Variable name : DB_PASS
 Variable value : Password   >> ganti sesuai password
 """
+
+
+# Closure (function dalam function yang siap di ekesekusi)
+print('\nClosure\n')
+def outer_func(arg):
+    message = arg
+    def inner_func(arg2):
+        print(arg+arg2)
+    return inner_func
+
+outer_func("test")('aja') # testaja
+print(outer_func("test")) # <function outer_func.<locals>.inner_func at 0x7f8f6b607430>
+print(outer_func) # <function outer_func at 0x7f8f6b6074c0>
+
+# Decorator
+print('\nDecorator\n')
