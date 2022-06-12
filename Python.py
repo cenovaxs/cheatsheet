@@ -572,6 +572,8 @@ def hello_func():
 
 # dibawah ini hanya memperlihatkan nama func dan lokasi di memory
 print(hello_func)  # <function hello_func at 0x000002EFD05F44C0>
+# dibawah ini untuk return nama funct
+print(hello_func.__name__) # hello func
 # dibawah ini akan menjalankan funtio
 print(hello_func())  # None
 
@@ -1343,3 +1345,57 @@ print(outer_func) # <function outer_func at 0x7f8f6b6074c0>
 
 # Decorator
 print('\nDecorator\n')
+# tujuan decorator itu dipakai supaya satu fungsi bisa dipakai di banyak fungsi lainnya tanpa atau sedikit perubahan
+
+#introduction 
+def decorator_function(original_function):
+    def wrapper_function():
+        print(f'wrapper executed before {original_function.__name__}')
+        return original_function()
+    print(f'decorator executed before {wrapper_function.__name__}')
+    return wrapper_function
+
+def display():
+    print('Display function ran')
+
+decorated_display = decorator_function(display)
+decorated_display()
+
+# @decorator_function itu sama aja dengan display = decorator_function(display) tapi decorator bisa sebelum def display():
+
+@decorator_function
+def display():
+    print('Decorator display function ran')
+display()
+
+# Decorator yang biasa dipakai umum
+
+def decorator_function(original_function):
+    def wrapper_function(*args, **kwargs):
+        print(f'wrapper executed before {original_function.__name__}')
+        return original_function(*args, **kwargs)
+    print(f'decorator executed before {wrapper_function.__name__}')
+    return wrapper_function
+
+@decorator_function
+def display_info(name,age):
+    print(f'My name is {name} and my age is {age} years old')
+
+display_info('test', 100)
+
+# Decorator Class
+print('\nDecorator Class\n')
+
+class decorator_class(object):
+    def __init__(self, original_function):
+        self.original_function = original_function
+    
+    def __call__(self, *args, **kwargs):
+        print(f'call method executed this before {self.original_function.__name__}')
+        return self.original_function(*args, **kwargs)
+
+@decorator_class
+def display_info(name,age):
+    print(f'My name is {name} and my age is {age} years old')
+
+display_info('test', 100)
