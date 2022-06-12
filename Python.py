@@ -1,4 +1,4 @@
-# Huruf (STRING)
+from functools import wraps
 import re
 import pytz
 import time
@@ -14,7 +14,7 @@ import os
 from module import find
 
 t1 = time.time()
-
+# Huruf (STRING)
 print("\nHuruf (STRING)\n")
 
 # type() mengecek type variabel
@@ -573,7 +573,7 @@ def hello_func():
 # dibawah ini hanya memperlihatkan nama func dan lokasi di memory
 print(hello_func)  # <function hello_func at 0x000002EFD05F44C0>
 # dibawah ini untuk return nama funct
-print(hello_func.__name__) # hello func
+print(hello_func.__name__)  # hello func
 # dibawah ini akan menjalankan funtio
 print(hello_func())  # None
 
@@ -582,6 +582,7 @@ def hello_func():
     print("Hello")
 
 
+x = hello_func()  # hati2 meskipun hanya membuat variable tapi hello_func tetap dipanggil
 hello_func()  # Hello
 
 # Return
@@ -1333,21 +1334,28 @@ Variable value : Password   >> ganti sesuai password
 
 # Closure (function dalam function yang siap di ekesekusi)
 print('\nClosure\n')
+
+
 def outer_func(arg):
     message = arg
+
     def inner_func(arg2):
         print(arg+arg2)
     return inner_func
 
-outer_func("test")('aja') # testaja
-print(outer_func("test")) # <function outer_func.<locals>.inner_func at 0x7f8f6b607430>
-print(outer_func) # <function outer_func at 0x7f8f6b6074c0>
+
+outer_func("test")('aja')  # testaja
+# <function outer_func.<locals>.inner_func at 0x7f8f6b607430>
+print(outer_func("test"))
+print(outer_func)  # <function outer_func at 0x7f8f6b6074c0>
 
 # Decorator
 print('\nDecorator\n')
 # tujuan decorator itu dipakai supaya satu fungsi bisa dipakai di banyak fungsi lainnya tanpa atau sedikit perubahan
 
-#introduction 
+# introduction
+
+
 def decorator_function(original_function):
     def wrapper_function():
         print(f'wrapper executed before {original_function.__name__}')
@@ -1355,47 +1363,154 @@ def decorator_function(original_function):
     print(f'decorator executed before {wrapper_function.__name__}')
     return wrapper_function
 
+
 def display():
     print('Display function ran')
 
+
 decorated_display = decorator_function(display)
 decorated_display()
-
+# wrapper function  >> karena decorator function return wrapper funtion
+print(decorated_display.__name__)
 # @decorator_function itu sama aja dengan display = decorator_function(display) tapi decorator bisa sebelum def display():
+
 
 @decorator_function
 def display():
     print('Decorator display function ran')
+
+
 display()
 
 # Decorator yang biasa dipakai umum
+print('\nDecorator Umum\n')
+
 
 def decorator_function(original_function):
     def wrapper_function(*args, **kwargs):
-        print(f'wrapper executed before {original_function.__name__}')
+        print(f'wrapper_function executed before {original_function.__name__}')
         return original_function(*args, **kwargs)
-    print(f'decorator executed before {wrapper_function.__name__}')
+    print(f'decorator executed before {original_function.__name__}')
     return wrapper_function
 
+
 @decorator_function
-def display_info(name,age):
+def display_info(name, age):
     print(f'My name is {name} and my age is {age} years old')
 
+
 display_info('test', 100)
+print(display_info.__name__)
+"""
+kalau di iterate seperti berikut:
+decorator_function(display_info('test',100)
+wrapper_function(display_info('test', 100)
+display_info('test', 100)
+"""
+
 
 # Decorator Class
 print('\nDecorator Class\n')
 
+
 class decorator_class(object):
     def __init__(self, original_function):
         self.original_function = original_function
-    
+
     def __call__(self, *args, **kwargs):
-        print(f'call method executed this before {self.original_function.__name__}')
+        print(
+            f'call method executed this before {self.original_function.__name__}')
         return self.original_function(*args, **kwargs)
 
+
 @decorator_class
-def display_info(name,age):
+def display_info(name, age):
     print(f'My name is {name} and my age is {age} years old')
 
+
 display_info('test', 100)
+
+# multiple decorator
+print('\nMultiple Decorator\n')
+# stacking decorator
+
+
+def my_timer(orig_func):
+    def wrapper_timer(*args, **kwargs):
+        print(f'wrapper_timer executed before {orig_func.__name__}')
+        t1 = time.time()
+        result = orig_func(*args, **kwargs)
+        t2 = time.time() - t1
+        print(f'{orig_func.__name__} ran in {t2} sec')
+        return result  # function bisa berjalan tanpa line ini
+    print(f"my_timer_func executed before {orig_func.__name__}")
+    return wrapper_timer
+
+
+# kedua decorator dibawah sama dengan :
+# display_info = decorator_function(my_timer(displayinfo))
+
+@decorator_function
+@my_timer
+def display_info(name, age):
+    print(f'My name is {name} and my age is {age} years old')
+
+
+display_info('test', 100)
+print(display_info.__name__)  # wrapper_func
+
+# Nah kalau urutan kebalik maka nama funtion berubah :
+print("\nkebalik\n")
+
+
+# perbedaan nama function saat urutan dibalik akan merusak decorator yang name sensitive karena nama funtion bukan original melainkan wrapper dari decorator yang pertama
+# display_info = my_timer(decorator_function(displayinfo))
+
+@my_timer
+@decorator_function
+def display_info(name, age):
+    print(f'My name is {name} and my age is {age} years old')
+
+
+display_info('test', 100)
+print(display_info.__name__)  # wrapper_timer
+
+print('\nfunctools import wraps\n')
+# dalam hal ini yang dihitung waktunya oleh my_timer adalah wrapper_function bukan display_info. hal tersebut bukanlah yang kita mau
+"""
+Solusinya adalah:
+menggunakan wraps. Wraps akan membuat nama yang digunakan selalu original function
+from functools import wraps
+"""
+
+
+def decorator_function(original_function):
+    @wraps(original_function)
+    def wrapper_function(*args, **kwargs):
+        print(f'wrapper_function executed before {original_function.__name__}')
+        return original_function(*args, **kwargs)
+    print(f'decorator executed before {original_function.__name__}')
+    return wrapper_function
+
+
+def my_timer(orig_func):
+    @wraps(orig_func)
+    def wrapper_timer(*args, **kwargs):
+        print(f'wrapper_timer executed before {orig_func.__name__}')
+        t1 = time.time()
+        result = orig_func(*args, **kwargs)
+        t2 = time.time() - t1
+        print(f'{orig_func.__name__} ran in {t2} sec')
+        return result  # function bisa berjalan tanpa line ini
+    print(f"my_timer_func executed before {orig_func.__name__}")
+    return wrapper_timer
+
+
+@my_timer
+@decorator_function
+def display_info(name, age):
+    print(f'My name is {name} and my age is {age} years old')
+
+
+display_info('test', 100)
+print(display_info.__name__)  # display_info
