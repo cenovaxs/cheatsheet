@@ -439,6 +439,28 @@ for key in murid:
 for key, value in murid.items():
     print(key, value)
 
+# named tupple
+# tupple yang dicustom sehingga mudah untuk memanggilnya dan mengupdatenya
+# pertama harus import dulu from collections import namedtuple
+
+"""
+from collections import namedtuple
+
+# namedtuple
+Color = namedtuple('Color', ['red', 'green', 'blue'])
+
+cara masukkan variable:
+color = Color(blue=55,green=155,red=255)
+atau
+color = Color(55,155,255)
+
+cara panggil:
+print(color.red)
+print(color.blue)
+#atau tapi bisa juga pakai manual
+print(color[1])
+"""
+
 # generator kyk list tapi menunggu untuk di eksekusi, ini bisa simpan memory
 print("\nGenerator\n")
 
@@ -1514,3 +1536,27 @@ def display_info(name, age):
 
 display_info('test', 100)
 print(display_info.__name__)  # display_info
+
+# decorator with arguments
+# beberapa decorator dapat memiliki argumen caranya adalah dengan menambah satu layer wrapper
+# berikut contohnya:
+
+
+def prefix_decorator(prefix):
+    def decorator_function(original_function):
+        def wrapper_function(*args, **kwargs):
+            print(prefix, 'Executed Before', original_function.__name__)
+            result = original_function(*args, **kwargs)
+            print(prefix, 'Executed After', original_function.__name__, '\n')
+            return result
+        return wrapper_function
+    return decorator_function
+
+
+@prefix_decorator('LOG:')
+def display_info(name, age):
+    print('display_info ran with arguments ({}, {})'.format(name, age))
+
+
+display_info('John', 25)
+display_info('Travis', 30)
