@@ -1560,3 +1560,116 @@ def display_info(name, age):
 
 display_info('John', 25)
 display_info('Travis', 30)
+
+# OOP Object Oriented Programming
+print('\nOOP Object Oriented Programming\n')
+
+# pertama buat class ini berfungsi juga untuk group 
+class Employee:
+    # kedua __init__ dan self. Init dan self ini membuat variable pada global menjadi variable dalam class
+    def __init__(self, first, last, pay): # self pertama jangan lupa
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+    def fullname(self): # self yang init dapat digunakan kembali pada method lain di class yang sama
+        return '{} {}'.format(self.first, self.last)
+
+#rumus penamaan adalah sebagai berikut:
+# self = ClassName(first, last, pay)
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_2 = Employee('Test', 'Employee', 60000)
+
+# cara panggil argument
+
+print(emp_1.first)
+
+# cara panggil method ada 2 :
+
+print(emp_1.fullname()) # jangan lupa () karena ini method
+# atau
+print(Employee.fullname(emp_1))
+
+# untuk melihat atrribut apa saja yang dimiliki sebuah class:
+print(Employee.__dict__)
+
+# Instance variable dan class variables
+
+class Employee:
+
+    kenaikan = 1.05
+
+    def __init__(self, first, last, pay): 
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+    def fullname(self): 
+        return '{} {}'.format(self.first, self.last)
+    
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan) 
+        # atau
+        # self.pay = int(self.pay * Employee.kenaikan) 
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_2 = Employee('Test', 'Employee', 60000)
+
+print(emp_1.pay)    # lihat gaji sebelum
+emp_1.naik_gaji()   # jalankan naik gaji
+print(emp_1.pay)    # lihat gaji sesudah
+
+#  memanggil kenaikan
+print(Employee.kenaikan)    # 1.05
+print(emp_1.kenaikan)       # 1.05
+print(emp_2.kenaikan)       # 1.05
+
+# sebenernya emp_1.kenaikan itu gak ada dia ambil dari Employee.kenaikan
+# cara liatnya pakai __dict__
+print(emp_1.__dict__)       # hasilnya tidak ada kenaikan
+print(Employee.__dict__)    # hasilnya disini ada kenaikan
+
+# Kalau mau tambah manual
+Employee.kenaikan = 1.06
+emp_1.kenaikan = 1.07          
+
+print(Employee.kenaikan)    # 1.06
+print(emp_1.kenaikan)       # 1.07
+print(emp_2.kenaikan)       # 1.06
+
+# skrg emp_1.kenaikan punya atribut kenaikan setelah ditambah manual
+print(emp_1.__dict__)       # ada atribut kenaikan
+print(Employee.__dict__)    # atribut kenaikan berubah jadi 1.06
+print(emp_2.__dict__)       # tidak ada atribut kenaikan, sehingga dia tetap mencari dari Employee
+
+# contoh lain jumlah employee
+class Employee:
+
+    jumlah_employee = 0                         # set awal jumlah employee
+    kenaikan = 1.05
+
+    def __init__(self, first, last, pay): 
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+        Employee.jumlah_employee += 1           # tiap kali def __init__ berjalan akan menambah Employee sebanyak 1 jadinya kita bisa lihat total employee
+
+    def fullname(self): 
+        return '{} {}'.format(self.first, self.last)
+    
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan) 
+        # atau
+        # self.pay = int(self.pay * Employee.kenaikan) 
+
+print(Employee.jumlah_employee)  # 0
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_2 = Employee('Test', 'Employee', 60000)
+
+print(Employee.jumlah_employee)  # 2
+print(emp_1.jumlah_employee)     # 2 karena emp_1.jumlah_employee tidak ada dan akan menggunakan Employee.jumlah_employee
