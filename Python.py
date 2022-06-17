@@ -51,7 +51,7 @@ a = 5
 print(callable(a))  # False karena a itu tidak callable
 
 # untuk melihat lokasi python yang digunakan :
-""" 
+"""
 import sys
 sys.version
 sys.executable
@@ -168,7 +168,7 @@ print(kalimat)
 # Angka (Integer dan float)
 print("\nAngka (integer dan float)\n")
 """
-List dibawah adalah prioritas logical python 
+List dibawah adalah prioritas logical python
 
 ()	                                            Parentheses
 **	                                            Exponent
@@ -239,7 +239,7 @@ print(num3)  # 1,000,000
 num4 = '{:,.2f}'.format(1000**2)
 print(num4)  # 1,000,000.00
 
-#List and Tuples
+# List and Tuples
 print("\nList and Tuples\n")
 matpel = ['sejarah', 'mat', 'fis', 'agama']
 # melihat jumlah item dalam list
@@ -420,7 +420,7 @@ print(murid)
 murid.update({'name': "Jane", 'phone': '750384', 'school': 'OL'})
 # {'name': 'Jane', 'age': 25, 'courses': ['Math', 'CompSci'], 'phone': '750384', 'school': 'OL'}
 print(murid)
-#del hapus
+# del hapus
 del murid['school']
 # {'name': 'Jane', 'age': 25, 'courses': ['Math', 'CompSci'], 'phone': '750384'}
 print(murid)
@@ -461,7 +461,7 @@ color = Color(55,155,255)
 cara panggil:
 print(color.red)
 print(color.blue)
-#atau tapi bisa juga pakai manual
+# atau tapi bisa juga pakai manual
 print(color[1])
 """
 
@@ -565,7 +565,7 @@ for num in nums:
         continue
     print(num)  # angka 3 tidak di print dan loop tetap sampai akhir
 
-#loop in loop
+# loop in loop
 for num in nums:
     for letter in 'abc':
         # ini akan menghasilkan 1a, 1b, 1c, 2a, 2b, dst sampai 5c
@@ -679,7 +679,7 @@ student_info(info, courses)
 # {}   >> hasilnya dict kosong
 
 student_info(courses, info)
-#(['math', 'art'], {'name': 'john', 'age': 20})
+# (['math', 'art'], {'name': 'john', 'age': 20})
 # {}
 
 # pakai * untuk hasilnya terpisah beda line tapi harus tuple dulu baru dict kalau terbalik error
@@ -690,14 +690,14 @@ student_info(*courses, **info)
 # module import dan std library
 
 print("\nmodule\n")
-#import module
+# import module
 # ini bakal nyari module yang ada dalam local folder
 print(matpel)  # ['agama', 'bahasa', 'fis', 'mat', 'sejarah']
 print(module.find(matpel, "sejarah"))  # 4
 # harus dalam format <module>.<function>
 
 # as
-#import module as mm
+# import module as mm
 print(mm.find(matpel, "sejarah"))  # 4
 
 # from dipakai supaya pendek jadi langsung function aja
@@ -707,7 +707,7 @@ print(mm.find(matpel, "sejarah"))  # 4
 print(find(matpel, 'sejarah'))  # 4
 
 # from as
-#from module import find as fi
+# from module import find as fi
 print(fi(matpel, 'sejarah'))
 
 # sys
@@ -813,7 +813,7 @@ print(complexdate)  # May 31, 2022 jatuh pada hari Tuesday dan hari ke 151
 print('\nPytz timezone aware datetime\n')
 # pytz timezone aware datetime
 # pip install pytz
-#import pytz
+# import pytz
 
 # cara apply :
 # 1 datetime.datetime
@@ -946,7 +946,7 @@ untuk cari paket di repo
 $ pip uninstall <package name>
 
 $ pip list -o
-untuk lihat apakah ada update 
+untuk lihat apakah ada update
 
 $ pip install -U <package name>
 update
@@ -1112,33 +1112,36 @@ f = open('test.txt', 'r') # Argumen pertama path file, Argumen kedua r untuk rea
 print(f.name) # test.txt
 print(f.mode) # r
 print(f.closed) # False
-print(f.read()) # Isi dari file txt. Read kalau selesai membaca dia akan ke akhir jadinya tidak bisa baca ulang
+# Isi dari file txt. Read kalau selesai membaca dia akan ke akhir jadinya tidak bisa baca ulang
+print(f.read())
 print(f.read(100)) # membaca isi 100 character pertama saja
 print(len(f.read())) # melihat berapa Character sampai tulisan habis
 print(f.tell()) # melihat posisi sudah sampai dimana
 f.seek(0) # kembali ke posisi 0 awal
-print(f.readlines()) # membuat list yang berisi setiap baris dalam isi file, jadi bisa dipanggil per baris
-print(f.readline(), end='') # membaca baris per baris, argumen2 end='' mengatur hasilnya menjadi spasi karena karena default dari end adalah baris baru
+# membuat list yang berisi setiap baris dalam isi file, jadi bisa dipanggil per baris
+print(f.readlines())
+# membaca baris per baris, argumen2 end='' mengatur hasilnya menjadi spasi karena karena default dari end adalah baris baru
+print(f.readline(), end='')
 
 f.close() # harus di close biar file gak bocor dan bikin error
 """
 
 # dengan context manager:
 """ Cara 1 dengan read method
-with open('test.txt', 'r') as f: 
+with open('test.txt', 'r') as f:
     print(f.read())
 """
 """ Cara 2 dengan baca satu persatu
-with open('test.txt', 'r') as f: 
+with open('test.txt', 'r') as f:
     print(f.readline(), end='') # baris pertama
     print(f.readline()) # baris berikutnya
     print(f.readline())
-print(f.closed) # True  > karena context manager otomatis close filenya 
+print(f.closed) # True  > karena context manager otomatis close filenya
 """
 
 # Cara yang lebih rapih dengan for tanpa method read
 """
-with open('test.txt', 'r') as f: 
+with open('test.txt', 'r') as f:
     for line in f:
         print(line, end='')
 """
@@ -1354,7 +1357,7 @@ atau
 
 2.2 Windows
 cari "environment variables" di advance system settings > system properties > Environment Variables
-User Variables > New 
+User Variables > New
 Variable name : DB_USER
 Variable value : Username   >> ganti sesuai username
 User Variables > New
@@ -1758,6 +1761,9 @@ print(emp_2.kenaikan)
 emp_2.naik_gaji()
 print(emp_2.pay)  # 64800
 print(emp_1.pay)  # 50000     belum naik karena emp_1.naikgaji() tidak dijalankan
+print(emp_1.__dict__)
+print(emp_2.__dict__)
+
 
 # contoh 2 misalkan data raw bentuknya string:
 # cara 1 manual
@@ -1858,3 +1864,117 @@ print(datetime.date(2016, 7, 10).weekday())     # 6     hari minggu
 # Rumusnya:
 # Class.staticmethod(day)
 print(Employee.is_workday(my_date2))            # False
+
+# Subclasses
+print('\nSubclassess\n')
+
+
+class Developer(Employee):      # Developer menjadi subclass dari Employee, semua method yang ada di Employee dapat diakses oleh Developer meskipun developer tidak memiliki method sama sekali
+    pass
+
+
+dev1 = Developer('Corey', 'Schafer', 50000)
+print(dev1.email)
+
+# method resolution order: Developer, Employee, builtins.object
+# print(help(Developer))
+# help diatas bisa menunjukkan method apa yang bisa diakses oleh developer
+
+# 1     dibawah ini menunjukkan meskipun developer yang diakses namun hal tersebut dihitung sebagai Employee sehingga angka jumlah Employee naik
+print(Employee.jumlah_employee)
+
+
+class Developer(Employee):
+    kenaikan = 1.1
+
+
+print(Developer.__dict__)   # skrg Developer punya local dict kenaikan 1,1
+
+dev1 = Developer('Corey', 'Schafer', 50000)
+emp_2 = Employee('Test', 'Employee', 60000)
+
+print(dev1.pay)  # 50000
+print(emp_2.pay)  # 60000
+dev1.naik_gaji()
+emp_2.naik_gaji()
+print(dev1.pay)  # 55000    naik 10% Developer
+print(emp_2.pay)  # 63000    naik 5%  Employee
+# kenaikan pada Class Developer tidak mempengaruhi kenaikan pada Class Employee
+
+
+# Super() menambah function tanpa perlu mengulang method yang sudah ada di class utama
+# misalnya kita mau tambah programing languange  :
+
+class Developer(Employee):
+    def __init__(self, first, last, pay, prog_lang):
+        super().__init__(first, last, pay)
+        # atau bisa juga
+        # Employee.__init__(self, first, last, pay)     tapi ini gak disarankan karena ada super()
+        self.prog_lang = prog_lang
+
+    kenaikan = 1.1
+
+
+dev1 = Developer('Corey', 'Schafer', 50000, 'python')
+print(dev1.prog_lang)   # python
+
+# contoh lain bikin class manager
+
+
+class Manager(Employee):
+    # set default sebagai None jangan empty list []
+    def __init__(self, first, last, pay, ab=None):
+        super().__init__(first, last, pay)
+        if ab is None:          # kalau ab None
+            self.ab = []        # buat list kosong
+        else:
+            self.ab = ab        # bikin daftar anak buah
+
+    def tambah_ab(self, emp):   # terima 2 argumen instance(mgr1) dan anak buah
+        if emp not in self.ab:  # apabila anak buah tidak ada di dalam daftar
+            self.ab.append(emp)  # tambah anak buah ke dalam daftar
+
+    def hapus_ab(self, emp):
+        if emp in self.ab:
+            self.ab.remove(emp)
+
+    def print_ab(self):
+        for emp in self.ab:
+            print(emp.fullname())
+
+
+mgr1 = Manager('Sue', 'Smith', 90000, [dev1])
+
+
+print(mgr1.fullname())
+mgr1.print_ab()         # Corey Schafer
+mgr1.tambah_ab(emp_2)
+mgr1.print_ab()         # Test Employee
+
+
+# isinstance untuk cek apakah instance dari class
+print(isinstance(mgr1, Employee))       # True
+print(isinstance(mgr1, Manager))        # True
+print(isinstance(mgr1, Developer))      # False
+
+# issubclass untuk cek apakah subclass dari class
+print(issubclass(Manager, Employee))    # True
+print(issubclass(Developer, Employee))  # True
+print(issubclass(Employee, Employee))   # True
+
+"""
+str() vs repr()
+str() itu bentuk string final yang kita tidak bisa tau kode python apa yang menyebabkan string tsb
+repr() itu string yang masih bisa kita ketahui kode python yang menghasilkan string tersebut 
+str() itu dipakai untuk pengguna
+repr() itu dipakai untuk developer
+contoh:"""
+
+a = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
+b = str(a)
+
+print(f'str(a): {str(a)}')      # 2022-06-17 14:41:03.999198+00:00
+print(f'str(b): {str(b)}')      # 2022-06-17 14:41:03.999198+00:00
+# datetime.datetime(2022, 6, 17, 14, 41, 3, 999198, tzinfo=<UTC>)
+print(f'repr(a): {repr(a)}')
+print(f'repr(b): {repr(b)}')    # '2022-06-17 14:41:03.999198+00:00'
