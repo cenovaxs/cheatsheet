@@ -61,12 +61,15 @@ print(sys.version)
 print('\nsys executable')
 print(sys.executable)
 
-print(r'\nspasi\n')  # r membuat ignore special case sehingga \n tetap ter print
+print(
+    r'\nspasi\n')  # r membuat ignore special case sehingga \n tetap ter print
 # Id() mengecek lokasi dalam memory
 print(id(message))  # 3229004571568
 
 # untuk mengecek method apa saja yang bisa digunakan
-print(dir(message))  # ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+print(
+    dir(message)
+)  # ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 # untuk mencari tau apa fungsi dari perintah tersebut :
 
 # print(help(print))  # hasilnya panjang lihat aja di terminal
@@ -182,12 +185,11 @@ and	                                            Logical AND
 or	                                            Logical OR
 """
 
-
 num = 10
 print(type(num))
 # floor division // ambil hasil bagi pertama contoh:
-print(7//2)  # 3
-print(4//2)  # 2
+print(7 // 2)  # 3
+print(4 // 2)  # 2
 # modulus % ambil sisa dari hasil bagi, biasanya digunakan untuk cek ganjil genap contoh:
 print(7 % 4)  # 3
 # pangkat **
@@ -331,7 +333,6 @@ di = {'name': 'Corey', 'job': 'programming', 'age': 34, "os": 'Ubuntu'}
 s_di = sorted(di)
 print('Dict\t', s_di)  # Dict     ['age', 'job', 'name', 'os']
 
-
 # min value minimum yang paling rendah
 print(min(matpel))  # agama
 # max value paling tinggi
@@ -365,6 +366,10 @@ print(matpel_join)  # agama - bahasa - fis - mat - sejarah
 # split ubah string jadi list
 matpel3 = matpel_join.split(" - ")
 print(matpel3)  # ['agama', 'bahasa', 'fis', 'mat', 'sejarah']
+# split bisa juga seperti ini tapi inget jumlah instance harus sama dengan jumlah item dalam list:
+instance1, instance2, instance3, instance4, instance5 = matpel_join.split(
+    " - ")
+print(f'{instance1}, {instance2}')  # agama, bahasa
 
 # tuple () kyk list tapi immutable gabs diganti
 
@@ -442,7 +447,6 @@ for key, value in murid.items():
 # named tupple
 # tupple yang dicustom sehingga mudah untuk memanggilnya dan mengupdatenya
 # pertama harus import dulu from collections import namedtuple
-
 """
 from collections import namedtuple
 
@@ -467,7 +471,7 @@ print("\nGenerator\n")
 
 def kuadrat(q2):
     for i in q2:
-        yield (i*i)
+        yield (i * i)
 
 
 hasil_gen = kuadrat([1, 2, 3, 4])
@@ -486,7 +490,6 @@ print(next(hasil_gen))  # 16
 # 2 lewat iterasi  > tapi kalau generator sudah pernah di next() dia mulai dari berikutnya, jadi kalau ada next harus ikutin
 for num in hasil_gen:
     print(num)
-
 
 # if kalau True maka lanjut kalau False maka stop
 print('\nConditionals and Booleans (if else)\n')
@@ -525,6 +528,10 @@ if not logged_in:
     print('please login')
 else:
     print("login successful")  # login successful
+
+y = 6
+if x == 5 or y == 6:
+    print("if or if")
 
 # apa saja yang termasuk false:
 # False
@@ -604,7 +611,8 @@ def hello_func():
     print("Hello")
 
 
-x = hello_func()  # hati2 meskipun hanya membuat variable tapi hello_func tetap dipanggil
+x = hello_func(
+)  # hati2 meskipun hanya membuat variable tapi hello_func tetap dipanggil
 hello_func()  # Hello
 
 # Return
@@ -679,7 +687,6 @@ student_info(*courses, **info)
 # ('math', 'art')
 # {'name': 'john', 'age': 20}
 
-
 # module import dan std library
 
 print("\nmodule\n")
@@ -706,7 +713,9 @@ print(fi(matpel, 'sejarah'))
 # sys
 print("\nsys.path\n")
 # dibawah ini untuk mengecek module dari mana saja
-print(sys.path)  # ['e:\\pujas\\programing\\cheatsheet', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\python38.zip', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\DLLs', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\lib', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38', 'C:\\Users\\pujas\\AppData\\Roaming\\Python\\Python38\\site-packages', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages']
+print(
+    sys.path
+)  # ['e:\\pujas\\programing\\cheatsheet', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\python38.zip', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\DLLs', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\lib', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38', 'C:\\Users\\pujas\\AppData\\Roaming\\Python\\Python38\\site-packages', 'C:\\Users\\pujas\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages']
 # local folder, std lbr, dll
 
 # setting path
@@ -748,10 +757,10 @@ print(math.radians(90))  # 1.5707963267948966
 
 print('\nDatetime\n')
 
-print(datetime.datetime.today())    # tanggal hari ini local
+print(datetime.datetime.today())  # tanggal hari ini local
 # tanggal hari ini default local tp bisa diganti
 print(datetime.datetime.now())
-print(datetime.datetime.utcnow())   # tanggal hari ini ikut timezone UTC
+print(datetime.datetime.utcnow())  # tanggal hari ini ikut timezone UTC
 print(calendar.isleap(2220))  # True
 
 # datetime.date hanya mengakomodasi tahun bulan hari
@@ -764,12 +773,12 @@ my_date = datetime.datetime(2022, 5, 31, 22, 51, 0)
 print('Default python format\t', my_date)
 
 # ambil hanya tertentu tahun/tanggal/bulan/dll
-print(my_date.year)     # 2022
-print(my_date.month)    # 5
-print(my_date.day)      # 31
-print(my_date.hour)     # 22
-print(my_date.minute)   # 51
-print(my_date.second)   # 0
+print(my_date.year)  # 2022
+print(my_date.month)  # 5
+print(my_date.day)  # 31
+print(my_date.hour)  # 22
+print(my_date.minute)  # 51
+print(my_date.second)  # 0
 
 # weekday cek hari apa?
 print(my_date.weekday())  # 1   karena jatuh hari selasa mengikuti aturan :
@@ -797,7 +806,8 @@ newDatetime = '{:%B %d %Y}'.format(my_date)
 print(newDatetime)  # May 31 2022
 # contoh lain lebih complex
 complexdate = '{0:%B %d, %Y} jatuh pada hari {0:%A} dan hari ke {0:%j}'.format(
-    my_date)  # jangan lupa taruh 0 karena kita menggunakan 3 variabel namun satu argument
+    my_date
+)  # jangan lupa taruh 0 karena kita menggunakan 3 variabel namun satu argument
 print(complexdate)  # May 31, 2022 jatuh pada hari Tuesday dan hari ke 151
 
 print('\nPytz timezone aware datetime\n')
@@ -923,7 +933,6 @@ for path, dir, file in os.walk('/home/kali/Programming/test folder')
 
 # untuk yang lain bisa dicek disini:
 # print(dir(os.path))
-
 """pip program installer python
 
 $ pip help
@@ -951,7 +960,6 @@ jadiin ke text untuk linux
 $ pip install -r <list.txt>
 untuk install aplikasi dari list
 """
-
 
 print("\nScope\n")
 # prioritas dalam variabel mengikuti acuan LEGB :
@@ -1022,10 +1030,14 @@ hasil4 = []
 for huruf in 'abcd':
     for angka in range(4):
         hasil4.append([huruf, angka])
-print(hasil4)  # [['a', 0], ['a', 1], ['a', 2], ['a', 3], ['b', 0], ['b', 1], ['b', 2], ['b', 3], ['c', 0], ['c', 1], ['c', 2], ['c', 3], ['d', 0], ['d', 1], ['d', 2], ['d', 3]]
+print(
+    hasil4
+)  # [['a', 0], ['a', 1], ['a', 2], ['a', 3], ['b', 0], ['b', 1], ['b', 2], ['b', 3], ['c', 0], ['c', 1], ['c', 2], ['c', 3], ['d', 0], ['d', 1], ['d', 2], ['d', 3]]
 # LC
 hasil4 = [[huruf, angka] for huruf in 'abcd' for angka in range(4)]
-print(hasil4)  # [['a', 0], ['a', 1], ['a', 2], ['a', 3], ['b', 0], ['b', 1], ['b', 2], ['b', 3], ['c', 0], ['c', 1], ['c', 2], ['c', 3], ['d', 0], ['d', 1], ['d', 2], ['d', 3]]
+print(
+    hasil4
+)  # [['a', 0], ['a', 1], ['a', 2], ['a', 3], ['b', 0], ['b', 1], ['b', 2], ['b', 3], ['c', 0], ['c', 1], ['c', 2], ['c', 3], ['d', 0], ['d', 1], ['d', 2], ['d', 3]]
 
 print('\nZip Function\n')
 
@@ -1067,7 +1079,6 @@ print(my_set)
 my_set = {n for n in nums}
 print(my_set)
 
-
 # Generator Expression
 
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -1077,7 +1088,7 @@ nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 def gen_func(nums):
     for n in nums:
-        yield n*n
+        yield n * n
 
 
 my_gen = gen_func(nums)
@@ -1086,7 +1097,7 @@ print(list(my_gen))  # [1, 4, 9, 16, 25, 36, 49, 64, 81]
 
 # generator comprehension :
 
-my_gen = (n*n for n in nums)
+my_gen = (n * n for n in nums)
 
 print(list(my_gen))  # [1, 4, 9, 16, 25, 36, 49, 64, 81]
 
@@ -1113,12 +1124,10 @@ f.close() # harus di close biar file gak bocor dan bikin error
 """
 
 # dengan context manager:
-
 """ Cara 1 dengan read method
 with open('test.txt', 'r') as f: 
     print(f.read())
 """
-
 """ Cara 2 dengan baca satu persatu
 with open('test.txt', 'r') as f: 
     print(f.readline(), end='') # baris pertama
@@ -1189,10 +1198,11 @@ with open('test.jpg', 'rb') as rf:
 print(time.sleep(0))  # pause selama 0 detik
 # menghitung lama proses
 t2 = time.time()  # time menunjukkan detik setelah epoch (1st January 1970)
-print(t2-t1)  # di awal code ada t1=time.time() di baris 15, t2-t1 menunjukkan waktu yang diperlukan komputer untuk menjalankan program sampai titik ini
+print(
+    t2 - t1
+)  # di awal code ada t1=time.time() di baris 15, t2-t1 menunjukkan waktu yang diperlukan komputer untuk menjalankan program sampai titik ini
 
 print('\nRegex\n')
-
 
 text_to_search = '''
 abcdefghijklmnopqurtuvwxyz
@@ -1260,7 +1270,6 @@ pattern = re.compile(r'start', re.I)  # re.I =re.IGNORECASE
 matches = pattern.search(sentence)
 
 print(matches)
-
 
 # Cara 3 pakai findall # yang keluar bentuknya string kalau ada group maka buat tuple dengan hasilnya per grup
 
@@ -1353,7 +1362,6 @@ Variable name : DB_PASS
 Variable value : Password   >> ganti sesuai password
 """
 
-
 # Closure (function dalam function yang siap di ekesekusi)
 print('\nClosure\n')
 
@@ -1362,7 +1370,8 @@ def outer_func(arg):
     message = arg
 
     def inner_func(arg2):
-        print(arg+arg2)
+        print(arg + arg2)
+
     return inner_func
 
 
@@ -1379,9 +1388,11 @@ print('\nDecorator\n')
 
 
 def decorator_function(original_function):
+
     def wrapper_function():
         print(f'wrapper executed before {original_function.__name__}')
         return original_function()
+
     print(f'decorator executed before {wrapper_function.__name__}')
     return wrapper_function
 
@@ -1409,9 +1420,11 @@ print('\nDecorator Umum\n')
 
 
 def decorator_function(original_function):
+
     def wrapper_function(*args, **kwargs):
         print(f'wrapper_function executed before {original_function.__name__}')
         return original_function(*args, **kwargs)
+
     print(f'decorator executed before {original_function.__name__}')
     return wrapper_function
 
@@ -1430,18 +1443,20 @@ wrapper_function(display_info('test', 100)
 display_info('test', 100)
 """
 
-
 # Decorator Class
 print('\nDecorator Class\n')
 
 
 class decorator_class(object):
+
     def __init__(self, original_function):
         self.original_function = original_function
 
+    # __call__ mebuat class bisa dipanggil seperti function biasa menggunakan ()
     def __call__(self, *args, **kwargs):
         print(
-            f'call method executed this before {self.original_function.__name__}')
+            f'call method executed this before {self.original_function.__name__}'
+        )
         return self.original_function(*args, **kwargs)
 
 
@@ -1458,6 +1473,7 @@ print('\nMultiple Decorator\n')
 
 
 def my_timer(orig_func):
+
     def wrapper_timer(*args, **kwargs):
         print(f'wrapper_timer executed before {orig_func.__name__}')
         t1 = time.time()
@@ -1465,12 +1481,14 @@ def my_timer(orig_func):
         t2 = time.time() - t1
         print(f'{orig_func.__name__} ran in {t2} sec')
         return result  # function bisa berjalan tanpa line ini
+
     print(f"my_timer_func executed before {orig_func.__name__}")
     return wrapper_timer
 
 
 # kedua decorator dibawah sama dengan :
 # display_info = decorator_function(my_timer(displayinfo))
+
 
 @decorator_function
 @my_timer
@@ -1484,9 +1502,9 @@ print(display_info.__name__)  # wrapper_func
 # Nah kalau urutan kebalik maka nama funtion berubah :
 print("\nkebalik\n")
 
-
 # perbedaan nama function saat urutan dibalik akan merusak decorator yang name sensitive karena nama funtion bukan original melainkan wrapper dari decorator yang pertama
 # display_info = my_timer(decorator_function(displayinfo))
+
 
 @my_timer
 @decorator_function
@@ -1507,15 +1525,18 @@ from functools import wraps
 
 
 def decorator_function(original_function):
+
     @wraps(original_function)
     def wrapper_function(*args, **kwargs):
         print(f'wrapper_function executed before {original_function.__name__}')
         return original_function(*args, **kwargs)
+
     print(f'decorator executed before {original_function.__name__}')
     return wrapper_function
 
 
 def my_timer(orig_func):
+
     @wraps(orig_func)
     def wrapper_timer(*args, **kwargs):
         print(f'wrapper_timer executed before {orig_func.__name__}')
@@ -1524,6 +1545,7 @@ def my_timer(orig_func):
         t2 = time.time() - t1
         print(f'{orig_func.__name__} ran in {t2} sec')
         return result  # function bisa berjalan tanpa line ini
+
     print(f"my_timer_func executed before {orig_func.__name__}")
     return wrapper_timer
 
@@ -1543,13 +1565,17 @@ print(display_info.__name__)  # display_info
 
 
 def prefix_decorator(prefix):
+
     def decorator_function(original_function):
+
         def wrapper_function(*args, **kwargs):
             print(prefix, 'Executed Before', original_function.__name__)
             result = original_function(*args, **kwargs)
             print(prefix, 'Executed After', original_function.__name__, '\n')
             return result
+
         return wrapper_function
+
     return decorator_function
 
 
@@ -1564,19 +1590,24 @@ display_info('Travis', 30)
 # OOP Object Oriented Programming
 print('\nOOP Object Oriented Programming\n')
 
-# pertama buat class ini berfungsi juga untuk group 
+# pertama buat class ini berfungsi juga untuk group
+
+
 class Employee:
     # kedua __init__ dan self. Init dan self ini membuat variable pada global menjadi variable dalam class
-    def __init__(self, first, last, pay): # self pertama jangan lupa
+    def __init__(self, first, last, pay):  # self pertama jangan lupa
         self.first = first
         self.last = last
         self.email = first + '.' + last + '@email.com'
         self.pay = pay
 
-    def fullname(self): # self yang init dapat digunakan kembali pada method lain di class yang sama
+    def fullname(
+        self
+    ):  # self yang init dapat digunakan kembali pada method lain di class yang sama
         return '{} {}'.format(self.first, self.last)
 
-#rumus penamaan adalah sebagai berikut:
+
+# rumus penamaan adalah sebagai berikut:
 # self = ClassName(first, last, pay)
 emp_1 = Employee('Corey', 'Schafer', 50000)
 emp_2 = Employee('Test', 'Employee', 60000)
@@ -1587,7 +1618,7 @@ print(emp_1.first)
 
 # cara panggil method ada 2 :
 
-print(emp_1.fullname()) # jangan lupa () karena ini method
+print(emp_1.fullname())  # jangan lupa () karena ini method
 # atau
 print(Employee.fullname(emp_1))
 
@@ -1595,76 +1626,85 @@ print(Employee.fullname(emp_1))
 print(Employee.__dict__)
 
 # Instance variable dan class variables
+print('\nInstance Variable\n')
+
 
 class Employee:
 
     kenaikan = 1.05
 
-    def __init__(self, first, last, pay): 
+    def __init__(self, first, last, pay):
         self.first = first
         self.last = last
         self.email = first + '.' + last + '@email.com'
         self.pay = pay
 
-    def fullname(self): 
+    def fullname(self):
         return '{} {}'.format(self.first, self.last)
-    
+
     def naik_gaji(self):
-        self.pay = int(self.pay * self.kenaikan) 
+        self.pay = int(self.pay * self.kenaikan)
         # atau
-        # self.pay = int(self.pay * Employee.kenaikan) 
+        # self.pay = int(self.pay * Employee.kenaikan)
+
 
 emp_1 = Employee('Corey', 'Schafer', 50000)
 emp_2 = Employee('Test', 'Employee', 60000)
 
-print(emp_1.pay)    # lihat gaji sebelum
-emp_1.naik_gaji()   # jalankan naik gaji
-print(emp_1.pay)    # lihat gaji sesudah
+print(emp_1.pay)  # 50000
+emp_1.naik_gaji()  # jalankan naik gaji untuk emp_1
+print(emp_1.pay)  # 52500
+print(emp_2.pay)  # 60000     tetap tidak naik karena emp_2 tidak dijalankan
 
 #  memanggil kenaikan
-print(Employee.kenaikan)    # 1.05
-print(emp_1.kenaikan)       # 1.05
-print(emp_2.kenaikan)       # 1.05
+print(Employee.kenaikan)  # 1.05
+print(emp_1.kenaikan)  # 1.05
+print(emp_2.kenaikan)  # 1.05
 
 # sebenernya emp_1.kenaikan itu gak ada dia ambil dari Employee.kenaikan
 # cara liatnya pakai __dict__
-print(emp_1.__dict__)       # hasilnya tidak ada kenaikan
-print(Employee.__dict__)    # hasilnya disini ada kenaikan
+print(emp_1.__dict__)  # hasilnya tidak ada kenaikan
+print(Employee.__dict__)  # hasilnya disini ada kenaikan
 
 # Kalau mau tambah manual
 Employee.kenaikan = 1.06
-emp_1.kenaikan = 1.07          
+emp_1.kenaikan = 1.07
 
-print(Employee.kenaikan)    # 1.06
-print(emp_1.kenaikan)       # 1.07
-print(emp_2.kenaikan)       # 1.06
+print(Employee.kenaikan)  # 1.06
+print(emp_1.kenaikan)  # 1.07
+print(emp_2.kenaikan)  # 1.06
 
 # skrg emp_1.kenaikan punya atribut kenaikan setelah ditambah manual
-print(emp_1.__dict__)       # ada atribut kenaikan
-print(Employee.__dict__)    # atribut kenaikan berubah jadi 1.06
-print(emp_2.__dict__)       # tidak ada atribut kenaikan, sehingga dia tetap mencari dari Employee
+print(emp_1.__dict__)  # ada atribut kenaikan
+print(Employee.__dict__)  # atribut kenaikan berubah jadi 1.06
+# tidak ada atribut kenaikan, sehingga dia tetap mencari dari Employee
+print(emp_2.__dict__)
 
 # contoh lain jumlah employee
+
+
 class Employee:
 
-    jumlah_employee = 0                         # set awal jumlah employee
+    jumlah_employee = 0  # set awal jumlah employee
     kenaikan = 1.05
 
-    def __init__(self, first, last, pay): 
+    def __init__(self, first, last, pay):
         self.first = first
         self.last = last
         self.email = first + '.' + last + '@email.com'
         self.pay = pay
 
-        Employee.jumlah_employee += 1           # tiap kali def __init__ berjalan akan menambah Employee sebanyak 1 jadinya kita bisa lihat total employee
+        # tiap kali def __init__ berjalan akan menambah Employee sebanyak 1 jadinya kita bisa lihat total employee
+        Employee.jumlah_employee += 1
 
-    def fullname(self): 
+    def fullname(self):
         return '{} {}'.format(self.first, self.last)
-    
+
     def naik_gaji(self):
-        self.pay = int(self.pay * self.kenaikan) 
+        self.pay = int(self.pay * self.kenaikan)
         # atau
-        # self.pay = int(self.pay * Employee.kenaikan) 
+        # self.pay = int(self.pay * Employee.kenaikan)
+
 
 print(Employee.jumlah_employee)  # 0
 
@@ -1672,4 +1712,149 @@ emp_1 = Employee('Corey', 'Schafer', 50000)
 emp_2 = Employee('Test', 'Employee', 60000)
 
 print(Employee.jumlah_employee)  # 2
-print(emp_1.jumlah_employee)     # 2 karena emp_1.jumlah_employee tidak ada dan akan menggunakan Employee.jumlah_employee
+# 2 karena emp_1.jumlah_employee tidak ada dan akan menggunakan Employee.jumlah_employee
+print(emp_1.jumlah_employee)
+
+# class method @classmethod
+# regular method mengambil instance untuk dijadikan argumen,
+# class method mengambil class sebagai argumen
+print('\nClass Method\n')
+
+
+class Employee:
+
+    jumlah_employee = 0
+    kenaikan = 1.05
+
+    @classmethod
+    def set_raise_amt(cls, amount):  # ambil class sebagai argument
+        cls.kenaikan = amount
+
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+        Employee.jumlah_employee += 1
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan)
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_2 = Employee('Test', 'Employee', 60000)
+# untuk jalankan caranya :
+# cls.classmethod(amount)
+Employee.set_raise_amt(1.08)
+
+print(Employee.kenaikan)
+print(emp_1.kenaikan)
+print(emp_2.kenaikan)
+
+emp_2.naik_gaji()
+print(emp_2.pay)  # 64800
+print(emp_1.pay)  # 50000     belum naik karena emp_1.naikgaji() tidak dijalankan
+
+# contoh 2 misalkan data raw bentuknya string:
+# cara 1 manual
+emp_str1 = 'John-Doe-70000'
+emp_str2 = 'Steve-Smith-60000'
+emp_str3 = 'Jane-Richard-90000'
+
+# untuk mengubah kita menggunakan .split
+first, last, pay = emp_str1.split('-')
+
+# masukkan hasilnya ke dalam class
+new_emp1 = Employee(first, last, pay)
+
+print(new_emp1.email)
+print(new_emp1.pay)
+
+# cara 2 pakai class method
+
+
+class Employee:
+
+    jumlah_employee = 0
+    kenaikan = 1.05
+
+    @classmethod
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split('-')   # split string
+        # masukkan hasil split ke dalam class
+        return cls(first, last, pay)
+
+    @classmethod
+    def set_raise_amt(cls, amount):
+        cls.kenaikan = amount
+
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+        Employee.jumlah_employee += 1
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan)
+
+
+# rumus untuk apply :
+# Instance = cls.classmethod(emp_str)   contoh:
+new_emp2 = Employee.from_string(emp_str2)
+print(new_emp2.email)
+
+# static method
+print('\nStatic Method\n')
+# Static method adalah method yang tidak mengambil instance dan class untuk dijadikan argument
+
+
+class Employee:
+
+    jumlah_employee = 0
+    kenaikan = 1.05
+
+    @staticmethod       # static method
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:  # cek apakah jatuh hari sabtu dan minggu (5/6)
+            return False    # kalau benar maka false
+        return True         # kalau salah maka True
+
+    @classmethod
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split('-')
+        return cls(first, last, pay)
+
+    @classmethod
+    def set_raise_amt(cls, amount):
+        cls.kenaikan = amount
+
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+        Employee.jumlah_employee += 1
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan)
+
+
+my_date2 = datetime.date(2016, 7, 10)
+# Check ini jatuhnya hari apa
+print(datetime.date(2016, 7, 10).weekday())     # 6     hari minggu
+# Rumusnya:
+# Class.staticmethod(day)
+print(Employee.is_workday(my_date2))            # False
