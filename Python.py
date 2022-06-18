@@ -20,6 +20,10 @@ print("\nHuruf (STRING)\n")
 # type() mengecek type variabel
 # kalau mau import lebih dari satu bisa pake coma contoh:
 
+# input untuk masukkin interactive input dari user
+# x = input('masukkan nama: ')    # ini bakal ada tulisan pembuka untuk memberi tahu pengguna
+# print("halo " + x)
+
 message = 'string'
 print(type(message))  # <class 'str'>
 # mengecek class menggunakan is instance, bisa juga mengecek class buatan di OOP
@@ -1978,3 +1982,149 @@ print(f'str(b): {str(b)}')      # 2022-06-17 14:41:03.999198+00:00
 # datetime.datetime(2022, 6, 17, 14, 41, 3, 999198, tzinfo=<UTC>)
 print(f'repr(a): {repr(a)}')
 print(f'repr(b): {repr(b)}')    # '2022-06-17 14:41:03.999198+00:00'
+
+
+print('\nMagic Dunder\n')
+# Magic dunder
+# berikut list magic methods apa aja yang bisa digunakan di python
+# https://docs.python.org/3/reference/datamodel.html#special-method-names
+
+# __repr__ dan __str__
+print('\n__repr__ dan __str__\n')
+# tujuannya adalah apabila kita panggil str() dan repr() maka dia akan menjalankan method __str__ dan __repr__ yang ada dalam class
+
+
+class Employee:
+
+    jumlah_employee = 0
+    kenaikan = 1.05
+
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+    def __str__(self):          # buat dunder __str__
+        return f'{self.fullname()}, {self.email}'
+
+    def __repr__(self):         # buat dunder __repr__
+        return f'Employee({self.first}, {self.last}, {self.pay})'
+
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
+
+    @classmethod
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split('-')
+        return cls(first, last, pay)
+
+    @classmethod
+    def set_raise_amt(cls, amount):
+        cls.kenaikan = amount
+
+        Employee.jumlah_employee += 1
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan)
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+
+# untuk panggil repr caranya:
+print(repr(emp_1))  # Employee(Corey, Schafer, 50000)
+# atau
+print(emp_1.__repr__())  # Employee(Corey, Schafer, 50000)
+
+# untuk panggil str caranya :
+
+# secara default klo di print(emp_1) yang keluar adalah str(emp_1)
+print(emp_1)  # Corey Schafer, Corey.Schafer@email.com
+
+# kalau memang mau spesial bisa:
+print(str(emp_1))  # Corey Schafer, Corey.Schafer@email.com
+# atau
+print(emp_1.__str__())  # Corey Schafer, Corey.Schafer@email.com
+
+print('\n__add__\n')
+# dunder __add__
+# disini kita menggunakan + untuk memanggil method __add__ yang ada pada class Employee
+# selain add masih banyak yang lain kyk - * /,  dst bisa dilihat di
+
+print(1+2)
+# itu sebenarnya adalah:
+print(int.__add__(1, 2))
+# sementara :
+print('a'+'b')
+# di awal ada str. yang membedakan dan membuat tidak error
+print(str.__add__('a', 'b'))
+
+
+class Employee:
+
+    jumlah_employee = 0
+    kenaikan = 1.05
+
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+        self.pay = pay
+
+    def __str__(self):
+        return f'{self.fullname()}, {self.email}'
+
+    def __repr__(self):
+        return f'Employee({self.first}, {self.last}, {self.pay})'
+
+    def __add__(self, other):       # buat def dunder add
+        return self.pay + other.pay
+
+    def __len__(self):              # buat def dunder add
+        return len(self.fullname())
+
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
+
+    @classmethod
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split('-')
+        return cls(first, last, pay)
+
+    @classmethod
+    def set_raise_amt(cls, amount):
+        cls.kenaikan = amount
+
+        Employee.jumlah_employee += 1
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    def naik_gaji(self):
+        self.pay = int(self.pay * self.kenaikan)
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_2 = Employee('Test', 'Employee', 60000)
+
+print(emp_1 + emp_2)  # 110000       hasil jumlah kedua gaji
+
+# contoh dunder lain len()
+
+print(len('test'))
+# sama dengan :
+print('test'.__len__())
+
+print(len(emp_1))  # 13   karena ada def __len__ di class Employee
+
+# untuk dunder lainya:
+# https://docs.python.org/3/reference/datamodel.html#special-method-names
