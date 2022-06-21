@@ -10,9 +10,10 @@ nmap
 nmap <iptarget> = lihat port terbuka
 -v (verbose) $ nmap = (verbose = lengkap) perlihatkan juga proses pencarian open port
 -vv (very verbose) = lebih informatif lagi daripada verbose
--A = Agressive (os detection, version detection, traceroute)
+-A = All/Agressive (os detection, version detection, traceroute)
 -oG = grebable output maksudnya supaya hasilnya bisa disimpan dalam file karena rapih
 -p = hanya scan port tertentu
+-p- = scan semua port yang terbuka
 -sV = Service version
 -F = Fast (hanya scan port yang biasa ditarget)
 --open = hanya scan yang open saja

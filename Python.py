@@ -2128,3 +2128,162 @@ print(len(emp_1))  # 13   karena ada def __len__ di class Employee
 
 # untuk dunder lainya:
 # https://docs.python.org/3/reference/datamodel.html#special-method-names
+
+
+# kalau misalnya kita ganti first name jadi pujas maka email tidak berubah karena email tidak melihat emp_1.first melainkan self.first
+
+
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_1.first = 'pujas'           # ganti ke pujas
+
+print(emp_1.first)  # pujas
+print(emp_1.last)   # Schafer
+# Corey.Schafer@email.com  >> ini gak berubah karena tidak melihat emp_1.first
+print(emp_1.email)
+print(emp_1.fullname())      # pujas Schafer
+
+# karena itu kita harus ubah email atribute menjadi method
+
+
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+
+    def email(self):
+        return '{}_{}@email.com'.format(self.first, self.last)
+
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_1.first = 'pujas'
+
+print(emp_1.first)          # pujas
+print(emp_1.last)           # Schafer
+print(emp_1.email())        # pujas_Schafer@email.com    >> Nah sekarang berhasil berubah tapi permasalahannya dia bentuknya atribut bukan method, kalau sudah terlanjur dipakai classnya oleh program lain maka semua harus ditambah ()
+print(emp_1.fullname())     # pujas Schafer
+
+# Property Decorator
+print('\nProperty Decorator\n')
+# property decorator fungsinya mengubah method untuk bisa dipanggil sebagai atribut
+# contohnya emp_1.email() setelah pakai property decorator bakal bisa dipanggil hanya dengan emp_1.email
+
+
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+
+    @property
+    def email(self):
+        return '{}_{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_1.first = 'pujas'
+
+print(emp_1.first)          # pujas
+print(emp_1.last)           # Schafer
+# pujas_Schafer@email.com    >> Nah skrg method bisa dipanggil sebagai atribut
+print(emp_1.email)
+print(emp_1.fullname)     # pujas Schafer
+
+# setter
+print('\nSetter\n')
+# kalau kita mau ganti langsung dari fullname kan ga bisa karena fullname itu method bukan atribut contoh:
+# emp_1.fullname = 'test', 'name'  >> attribute error cant set atribut
+
+# Kalau mau kita itu bisa kita lakukan dengan .setter
+# kalau kita tidak pakai setter maka cuma fullname saja yang update yang lain masih atribut yang lama
+
+
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+
+    @property
+    def email(self):
+        return '{}_{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_1.first = 'pujas'
+emp_1.fullname = 'test name'
+
+print(emp_1.first)          # test                      # first berubah
+print(emp_1.last)           # name                      # last berubah
+print(emp_1.email)          # test_name@email.com       # email pun ikut berubah
+print(emp_1.fullname)       # test name
+
+print('\nDeleter\n')
+# Deleter berfungsi untuk menjalankan program dengan command del
+
+
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+
+    @property
+    def email(self):
+        return '{}_{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
+
+    @fullname.deleter
+    def fullname(self):
+        print('Database deleted')
+        self.first = None       # gak harus delete sebenarnya bisa apa aja
+        self.last = None
+
+
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_1.first = 'pujas'
+emp_1.fullname = 'test name'
+
+print(emp_1.first)          # test
+print(emp_1.last)           # name
+print(emp_1.email)          # test_name@email.com
+print(emp_1.fullname)       # test name
+
+del emp_1.fullname          # gunakan command del untuk menjalankannya
+
+print(emp_1.first)          # None
+print(emp_1.last)           # None
+print(emp_1.email)          # None_None@email.com
+print(emp_1.fullname)       # None None
