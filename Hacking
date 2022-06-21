@@ -108,3 +108,28 @@ $ nikto -h <http://192.168.0.1>
 
 searchsploit
 $ searchsploit samba
+
+hydra           gunakan password beserta username yang ada di list
+hydra -L <usernames.txt> -P <passwords.txt> <ssh://192.168.0.75> -t 4 -V                       
+-t 4 = attemp 4 kali karena kalau default biasanya gagal 
+-V = Verbose
+
+brutespray      buka password dengan bruteforce
+kalau belom diinstall maka install dulu
+$ sudo apt install brutespray
+brutespray dapat baca format nmap yang di save ke xml, jadi kita harus save xml hasil dari nmap
+$ nmap -A -oX <file.xml> <192.168.0.75>
+
+interactive mode:
+kalau sudah ada kemudian
+$ brutespray -i -f <file.xml>                   
+i = interactive mode
+f = file mode dalam hal ini <file.xml>
+kemudian brutespray bakal jalanin interactive mode, ikutin aja enter klo default
+kalau ada wordlist bisa klik yes, userlist = usernames.txt, passlist - passwords.txt
+
+command line mode :
+$ brutespray -f <file.xml> -U <usernames.txt> -P <passwords.txt> -c             
+-c = continue meskipun sudah dapat username dan password yang cocok
+
+kalau sudah brutespray akan buat file hasilnya secara otomatis
