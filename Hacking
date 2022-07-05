@@ -155,3 +155,17 @@ untuk sql injection: /usr/share/wordlists/wfuzz/Injections/SQL.txt
 burpsuite
 aplikasi untuk melihat proses jalannya website satu per satu dan juga sql injection
 untuk sql injection bisa load payload ke /usr/share/wordlists/wfuzz/Injections/SQL.txt
+turn off intercept
+start browser masukin url owasp
+	pilih multilidae
+	pilih owasp top 10  >  sql injection  >  extract data  >  user info
+turn on intercept kemudian 
+	buka browser masukkan user dan password
+next sampai semua notif habis
+check di burbsuite request yang di dalamnya ada username dan password
+kemudian klik kanan send to intruder
+pilih menubar intruder diatas sebelahnya proxy
+kemudian dibawah menubar intruder pilih payload
+masukkan payloadnya bisa dalam list atau diketik manual
+kemudian start attack
+setelahnya tunggu hasil, cara liat mana yang berhasil bisa dilihat dari length berbeda dari yang gagal
