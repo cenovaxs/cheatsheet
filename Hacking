@@ -119,8 +119,16 @@ msf6 > auxiliary(scanner/ssh/ssh_login) > set username root
 msf6 > auxiliary(scanner/ssh/ssh_login) > set verbose
 msf6 > auxiliary(scanner/ssh/ssh_login) > run
 
+web vurnerablity
 Nikto > lihat outdated program dan sub program dan vurnerablitynya
 $ nikto -h <http://192.168.0.1>
+
+wpscan
+mencari wordpress dalam website:
+wpscan --url <http://192.168.0.71/wordpress contoh>
+cari plugin yang vurnerable:
+wpscan --url <url> --enumerate vp               vp = vurnerable plugin
+cari theme yang vurnerable dalam hal ini di wordpress:
 
 searchsploit
 $ searchsploit samba
@@ -152,20 +160,68 @@ wordlists
 wordlists adalah aplikasi buat lihat daftar passsword yang umum jadi gak perlu bruteforce
 untuk sql injection: /usr/share/wordlists/wfuzz/Injections/SQL.txt
 
-burpsuite
-aplikasi untuk melihat proses jalannya website satu per satu dan juga sql injection
-untuk sql injection bisa load payload ke /usr/share/wordlists/wfuzz/Injections/SQL.txt
-turn off intercept
-start browser masukin url owasp
-	pilih multilidae
-	pilih owasp top 10  >  sql injection  >  extract data  >  user info
-turn on intercept kemudian 
-	buka browser masukkan user dan password
-next sampai semua notif habis
-check di burbsuite request yang di dalamnya ada username dan password
-kemudian klik kanan send to intruder
-pilih menubar intruder diatas sebelahnya proxy
-kemudian dibawah menubar intruder pilih payload
-masukkan payloadnya bisa dalam list atau diketik manual
-kemudian start attack
-setelahnya tunggu hasil, cara liat mana yang berhasil bisa dilihat dari length berbeda dari yang gagal
+burpsuite 
+        sql injection
+        aplikasi untuk melihat proses jalannya website satu per satu dan juga sql injection
+                turn off intercept
+        start browser masukin url owasp
+                pilih multilidae
+                pilih owasp top 10  > A1 SQL injection  >  extract data  >  user info
+        turn on intercept kemudian 
+                buka browser masukkan user dan password
+        next sampai semua notif habis
+        check di burbsuite request yang di dalamnya ada username dan password di history
+        kemudian klik kanan send to intruder
+        pilih menubar intruder diatas sebelahnya proxy
+        kemudian dibawah menubar intruder pilih payload
+        masukkan payloadnya bisa dalam list atau diketik manual
+        kemudian start attack
+        setelahnya tunggu hasil, cara liat mana yang berhasil bisa dilihat dari length berbeda dari yang gagal
+        untuk masukkan payload dalam list ada di : /usr/share/wordlists/wfuzz/Injections/SQL.txt
+
+        list attack
+        turn off intercept
+        start browser masukin url owasp
+                pilih multilidae
+                pilih owasp top 10  > A3 Broken Authentication and Session management  >  login        
+        turn on intercept kemudian 
+                buka browser masukkan user dan password
+        next sampai semua notif habis
+        check di burbsuite request yang di dalamnya POST dan ada username dan password 
+        kemudian klik kanan send to intruder
+        pilih menubar intruder diatas sebelahnya proxy
+        check tab target apakah sudah sesuai ipnya
+        check tab Positions
+                pilih clear $           untuk menghilangkan $$
+                pilih isi username dan password kemudian add $
+                attack type pindah ke cluster bomb
+        check tab payload
+                pilih payload set 1
+                simple list
+                load > /usr/share/wordlists/metaslpoit/unix_users.txt
+                pilih payload set 2
+                simple list
+                load > /usr/share/wordlists/metaslpoit/unix_passwords.txt
+        start attack
+        kalau berhasil di hasilnya coba cari yang statusnya berbeda dalam hal ini 302
+
+dirbuster
+dirbuster akan scan dengan cara bruteforce atau listforce directory kritikal yang disembunyikan
+masukin target url
+kemudian browse 
+untuk dapet wordlist dirbuster bisa cek di gitlab page dirbuster terus clone aja
+habis itu start
+
+xss cross site scripting
+reflected
+burpsuite 
+        turn off intercept
+        start browser masukin url owasp
+                pilih multilidae
+                pilih owasp top 10  > A2 Cross Site Scripting (XSS)  > Reflected(first order)  >  DNS lookup
+        turn on intercept
+        masukin google.com untuk dns
+        klik kanan sent to repeater                     repeater itu buat modifikasi http request secara manual
+        target_host=google.com bisa diganti menjadi yahoo.com ataupun javascript lainnya
+        untuk mencoba ganti google.com jadi <script>alert(1)</script>
+        

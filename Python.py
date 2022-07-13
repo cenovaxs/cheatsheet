@@ -378,6 +378,9 @@ print(f'{instance1}, {instance2}')  # agama, bahasa
 # tuple () kyk list tapi immutable gabs diganti
 
 # set {} kyk list tapi gak ada order (unordered list) dan gak bisa doble ini cocok buat ngeeliminasi yang doble2
+# untuk buang set bisa pakai .discard
+# perbedaan discard dengan remove adalah discard tidak muncul error kalau tidak ada
+matpel.discard("ga_ada")
 
 # list() convert menjadi list
 print("\nconvert\n")
