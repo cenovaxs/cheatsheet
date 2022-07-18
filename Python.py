@@ -378,9 +378,8 @@ print(f'{instance1}, {instance2}')  # agama, bahasa
 # tuple () kyk list tapi immutable gabs diganti
 
 # set {} kyk list tapi gak ada order (unordered list) dan gak bisa doble ini cocok buat ngeeliminasi yang doble2
-# untuk buang set bisa pakai .discard
-# perbedaan discard dengan remove adalah discard tidak muncul error kalau tidak ada
-matpel.discard("ga_ada")
+# untuk buang set bisa pakai .remove atau .discard
+# matpel.discard("ga_ada")
 
 # list() convert menjadi list
 print("\nconvert\n")
@@ -435,14 +434,16 @@ print(murid)
 phone = murid.pop('phone')
 print(murid)  # {'name': 'Jane', 'age': 25, 'courses': ['Math', 'CompSci']}
 print(phone)  # 750384
+# popitem untuk hapus dict terakhir
+print(murid.popitem())  # ('courses', ['Math', 'CompSci'])
 # len untuk liat berapa key
-print(len(murid))  # 3
+print(len(murid))  # 2
 # key untuk kasih liat key
-print(murid.keys())  # dict_keys(['name', 'age', 'courses'])
+print(murid.keys())  # dict_keys(['name', 'age'])
 # values untuk kasih liat values
-print(murid.values())  # dict_values(['Jane', 25, ['Math', 'CompSci']])
+print(murid.values())  # dict_values(['Jane', 25])
 # items untuk kasih liat semuanya
-# dict_items([('name', 'Jane'), ('age', 25), ('courses', ['Math', 'CompSci'])])
+# dict_items([('name', 'Jane'), ('age', 25)])
 print(murid.items())
 # dictionary loop
 for key in murid:
@@ -597,6 +598,14 @@ while True:
         break
     print(x)
     x += 1
+
+# while else        while itu bisa diikutin dengan else langsung
+x = 0
+while x < 10:
+    print(x)
+    x += 1
+else:
+    print('lebih dari 10')
 
 # function
 print("\nfunction\n")
